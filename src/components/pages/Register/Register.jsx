@@ -8,8 +8,9 @@ import Message from "../../Message/Message";
 import Loader from "../../Loader/Loader";
 import Field from "../../../components/Form/Field/Field";
 import Select from "../../../components/Form/Select/Select";
+
 //prettier-ignore
-import {genderList, statesList, electoralParticipation, maritalStatus, educationStatus,politicalInterest, employmentStatus} from "../../utils";
+import {genderList, statesList} from "../../utils";
 
 const initialState = {
   username: "",
@@ -31,8 +32,7 @@ const Register = () => {
   const [updateGender, setUpdateGender] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let { isloading, error } = useSelector((state) => state.auth);
-
+  const { isloading, error } = useSelector((state) => state.registerReducer);
   // prettier-ignore
   const states = statesList.map((state, i) => ({
     name: state,
@@ -145,10 +145,10 @@ const Register = () => {
     e.preventDefault();
     validate();
     if (validate()) {
-      console.log(formData);
       dispatch(signup(formData, navigate));
     }
   };
+
   return (
     <div>
       <div className="title">

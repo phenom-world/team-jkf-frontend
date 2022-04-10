@@ -13,7 +13,7 @@ const PasswordResetConfirm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { token } = useParams();
-  let { isloading, error } = useSelector((state) => state.auth);
+  let { isloading, error } = useSelector((state) => state.resetPasswordReducer);
   const [errors, setErrors] = useState({});
 
   const validate = () => {

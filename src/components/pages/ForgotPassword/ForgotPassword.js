@@ -14,10 +14,11 @@ const ForgotPassword = () => {
   const [formData, setFormData] = useState(initialState);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let { isloading, error } = useSelector((state) => state.auth);
+  let { isloading, error } = useSelector(
+    (state) => state.forgotPasswordReducer
+  );
 
   const handleSubmit = (e) => {
-    console.log(formData);
     e.preventDefault();
     dispatch(reset(formData, navigate));
   };

@@ -13,9 +13,11 @@ import Select from "../../../components/Form/Select/Select";
 import {statesList, electoralParticipationList, maritalStatusList, genderList, educationStatusList,politicalInterestList, employmentStatusList} from "../../utils";
 
 const UpdateProfile = () => {
-  const { isloading, error, userDetails } = useSelector((state) => state.auth);
+  const { isloading, error, userDetails } = useSelector(
+    (state) => state.userDetailsReducer
+  );
   //prettier-ignore
-  const { firstname, lastname, username, lga, phone, gender, state, statecode, maritalStatus, educationStatus, employmentStatus, politicalInterest, electoralParticipation }=userDetails;
+  const { firstname, lastname, username, lga, phone, gender, state, statecode, maritalStatus, educationStatus, employmentStatus, politicalInterest, electoralParticipation } = userDetails;
   console.log(userDetails);
   const [formData, setFormData] = useState({});
   const [inputState, setInputState] = useState([state, statecode]);
@@ -33,14 +35,11 @@ const UpdateProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("result"));
+
   const states = statesList.map((state, i) => ({
     name: state,
     statecode: i < 9 ? "00" + Number(i) : "0" + Number(i),
   }));
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   useEffect(() => {
     if (user) dispatch(getUser());
@@ -52,6 +51,10 @@ const UpdateProfile = () => {
     setPoliticalInterest(politicalInterest);
     setInputState([state, statecode]);
   }, [gender, state, statecode]);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const onStateChange = (e) => {
     const value = e.target.value.split(",");
@@ -66,14 +69,6 @@ const UpdateProfile = () => {
   };
 
   const onGenderChange = (e) => {
-    const value = e.target.value;
-    if (value !== "select gender") {
-      setUpdateGender(value);
-      console.log(value);
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
-  };
-  const onElectoralParticipationChange = (e) => {
     const value = e.target.value;
     if (value !== "select gender") {
       setUpdateGender(value);

@@ -2,15 +2,19 @@ import React from "react";
 import { Container, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Spinner } from "react-bootstrap";
+import LoadState from "../../Spinner/LoadState";
 
 const RegistrationSuccess = () => {
-  const { isloading, message } = useSelector((state) => state.auth);
+  const { isloading, message } = useSelector((state) => state.registerReducer);
+  const { resendLink_message } = useSelector(
+    (state) => state.resendLinkReducer
+  );
+
   return isloading ? (
     <div>
-      <Spinner />
+      <LoadState />
     </div>
-  ) : (
+  ) : message || resendLink_message ? (
     <Container className="m-5 mx-auto d-flex flex-column ">
       <Card
         style={{ maxWidth: "30rem" }}
@@ -23,7 +27,7 @@ const RegistrationSuccess = () => {
             </span>
           </div>
           <div>
-            <h4>{message?.message}</h4>
+            <h4>{message ? message : resendLink_message}</h4>
             <h6>Please confirm your Team-jkf account</h6>
             <p className="mt-3 text-success">
               <i>
@@ -43,7 +47,7 @@ const RegistrationSuccess = () => {
         </div>
       </Card>
     </Container>
-  );
+  ) : null;
 };
 
 export default RegistrationSuccess;

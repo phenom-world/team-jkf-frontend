@@ -10,7 +10,9 @@ const ResendLink = () => {
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let { isloading, error } = useSelector((state) => state.auth);
+  const { isloading, message, error } = useSelector(
+    (state) => state.resendLinkReducer
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,6 +43,7 @@ const ResendLink = () => {
                 id="email"
                 type="email"
                 onChange={handleChange}
+                required
               />
             </div>
             <div className="mt-3">

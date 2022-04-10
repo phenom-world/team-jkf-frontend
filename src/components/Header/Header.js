@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 function Header() {
   // const [user, setUser] = useState("");
@@ -111,12 +111,36 @@ function Header() {
 
               {!user ? (
                 <>
-                  <Nav.Link href="/login">LOGIN</Nav.Link>
-                  <Nav.Link href="/register">JOIN US</Nav.Link>
+                  <Nav.Link>
+                    <Link
+                      to="/login"
+                      className="navbar-link"
+                      style={{ marginLeft: "auto" }}
+                    >
+                      LOGIN
+                    </Link>
+                  </Nav.Link>
+                  <Nav.Link>
+                    <Link
+                      to="/register"
+                      className="navbar-link"
+                      style={{ marginLeft: "auto" }}
+                    >
+                      JOIN US
+                    </Link>
+                  </Nav.Link>
                 </>
               ) : (
                 <>
-                  <Nav.Link href="/dashboard">MY ACCOUNT </Nav.Link>
+                  <Nav.Link>
+                    <Link
+                      to="/dashboard"
+                      className="navbar-link"
+                      style={{ marginLeft: "auto" }}
+                    >
+                      MY ACCOUNT
+                    </Link>
+                  </Nav.Link>
                   <Nav.Link onClick={logout}>LOGOUT</Nav.Link>
                 </>
               )}

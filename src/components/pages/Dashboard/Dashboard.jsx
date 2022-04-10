@@ -6,13 +6,18 @@ import "./Dashboard.css";
 import { useSelector } from "react-redux";
 import { getUser } from "../../../Redux/actions/users";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import LoadState from "../../Spinner/LoadState";
 
 function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("result"));
-  const { isloading, userDetails } = useSelector((state) => state.auth);
+  const { isloading, error, userDetails } = useSelector(
+    (state) => state.userDetailsReducer
+  );
+
+  //prettier-ignore
   const { firstname, lastname, tjkfid, createdAt, username } = userDetails;
 
   const logout = () => {
@@ -64,10 +69,26 @@ function Dashboard() {
             <div className="dashboard-tab">
               <Nav>
                 <Nav.Item>
-                  <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                  <Nav.Link>
+                    <Link
+                      to="/dashboard"
+                      className="navbar-link"
+                      style={{ marginLeft: "auto" }}
+                    >
+                      Dashboard
+                    </Link>
+                  </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="link-1">Profile Update</Nav.Link>
+                  <Nav.Link eventKey="link-1">
+                    <Link
+                      to="/update-profile"
+                      className="navbar-link"
+                      style={{ marginLeft: "auto" }}
+                    >
+                      Profile Update
+                    </Link>
+                  </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="link-2">Downloads</Nav.Link>

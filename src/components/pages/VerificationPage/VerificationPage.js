@@ -7,7 +7,9 @@ import LoadState from "../../Spinner/LoadState";
 
 function VerificationPage() {
   const { token } = useParams();
-  let { isloading, error } = useSelector((state) => state.auth);
+  let { verifyUser_loading, verifyUserError } = useSelector(
+    (state) => state.verifyUserReducer
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -15,13 +17,12 @@ function VerificationPage() {
     dispatch(verifyUser(token));
   }, [dispatch]);
 
-  if (!error && !isloading) {
-    console.log(error, isloading);
+  if (!verifyUserError && !verifyUser_loading) {
     navigate("/login");
   }
-  if (error?.split(" ")[2] === "malformed") navigate("/404");
+  if (verifyUserError?.split(" ")[2] === "malformed") navigate("/404");
 
-  return isloading ? (
+  return verifyUser_loading ? (
     <div>
       <LoadState />
     </div>
@@ -39,7 +40,7 @@ function VerificationPage() {
               </span>
             </div>
             <div>
-              <h4>{error}</h4>
+              <h4>{verifyUserError}</h4>
               <p> Resend Verification Link</p>
               <p>
                 <span>
