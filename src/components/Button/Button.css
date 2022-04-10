@@ -1,0 +1,105 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.button,
+.button:visited {
+  cursor: pointer;
+  padding: 0.5rem 6rem;
+  font-size: 1.4rem;
+  color: white;
+  background: linear-gradient(45deg, rgb(240, 94, 121), rgb(179, 69, 145));
+  border: none;
+  margin: 0.3rem auto;
+  border-radius: 10rem;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.disabled {
+  cursor: default !important;
+  font-size: 1.4rem;
+  color: white;
+  border: none;
+  margin: 0.3rem auto;
+  border-radius: 10rem;
+  padding: 0.5rem 6rem !important;
+  background: rgb(141, 141, 141) !important;
+}
+
+.disabled:hover {
+  transform: translate(0) !important;
+  padding: 0.5rem 6rem;
+  box-shadow: 0 1rem 2rem rgba(black, 0.2);
+}
+
+.button:hover {
+  transform: translateY(-0.3rem);
+  padding: 0.5rem 7rem;
+  box-shadow: 0 1rem 2rem rgba(black, 0.2);
+}
+
+.button:focus,
+.button:active {
+  outline: none;
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(black, 0.2);
+}
+
+.handle,
+.handle:visited {
+  cursor: pointer;
+  padding: 0.5rem 3rem;
+  border: none;
+  margin: 0.3rem 0.4rem;
+  transition: all 0.4s;
+  color: white;
+}
+.facebook {
+  background-color: rgb(59, 89, 152);
+}
+.google {
+  background-color: rgb(217, 82, 50);
+}
+.instagram {
+  background-color: rgb(18, 86, 136);
+}
+
+@media screen and (max-width: 990px) {
+  .button {
+    padding: 0.5rem 2rem;
+    font-size: 0.7rem;
+    margin-top: 1rem;
+  }
+  .button:hover {
+    padding: 0.5rem 2.5rem;
+  }
+  .disabled {
+    cursor: default !important;
+    padding: 0.5rem 2rem !important;
+    font-size: 0.7rem !important;
+  }
+  .disabled:hover {
+    padding: 0.5rem 2rem;
+  }
+  .handle,
+  .handle:visited {
+    padding: 0.5rem 1rem;
+  }
+  .handle,
+  .handle:visited {
+    cursor: pointer;
+    padding: 0.3rem 0.4rem;
+    border: none;
+
+    font-size: 0.7rem;
+    transition: all 0.4s;
+  }
+}
+
+.spinner_text {
+  text-transform: uppercase;
+}

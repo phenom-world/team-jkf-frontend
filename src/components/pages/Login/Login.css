@@ -1,0 +1,125 @@
+.login__container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5rem;
+}
+
+.login__form__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.login__form__section > p {
+  font-size: 0.9rem;
+  color: rgb(141, 140, 140);
+}
+
+.login__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 100%;
+}
+
+.login__form__label {
+  margin-left: 0.6rem;
+}
+
+.login__input {
+  width: 500px !important;
+  margin: 0.3rem 0 !important;
+}
+
+.form__div {
+  margin: 0.7rem 0;
+  max-height: 6rem;
+}
+.form__div:first-child {
+  margin-top: 2rem;
+}
+.form__div {
+  margin: 0.7rem 0;
+  max-height: 6rem;
+}
+
+.form__div > p {
+  margin: 0;
+}
+
+.social {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgb(141, 140, 140);
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 1rem;
+    padding: 1.5rem 1rem;
+    margin: 0;
+  }
+  .login__container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5rem;
+    padding: 1rem 1rem;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  select {
+    color: rgb(124, 124, 124);
+    width: 100%;
+    margin: 0.2rem 0;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    font-size: 12px;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 2rem;
+    transition: all 0.3s linear;
+  }
+  .login__form {
+    font-size: 0.7rem;
+    font-weight: 400;
+    width: 100%;
+  }
+
+  .form__div {
+    margin: 0.2rem 0 !important;
+  }
+  .terms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+  .social {
+    font-size: 0.7rem;
+  }
+
+  .login__input {
+    width: 100% !important;
+    margin: 0.3rem 0 !important;
+  }
+}

@@ -1,0 +1,11 @@
+export const START_LOADING = "START_LOADING";
+export const END_LOADING = "END_LOADING";
+export const REQUEST_FAILED = "REQUEST_FAILED";
+export const AUTH = "AUTH";
+export const REGISTER = "REGISTER";
+export const LOGOUT = "LOGOUT";
+export const GET_USER = "GET_USER";
+export const VERIFY_USER = "VERIFY_USER";
+export const RESEND_LINK = "RESEND_LINK";
+export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
+export const RESET_PASSWORD = "RESET_PASSWORD";

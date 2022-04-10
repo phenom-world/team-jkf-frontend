@@ -1,0 +1,36 @@
+.dashboard-container{
+  background-color: #0084A1;
+}
+
+.db-img-cont img{
+  border-radius: 50%;
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.dash-desc{
+  color: white;
+}
+
+.dashboard-tab{
+  background-color: #3F9CC2;
+}
+
+.nav-item a {
+  color: white;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #ffffff !important;
+}
+
+.dashboard-tab .nav-item:hover{
+  background-color: #095667 !important;
+}
+
+@media screen and (max-width: 480px) {
+  .dashboard-resp{
+    display: flex;
+    flex-direction: column;
+  }
+}

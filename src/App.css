@@ -1,0 +1,75 @@
+.navbar-nav a {
+  font-weight: 600;
+  font-size: 17px;
+  margin-left: 2rem;
+  color: white !important;
+}
+
+.dropdown-menu a {
+  margin-left: 0rem;
+}
+
+.dropdown-item:hover {
+  background-color: black !important;
+}
+
+.navbar-brand {
+  margin-left: 15.2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.nav-but {
+  margin-right: 2rem;
+}
+
+.dropdown-menu {
+  background-color: black !important;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-nav a {
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 1.3rem;
+  }
+  .navbar-brand {
+    margin-left: 1.3rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+  }
+  .navbar-toggler {
+    margin-right: 1rem;
+  }
+  .nav-but {
+    margin-right: auto;
+  }
+  .body-mini-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .body-cont-text p:first-child {
+    font-weight: 400;
+    font-size: 2em;
+  }
+
+  .body-cont-text p {
+    font-weight: 400;
+    font-size: 1.3em;
+  }
+  .gen-nav-but.second {
+    padding: 0.375rem 0.75rem;
+  }
+}
+/* 
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+*/

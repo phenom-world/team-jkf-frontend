@@ -1,0 +1,44 @@
+.member__container {
+  background-color: #fafafa;
+  padding: 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  max-width: 11.3rem;
+  height: 17rem;
+  border: 1px solid #dddcdc;
+  border-radius: 5px;
+}
+.member__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  max-width: 12rem;
+}
+
+.profile__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 6px;
+  text-align: center;
+  font-weight: 600;
+}
+.profile__image img {
+  border-radius: 50%;
+  width: 5rem;
+}
+
+.activity {
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.friend__btn {
+  padding: 2px 1rem;
+  cursor: pointer;
+}
