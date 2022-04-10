@@ -7,6 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Loader from "../../Loader/Loader";
 import Field from "../../../components/Form/Field/Field";
 import Message from "../../Message/Message";
+import LoadState from "../../Spinner/LoadState";
 
 const initialState = {
   username: "",
@@ -19,8 +20,10 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { isloading, error } = useSelector((state) => state.authReducer);
-  let { verifyUser_message } = useSelector((state) => state.verifyUserReducer);
-  console.log(isloading);
+  let { verifyUser_loading, verifyUser_message } = useSelector(
+    (state) => state.verifyUserReducer
+  );
+
   const validate = () => {
     let isValid = true;
 
@@ -50,7 +53,9 @@ const Login = () => {
     }
   };
 
-  return (
+  return verifyUser_loading ? (
+    <LoadState />
+  ) : (
     <div>
       <div className="title">
         <p>Sign in</p>
