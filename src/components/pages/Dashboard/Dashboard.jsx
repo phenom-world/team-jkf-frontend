@@ -13,7 +13,7 @@ function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("result"));
-  const { isloading, error, userDetails } = useSelector(
+  const { isloading, userDetails } = useSelector(
     (state) => state.userDetailsReducer
   );
 

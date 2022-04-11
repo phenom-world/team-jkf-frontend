@@ -95,12 +95,13 @@ export const resendLink = (formData, navigate) => async (dispatch) => {
   }
 };
 
-export const verifyUser = (token) => async (dispatch) => {
+export const verifyUser = (token, navigate) => async (dispatch) => {
   try {
     dispatch({ type: START_VERIFY_USER_LOADING });
     const { data } = await api.verify(token);
-    dispatch({ type: VERIFY_USER, payload: data.message });
+    dispatch({ type: VERIFY_USER, payload: data });
     dispatch({ type: END_VERIFY_USER_LOADING });
+    navigate("/dashboard");
   } catch (error) {
     dispatch({
       type: VERIFY_USER_FAILURE,

@@ -77,32 +77,11 @@ const UpdateProfile = () => {
     }
   };
 
-  const validate = () => {
-    let inValid = true;
-    if (typeof formData["email"] !== "undefined") {
-      var pattern = new RegExp(
-        /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
-      );
-      if (!pattern.test(formData["email"])) {
-        inValid = false;
-        errors["email"] = "Please enter a valid email address.";
-      }
-    }
-    setErrors({
-      errors: errors,
-    });
-
-    return inValid;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    validate();
-    if (validate()) {
-      console.log(formData);
-      dispatch(signup(formData, navigate));
-    }
+    dispatch(signup(formData, navigate));
   };
+
   return (
     <div>
       {isloading ? (

@@ -15,12 +15,12 @@ function VerificationPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(verifyUser(token));
+    dispatch(verifyUser(token, navigate));
   }, [dispatch]);
 
-  if (!verifyUserError && !verifyUser_loading) {
-    navigate("/login");
-  }
+  // if (!verifyUserError && !verifyUser_loading) {
+  //   navigate("/login");
+  // }
   if (verifyUserError?.split(" ")[2] === "malformed") navigate("/404");
 
   return verifyUser_loading ? (

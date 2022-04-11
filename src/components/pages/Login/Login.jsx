@@ -20,9 +20,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { isloading, error } = useSelector((state) => state.authReducer);
-  let { verifyUser_loading, verifyUser_message } = useSelector(
-    (state) => state.verifyUserReducer
-  );
 
   const validate = () => {
     let isValid = true;
@@ -53,16 +50,14 @@ const Login = () => {
     }
   };
 
-  return verifyUser_loading ? (
+  return isloading ? (
     <LoadState />
   ) : (
     <div>
       <div className="title">
         <p>Sign in</p>
       </div>
-      {verifyUser_message && (
-        <Message variant="success">User verified successfully</Message>
-      )}
+
       {error && <Message variant="danger">{error}</Message>}
       <form className="login_form" onSubmit={handleSubmit}>
         <div className="login__container">
