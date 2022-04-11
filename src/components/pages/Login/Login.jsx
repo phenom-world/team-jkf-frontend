@@ -61,7 +61,7 @@ const Login = () => {
         <p>Sign in</p>
       </div>
       {verifyUser_message && (
-        <Message variant="success">{verifyUser_message}</Message>
+        <Message variant="success">User verified successfully</Message>
       )}
       {error && <Message variant="danger">{error}</Message>}
       <form className="login_form" onSubmit={handleSubmit}>

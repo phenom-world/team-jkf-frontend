@@ -99,8 +99,7 @@ export const verifyUser = (token) => async (dispatch) => {
   try {
     dispatch({ type: START_VERIFY_USER_LOADING });
     const { data } = await api.verify(token);
-    console.log(data);
-    dispatch({ type: VERIFY_USER, data });
+    dispatch({ type: VERIFY_USER, payload: data.message });
     dispatch({ type: END_VERIFY_USER_LOADING });
   } catch (error) {
     dispatch({

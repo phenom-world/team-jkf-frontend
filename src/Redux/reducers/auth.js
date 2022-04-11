@@ -147,7 +147,7 @@ export const resendLinkReducer = (state = {}, action) => {
 export const verifyUserReducer = (state = {}, action) => {
   switch (action.type) {
     case VERIFY_USER:
-      return { ...state, verifyUser_message: action?.data };
+      return { ...state, verifyUser_message: action?.payload };
     case START_VERIFY_USER_LOADING:
       return { ...state, verifyUser_loading: true };
     case END_VERIFY_USER_LOADING:
