@@ -14,4 +14,3 @@ export { default as PasswordReset } from "./ForgotPassword/ForgotPassword";
 export { default as PasswordResetConfirm } from "./PasswordResetConfirm/PasswordResetConfirm";
 export { default as PasswordResetDone } from "./PasswordResetDone/PasswordResetDone";
 export { default as PasswordResetComplete } from "./PasswordResetComplete/PasswordResetComplete";
-export { default as PasswordResetEmail } from "./PasswordResetEmail/PasswordResetEmail";

@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import Button from "../../Button/Button";
 import { resetPassword } from "../../../Redux/actions/users";
-import LoadState from "../../Spinner/LoadState";
 import { Container, Card } from "react-bootstrap";
 import Field from "../../../components/Form/Field/Field";
 import Loader from "../../Loader/Loader";
+import Message from "../../Message/Message";
 
 const PasswordResetConfirm = () => {
   const [formData, setFormData] = useState({ password: "" });

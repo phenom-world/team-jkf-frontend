@@ -10,6 +10,7 @@ function VerificationPage() {
   let { verifyUser_loading, verifyUserError } = useSelector(
     (state) => state.verifyUserReducer
   );
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

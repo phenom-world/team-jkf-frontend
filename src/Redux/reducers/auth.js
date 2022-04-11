@@ -194,7 +194,7 @@ export const resetPasswordReducer = (state = {}, action) => {
       return {
         ...state,
         isloading: false,
-        verifUserError: action.payload,
+        error: action.payload,
       };
     default:
       return state;

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Community.css";
+import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import MembersCard from "../../MembersCard/MembersCard";
 import Team1 from "../../../Images/Team1_logo.png";
@@ -17,13 +18,69 @@ const Community = () => {
             <p>Links</p>
             <hr />
             <ul>
-              <li> My Timeline</li>
-              <li> Update Profile</li>
-              <li>Notifications</li>
-              <li>Messages</li>
-              <li>Join Groups</li>
-              <li>Friends Lists</li>
-              <li>Invitations</li>
+              <li>
+                <Link
+                  to="/timeline"
+                  className="text-decoration-none text-dark"
+                  style={{ marginLeft: "auto" }}
+                >
+                  My Timeline
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/update-profile"
+                  className="text-decoration-none text-dark"
+                  style={{ marginLeft: "auto" }}
+                >
+                  Update Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/notification"
+                  className="text-decoration-none text-dark"
+                  style={{ marginLeft: "auto" }}
+                >
+                  Notifications
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/messages"
+                  className="text-decoration-none text-dark"
+                  style={{ marginLeft: "auto" }}
+                >
+                  Messages
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/group_lists"
+                  className="text-decoration-none text-dark"
+                  style={{ marginLeft: "auto" }}
+                >
+                  Join Groups
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/friends_list"
+                  className="text-decoration-none text-dark"
+                  style={{ marginLeft: "auto" }}
+                >
+                  Friend Lists
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/invitations"
+                  className="text-decoration-none text-dark"
+                  style={{ marginLeft: "auto" }}
+                >
+                  Invitations
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="groups">
@@ -68,7 +125,7 @@ const Community = () => {
         </div>
         <div className="section__2">
           <h2>TJKF Community </h2>
-          <div className="active nav">
+          <div className="active">
             <div>
               Active Members <span>6</span>
             </div>

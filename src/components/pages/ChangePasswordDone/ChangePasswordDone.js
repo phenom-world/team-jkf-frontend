@@ -17,7 +17,7 @@ const ChangePasswordDone = () => {
         <h5>Password Changed!</h5>
         <p className="mb-5">Your password has been succesfully changed</p>
         <span>
-          Go to{" "}
+          Go to
           <Link to="/login" className="text-decoration-none">
             login page
           </Link>{" "}
