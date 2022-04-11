@@ -1,8 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./NotFoundPage.css";
-import Button from "../../Button/Button";
-// import PageNotFound from "../../../Images/404.png";
 
 const NotFoundPage = () => {
   return (

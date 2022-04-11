@@ -8,6 +8,7 @@ import {
   verifyUserReducer,
   resetPasswordReducer,
   forgotPasswordReducer,
+  updateUserReducer,
 } from "./auth";
 
 export const reducers = combineReducers({
@@ -18,4 +19,5 @@ export const reducers = combineReducers({
   verifyUserReducer,
   forgotPasswordReducer,
   resetPasswordReducer,
+  updateUserReducer,
 });

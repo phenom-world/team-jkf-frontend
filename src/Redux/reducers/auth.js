@@ -7,6 +7,10 @@ import {
   REGISTER_FAILURE,
   START_REGISTER_LOADING,
   END_REGISTER_LOADING,
+  START_UPDATE_USER_LOADING,
+  UPDATE_USER,
+  END_UPDATE_USER_LOADING,
+  UPDATE_USER_FAILURE,
   USER_DETAILS,
   START_USER_DETAILS_LOADING,
   END_USER_DETAILS_LOADING,
@@ -111,6 +115,25 @@ export const registerReducer = (state = {}, action) => {
       return { ...state, isloading: false };
     case REGISTER_FAILURE:
       return { ...state, isloading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const updateUserReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_USER:
+      return { ...state, message: action?.payload };
+    case START_UPDATE_USER_LOADING:
+      return { ...state, updateUserloading: true };
+    case END_UPDATE_USER_LOADING:
+      return { ...state, updateUserloading: false };
+    case UPDATE_USER_FAILURE:
+      return {
+        ...state,
+        updateUserloading: false,
+        updateUserError: action.payload,
+      };
     default:
       return state;
   }

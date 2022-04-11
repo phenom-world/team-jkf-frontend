@@ -35,9 +35,9 @@ function Dashboard() {
         <LoadState />
       ) : (
         <>
-          <div className="dashboard-container">
-            <Container>
-              <div className="dashboard-resp d-flex py-5">
+          <div className="dashboard-container overflow-auto">
+            <Container className="justify-content-start">
+              <div className="dashboard-resp d-flex py-5 gap-4">
                 <div className="db-img-cont">
                   <Image
                     src="https://res.cloudinary.com/valodagreat/image/upload/v1641822940/WhatsApp_Image_2022-01-10_at_2.51.59_PM_kimsyr.jpg"

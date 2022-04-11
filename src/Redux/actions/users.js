@@ -7,13 +7,14 @@ import {
   END_AUTH_LOADING,
   START_REGISTER_LOADING,
   END_REGISTER_LOADING,
+  START_UPDATE_USER_LOADING,
+  UPDATE_USER,
+  END_UPDATE_USER_LOADING,
+  UPDATE_USER_FAILURE,
   USER_DETAILS,
   START_USER_DETAILS_LOADING,
   END_USER_DETAILS_LOADING,
   USER_DETAILS_FAILURE,
-  START_LOADING,
-  END_LOADING,
-  REQUEST_FAILED,
   RESEND_LINK,
   START_RESEND_LINK_LOADING,
   END_RESEND_LINK_LOADING,
@@ -75,6 +76,21 @@ export const getUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAILURE,
+      payload: `${error.response.data.message}`,
+    });
+  }
+};
+
+export const updateUser = (formData, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: START_UPDATE_USER_LOADING });
+    const { data } = await api.updateProfile(formData);
+    dispatch({ type: UPDATE_USER, payload: data.token });
+    dispatch({ type: END_UPDATE_USER_LOADING });
+    navigate("/dashboard");
+  } catch (error) {
+    dispatch({
+      type: UPDATE_USER_FAILURE,
       payload: `${error.response.data.message}`,
     });
   }

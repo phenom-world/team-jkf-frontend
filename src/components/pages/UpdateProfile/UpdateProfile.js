@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "../../Button/Button";
-import { signup } from "../../../Redux/actions/users";
+import { updateUser } from "../../../Redux/actions/users";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Message from "../../Message/Message";
@@ -13,15 +13,19 @@ import Select from "../../../components/Form/Select/Select";
 import {statesList, electoralParticipationList, maritalStatusList, genderList, educationStatusList,politicalInterestList, employmentStatusList} from "../../utils";
 
 const UpdateProfile = () => {
-  const { isloading, error, userDetails } = useSelector(
+  const { isloading, userDetails } = useSelector(
     (state) => state.userDetailsReducer
+  );
+  const { updateUserloading, updateUserError } = useSelector(
+    (state) => state.updateUserReducer
   );
   //prettier-ignore
   const { firstname, lastname, username, lga, phone, gender, state, statecode, maritalStatus, educationStatus, employmentStatus, politicalInterest, electoralParticipation } = userDetails;
+  //prettier-ignore
+
   console.log(userDetails);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState(userDetails);
   const [inputState, setInputState] = useState([state, statecode]);
-  const [errors, setErrors] = useState({});
 
   const [updateGender, setUpdateGender] = useState(gender);
   const [MaritalStatus, setMaritalStatus] = useState(maritalStatus);
@@ -34,6 +38,7 @@ const UpdateProfile = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const required = true;
   const user = JSON.parse(localStorage.getItem("result"));
 
   const states = statesList.map((state, i) => ({
@@ -50,7 +55,7 @@ const UpdateProfile = () => {
     setElectoralParticipation(electoralParticipation);
     setPoliticalInterest(politicalInterest);
     setInputState([state, statecode]);
-  }, [gender, state, statecode]);
+  }, [dispatch, gender, state, statecode]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -70,7 +75,7 @@ const UpdateProfile = () => {
 
   const onGenderChange = (e) => {
     const value = e.target.value;
-    if (value !== "select gender") {
+    if (value !== "") {
       setUpdateGender(value);
       console.log(value);
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -79,7 +84,7 @@ const UpdateProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signup(formData, navigate));
+    dispatch(updateUser(formData, navigate));
   };
 
   return (
@@ -91,7 +96,9 @@ const UpdateProfile = () => {
           <div className="title">
             <p>Update User Profile</p>
           </div>
-          {error && <Message variant="danger">{error}</Message>}
+          {updateUserError && (
+            <Message variant="danger">{updateUserError}</Message>
+          )}
           <form className="register_form" onSubmit={handleSubmit}>
             <div className="container">
               <div className="form__section">
@@ -102,8 +109,8 @@ const UpdateProfile = () => {
                     labelValue="Last Name"
                     handleChange={handleChange}
                     formType="form__div__1"
-                    errors={errors}
                     value={lastname}
+                    required={required}
                   />
                   <Field
                     label="firstname"
@@ -111,7 +118,7 @@ const UpdateProfile = () => {
                     labelValue="First Name"
                     handleChange={handleChange}
                     formType="form__div__1"
-                    errors={errors}
+                    required={required}
                     value={firstname}
                   />
                   <Field
@@ -120,7 +127,7 @@ const UpdateProfile = () => {
                     labelValue="Username"
                     handleChange={handleChange}
                     formType="form__div__1"
-                    errors={errors}
+                    required={required}
                     value={username}
                   />
                   <Field
@@ -129,7 +136,7 @@ const UpdateProfile = () => {
                     labelValue="Phone Number"
                     handleChange={handleChange}
                     formType="form__div__1"
-                    errors={errors}
+                    required={required}
                     value={phone}
                   />
                   <Select
@@ -137,7 +144,7 @@ const UpdateProfile = () => {
                     labelValue="Gender"
                     handleChange={onGenderChange}
                     formType="form__div__1"
-                    errors={errors}
+                    required={required}
                     value={updateGender}
                   >
                     {genderList.map((item, i) => (
@@ -149,10 +156,16 @@ const UpdateProfile = () => {
                   <Select
                     label="maritalStatus"
                     labelValue="Marital Status"
-                    handleChange={onGenderChange}
+                    handleChange={(e) => {
+                      setMaritalStatus(e.target.value);
+                      setFormData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
                     formType="form__div__2"
-                    errors={errors}
-                    value={updateGender}
+                    required={required}
+                    value={MaritalStatus}
                   >
                     {maritalStatusList.map((item, i) => (
                       <option key={i} value={item.toLowerCase()}>
@@ -169,7 +182,7 @@ const UpdateProfile = () => {
                     labelValue="State of Residence"
                     handleChange={onStateChange}
                     formType="form__div__2"
-                    errors={errors}
+                    required={required}
                     value={inputState}
                   >
                     {states.map((state, i) => (
@@ -184,17 +197,23 @@ const UpdateProfile = () => {
                     labelValue="LGA of Residence"
                     handleChange={handleChange}
                     formType="form__div__2"
-                    errors={errors}
+                    required={required}
                     value={lga}
                   />
 
                   <Select
                     label="educationStatus"
                     labelValue="Education Status"
-                    handleChange={onGenderChange}
+                    handleChange={(e) => {
+                      setEducationStatus(e.target.value);
+                      setFormData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
                     formType="form__div__2"
-                    errors={errors}
-                    value={updateGender}
+                    required={required}
+                    value={EducationStatus}
                   >
                     {educationStatusList.map((item, i) => (
                       <option key={i} value={item.toLowerCase()}>
@@ -205,10 +224,16 @@ const UpdateProfile = () => {
                   <Select
                     label="employmentStatus"
                     labelValue="Employment Status"
-                    handleChange={onGenderChange}
+                    handleChange={(e) => {
+                      setEmploymentStatus(e.target.value);
+                      setFormData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
                     formType="form__div__2"
-                    errors={errors}
-                    value={updateGender}
+                    required={required}
+                    value={EmploymentStatus}
                   >
                     {employmentStatusList.map((item, i) => (
                       <option key={i} value={item.toLowerCase()}>
@@ -217,12 +242,18 @@ const UpdateProfile = () => {
                     ))}
                   </Select>
                   <Select
-                    label="politicaInterest"
+                    label="politicalInterest"
                     labelValue="Political Interest"
-                    handleChange={onGenderChange}
+                    handleChange={(e) => {
+                      setPoliticalInterest(e.target.value);
+                      setFormData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
                     formType="form__div__2"
-                    errors={errors}
-                    value={updateGender}
+                    required={required}
+                    value={PoliticalInterest}
                   >
                     {politicalInterestList.map((item, i) => (
                       <option key={i} value={item.toLowerCase()}>
@@ -233,10 +264,16 @@ const UpdateProfile = () => {
                   <Select
                     label="electoralParticipation"
                     labelValue="Electoral Participation"
-                    handleChange={onGenderChange}
+                    handleChange={(e) => {
+                      setElectoralParticipation(e.target.value);
+                      setFormData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
                     formType="form__div__2"
-                    errors={errors}
-                    value={updateGender}
+                    required={required}
+                    value={ElectoralParticipation}
                   >
                     {electoralParticipationList.map((item, i) => (
                       <option key={i} value={item.toLowerCase()}>
@@ -250,7 +287,7 @@ const UpdateProfile = () => {
 
             <div className=" terms">
               <div className="login__form__div">
-                {isloading ? (
+                {updateUserloading ? (
                   <Loader />
                 ) : (
                   <Button type="submit" className="button">

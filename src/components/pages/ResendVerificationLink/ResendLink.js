@@ -10,9 +10,7 @@ const ResendLink = () => {
   const [formData, setFormData] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isloading, message, error } = useSelector(
-    (state) => state.resendLinkReducer
-  );
+  const { isloading, error } = useSelector((state) => state.resendLinkReducer);
 
   const handleSubmit = (e) => {
     e.preventDefault();

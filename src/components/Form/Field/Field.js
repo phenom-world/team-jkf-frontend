@@ -6,6 +6,7 @@ const Field = ({
   handleChange,
   errors,
   value,
+  required,
   labelValue,
   formType,
 }) => {
@@ -20,6 +21,7 @@ const Field = ({
         id={label}
         defaultValue={value}
         onChange={handleChange}
+        required={required}
       />
       <p className="text-danger mx-2">
         {errors?.errors?.[`${label}`] && (
