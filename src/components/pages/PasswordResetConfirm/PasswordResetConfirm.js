@@ -6,6 +6,7 @@ import { resetPassword } from "../../../Redux/actions/users";
 import { Container, Card } from "react-bootstrap";
 import Field from "../../../components/Form/Field/Field";
 import Loader from "../../Loader/Loader";
+import { Footer } from "../index";
 
 const PasswordResetConfirm = () => {
   const [formData, setFormData] = useState({ password: "" });
@@ -133,6 +134,7 @@ const PasswordResetConfirm = () => {
           </div>
         </div>
       </form>
+      <Footer />
     </div>
   );
 };

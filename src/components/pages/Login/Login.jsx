@@ -7,7 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Loader from "../../Loader/Loader";
 import Field from "../../../components/Form/Field/Field";
 import Message from "../../Message/Message";
-import LoadState from "../../Spinner/LoadState";
+import { Footer } from "../index";
 
 const initialState = {
   username: "",
@@ -50,9 +50,7 @@ const Login = () => {
     }
   };
 
-  return isloading ? (
-    <LoadState />
-  ) : (
+  return (
     <div>
       <div className="title">
         <p>Sign in</p>
@@ -116,6 +114,7 @@ const Login = () => {
           </div>
         </div>
       </form>
+      <Footer />
     </div>
   );
 };

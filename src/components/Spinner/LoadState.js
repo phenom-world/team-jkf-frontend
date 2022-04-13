@@ -10,11 +10,10 @@ const LoadState = () => {
       style={{
         width: "100px",
         height: "100px",
-
         display: "block",
         margin: "-25px 0 0 -60px",
         position: "absolute",
-        top: "50%",
+        top: "50vh",
         left: "50%",
       }}
     >

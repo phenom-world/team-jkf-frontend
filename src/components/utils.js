@@ -9,7 +9,7 @@ export const maritalStatusList = [
 ];
 export const educationStatusList = [
   "O'level",
-  "National Dipolma",
+  "National Diploma",
   "Higher National Dipolma",
   "Bcs",
   "Mcs",

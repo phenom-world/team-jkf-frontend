@@ -8,6 +8,7 @@ import { getUser } from "../../../Redux/actions/users";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import LoadState from "../../Spinner/LoadState";
+import { Footer } from "../index.js";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -75,6 +76,9 @@ function Dashboard() {
                       className="navbar-link"
                       style={{ marginLeft: "auto" }}
                     >
+                      <span style={{ fontSize: "1em", color: "#fff" }}>
+                        <i className="fa-solid fa-house-chimney"></i>
+                      </span>{" "}
                       Dashboard
                     </Link>
                   </Nav.Link>
@@ -86,22 +90,50 @@ function Dashboard() {
                       className="navbar-link"
                       style={{ marginLeft: "auto" }}
                     >
+                      {" "}
+                      <span style={{ fontSize: "1em", color: "#fff" }}>
+                        <i class="fa-solid fa-user"></i>
+                      </span>{" "}
                       Profile Update
                     </Link>
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="link-2">Downloads</Nav.Link>
+                  <Nav.Link eventKey="link-2">
+                    <span style={{ fontSize: "1em", color: "#fff" }}>
+                      <span style={{ fontSize: "1em", color: "#fff" }}>
+                        <i class="fa-solid fa-download"></i>
+                      </span>{" "}
+                    </span>{" "}
+                    Downloads
+                  </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="link-3">Support</Nav.Link>
+                  <Nav.Link eventKey="link-3">
+                    {" "}
+                    <span style={{ fontSize: "1em", color: "#fff" }}>
+                      <span style={{ fontSize: "1em", color: "#fff" }}>
+                        <i class="fa-solid fa-circle-question"></i>
+                      </span>{" "}
+                    </span>{" "}
+                    Support
+                  </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="link-4">Social Community</Nav.Link>
+                  <Nav.Link eventKey="link-4">
+                    {" "}
+                    <span style={{ fontSize: "1em", color: "#fff" }}>
+                      <i class="fa-solid fa-people-group"></i>
+                    </span>{" "}
+                    Community
+                  </Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item>
                   <Nav.Link eventKey="link-5" onClick={logout}>
+                    <span style={{ fontSize: "1em", color: "#fff" }}>
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    </span>{" "}
                     Logout
                   </Nav.Link>
                 </Nav.Item>
@@ -109,6 +141,7 @@ function Dashboard() {
             </div>
           </div>
           <DashboardStory />
+          <Footer />
         </>
       )}
     </div>

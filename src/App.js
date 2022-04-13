@@ -9,10 +9,14 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import PublicRoutes from "./PublicRoutes";
 import {
   Header,
+  Footer,
+  BackToTop,
   Login,
   Register,
   Dashboard,
   Community,
+  UserProfile,
+  TeamProfile,
   NotFoundPage,
   RegistrationSuccess,
   UpdateProfile,
@@ -37,6 +41,7 @@ function Navbar() {
   return (
     <div>
       <Header />
+      <BackToTop />
     </div>
   );
 }
@@ -58,6 +63,8 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Route>
           {/* Other Routes */}
+          <Route exact path="/community/profileid" element={<UserProfile />} />
+          <Route exact path="/community/profileidt" element={<TeamProfile />} />
           <Route path="/register" element={<Register />} exact />
           <Route exact path="/community" element={<Community />} />
           {/* prettier-ignore */}

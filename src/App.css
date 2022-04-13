@@ -24,7 +24,20 @@
 }
 
 .dropdown-menu {
-  background-color: black !important;
+  background-color: rgb(185, 0, 0) !important;
+  overflow: hidden !important;
+}
+.nav-text {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  margin-bottom: 10px !important;
+  transition: all 0.4s ease-in !important;
+  position: absolute I !important;
+}
+.nav-text:hover {
+  background-color: honeydew !important;
+  color: rgb(185, 0, 0) !important;
+  transform: translate(1em, 0);
 }
 
 @media screen and (max-width: 768px) {

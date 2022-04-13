@@ -8,6 +8,7 @@ import Message from "../../Message/Message";
 import Loader from "../../Loader/Loader";
 import Field from "../../../components/Form/Field/Field";
 import Select from "../../../components/Form/Select/Select";
+import { Footer } from "../index";
 
 //prettier-ignore
 import {genderList, statesList} from "../../utils";
@@ -306,6 +307,7 @@ const Register = () => {
           </Button>
         </div>
       </form>
+      <Footer />
     </div>
   );
 };

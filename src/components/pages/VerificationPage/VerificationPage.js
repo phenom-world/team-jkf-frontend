@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { verifyUser } from "../../../Redux/actions/users";
 import { Container, Card } from "react-bootstrap";
 import LoadState from "../../Spinner/LoadState";
+import { Footer } from "../index";
 
 function VerificationPage() {
   const { token } = useParams();
@@ -18,9 +19,6 @@ function VerificationPage() {
     dispatch(verifyUser(token, navigate));
   }, [dispatch]);
 
-  // if (!verifyUserError && !verifyUser_loading) {
-  //   navigate("/login");
-  // }
   if (verifyUserError?.split(" ")[2] === "malformed") navigate("/404");
 
   return verifyUser_loading ? (
@@ -54,6 +52,7 @@ function VerificationPage() {
           </div>
         </Card>
       </Container>
+      <Footer />
     </div>
   );
 }

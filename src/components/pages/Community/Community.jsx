@@ -1,10 +1,11 @@
 import React from "react";
 import "./Community.css";
 import { Link } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
 import MembersCard from "../../MembersCard/MembersCard";
 import Team1 from "../../../Images/Team1_logo.png";
 import Team2 from "../../../Images/Team2_logo.png";
+import NavSearch from "../../NavSearch/NavSearch";
+import { Footer } from "../index";
 
 const Community = () => {
   return (
@@ -131,14 +132,7 @@ const Community = () => {
             </div>
           </div>
           <div className="subnav">
-            <div className="subnav__search">
-              <input
-                className="subnav__searchInput"
-                type="text"
-                placeholder="Search Members"
-              />
-              <SearchIcon className="subnav__searchIcon" />
-            </div>
+            <NavSearch />
             <div className="status ">
               <select name="status" id="">
                 <option value="Last Active">Last Active</option>
@@ -149,15 +143,25 @@ const Community = () => {
           </div>
           <p>Viewing 1 - 6 of 6 active members</p>
           <div className="members__card">
-            <MembersCard />
-            <MembersCard />
-            <MembersCard />
-            <MembersCard />
-            <MembersCard />
+            <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
+            <MembersCard name="Akinola Akinyemi Emmaneul" friend={false} />
+            <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
+            <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
+            <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
+
+            {/* {active_members.map(() => {
+              <MembersCard
+                name="Akinola Akinyemi Emmaneul"
+                friend={true}
+                Id={user_id}
+                imageUrl={imageUrl}
+              />;
+            })} */}
           </div>
           <p>Viewing 1 - 6 of 6 active members</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

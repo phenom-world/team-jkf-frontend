@@ -6,6 +6,7 @@ import { reset } from "../../../Redux/actions/users";
 import Message from "../../Message/Message";
 import { Container } from "react-bootstrap";
 import Loader from "../../Loader/Loader";
+import { Footer } from "../index";
 
 const initialState = {
   email: "",
@@ -67,6 +68,7 @@ const ForgotPassword = () => {
           </div>
         </form>
       </Container>
+      <Footer />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../Button/Button";
+import { Footer } from "../index";
 
 const initialState = {
   email: "",
@@ -67,6 +68,7 @@ const ChangePassword = () => {
           </div>
         </div>
       </form>
+      <Footer />
     </div>
   );
 };

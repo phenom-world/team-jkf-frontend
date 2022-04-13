@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { resendLink } from "../../../Redux/actions/users";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../Loader/Loader";
+import { Footer } from "../index";
 import Message from "../../Message/Message";
 
 const ResendLink = () => {
@@ -56,6 +57,7 @@ const ResendLink = () => {
           </div>
         </form>
       </Container>
+      <Footer />
     </div>
   );
 };

@@ -1,0 +1,6 @@
+.Upload {
+  position: absolute;
+  left: 21px;
+  top: 200px;
+  z-index: 10;
+}
