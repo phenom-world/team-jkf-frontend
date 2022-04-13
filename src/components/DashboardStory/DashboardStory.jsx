@@ -1,7 +1,7 @@
 import React from "react";
 import CardComp from "../Card/CardComp";
 
-function DashboardStory() {
+function DashboardStory({ onClick, showResults }) {
   return (
     <div className="mx-5 mt-3">
       <h3>Dashboard</h3>
@@ -13,7 +13,7 @@ function DashboardStory() {
         Kindly Click here to upload your profile picture and update your
         profile.
       </p>
-      <CardComp />
+      <CardComp showResults={showResults} onClick={onClick} />
     </div>
   );
 }

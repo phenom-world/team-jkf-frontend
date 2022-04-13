@@ -20,7 +20,8 @@ function Dashboard() {
 
   //prettier-ignore
   const { firstname, lastname, tjkfid, createdAt, username } = userDetails;
-
+  const [showResults, setShowResults] = React.useState(true);
+  const onClick = () => setShowResults((prev) => !prev);
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     navigate("/login");
@@ -71,7 +72,7 @@ function Dashboard() {
             </Container>
             <div className="dashboard-tab">
               <Nav>
-                <Nav.Item>
+                <Nav.Item onClick={onClick}>
                   <Nav.Link>
                     <Link
                       to="/dashboard"
@@ -153,7 +154,7 @@ function Dashboard() {
               </Nav>
             </div>
           </div>
-          <DashboardStory />
+          <DashboardStory showResults={showResults} onClick={onClick} />
           <Footer />
         </>
       )}
