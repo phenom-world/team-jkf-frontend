@@ -153,7 +153,7 @@ select:focus {
   input[type="password"],
   select {
     color: rgb(124, 124, 124);
-    width: 100%;
+    width: 90%;
     margin: 0.2rem 0;
     padding: 8px 12px !important;
     box-sizing: border-box;
@@ -167,11 +167,33 @@ select:focus {
     font-weight: 400;
     width: 100%;
   }
+  .form__section {
+    width: 100%;
+  }
   .form__div__1:last-child {
     margin: 0;
   }
   .form__div__2:last-child {
     margin: 2rem 0 0 0;
+  }
+
+  .form__div__1,
+  .form__div__2 {
+    margin: 0.6rem 0 !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .form__div__1 .form__label,
+  .form__div__2 .form__label,
+  .form__div__1 .form__paragraph,
+  .form__div__2 .form__paragraph {
+    align-self: flex-start;
+    justify-self: flex-start;
+    margin-left: 1.5rem !important;
   }
   .terms {
     display: flex;

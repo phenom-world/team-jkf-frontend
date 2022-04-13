@@ -7,7 +7,7 @@ var style = {
   position: "absolute",
   left: 0,
   right: 0,
-  bottom: -80,
+  bottom: -120,
   height: "60px",
   width: "100%",
   display: "flex",

@@ -21,6 +21,17 @@ const Login = () => {
   const navigate = useNavigate();
   let { isloading, error } = useSelector((state) => state.authReducer);
 
+  const onClickFacebook = () => {
+    console.log(123);
+  };
+
+  const onClickTwitter = () => {
+    console.log(123);
+  };
+  const onClickInstagram = () => {
+    console.log(123);
+  };
+
   const validate = () => {
     let isValid = true;
 
@@ -77,6 +88,7 @@ const Login = () => {
                 formType="form__div"
                 errors={errors}
               />
+
               <div className="login__form__div">
                 {isloading ? (
                   <Loader />
@@ -106,9 +118,37 @@ const Login = () => {
                 <p>- OR LOGIN WITH -</p>
               </div>
               <div className="social_handle">
-                <Button className={"handle facebook"}>Facebook</Button>
-                <Button className={"handle google"}>Google</Button>
-                <Button className={"handle instagram"}>Instagram</Button>
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                >
+                  <Button className={"handle facebook"}>Facebook</Button>
+                </div>
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                >
+                  <Button className={"handle google"} onClick={onClickTwitter}>
+                    Google
+                  </Button>
+                </div>
+                <div
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                >
+                  <Button
+                    className={"handle instagram"}
+                    onClick={onClickTwitter}
+                  >
+                    Instagram
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

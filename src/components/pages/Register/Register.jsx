@@ -157,7 +157,7 @@ const Register = () => {
       </div>
       {error && <Message variant="danger">{error}</Message>}
       <form className="register_form" onSubmit={handleSubmit}>
-        <div className="container">
+        <div className="container w-100">
           <div className="form__section">
             <div className="form">
               <Field

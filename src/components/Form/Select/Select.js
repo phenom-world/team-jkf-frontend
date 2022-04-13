@@ -14,13 +14,13 @@ const Select = ({
       <label className="form__label" htmlFor={label}>
         {labelValue}
       </label>
-      <select name={label} id={label} value={value} onChange={handleChange} >
+      <select name={label} id={label} value={value} onChange={handleChange}>
         {children}
       </select>
-      <p className="text-danger mx-2">
+      <p className="text-danger mx-2 form__paragraph">
         {errors?.errors?.[`${label}`] && (
           <>
-            <i className="fa-solid fa-circle-exclamation"></i>
+            <i className="fa-solid fa-circle-exclamation "></i>
             {errors?.errors?.[`${label}`]}
           </>
         )}

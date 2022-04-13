@@ -23,7 +23,7 @@ const Field = ({
         onChange={handleChange}
         required={required}
       />
-      <p className="text-danger mx-2">
+      <p className="text-danger mx-2 form__paragraph">
         {errors?.errors?.[`${label}`] && (
           <>
             <i className="fa-solid fa-circle-exclamation"></i>

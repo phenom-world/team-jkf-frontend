@@ -42,19 +42,18 @@
 .form__div {
   margin: 0.7rem 0;
   max-height: 6rem;
+  width: 60%;
 }
 .form__div:first-child {
   margin-top: 2rem;
-}
-.form__div {
-  margin: 0.7rem 0;
-  max-height: 6rem;
 }
 
 .form__div > p {
   margin: 0;
 }
-
+.login__form__div + p {
+  margin-top: 14px;
+}
 .social {
   display: flex;
   text-align: center;
@@ -104,7 +103,20 @@
 
   .form__div {
     margin: 0.6rem 0 !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+
+  .form__div .form__label,
+  .form__div .form__paragraph {
+    align-self: flex-start;
+    justify-self: flex-start;
+    margin-left: 1.5rem !important;
+  }
+
   .terms {
     display: flex;
     align-items: center;
