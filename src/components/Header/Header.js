@@ -86,9 +86,11 @@ function Header() {
                 >
                   OUR MISSION
                 </NavDropdown.Item>
-                <NavDropdown.Item className="nav-text">
-                  <Link to="/register">JOIN THE CRUSADE</Link>
-                </NavDropdown.Item>
+                <Link to="/register" className="text-decoration-none">
+                  <NavDropdown.Item className="nav-text">
+                    JOIN THE CRUSADE
+                  </NavDropdown.Item>
+                </Link>
                 <NavDropdown.Item
                   href="https://teamjkf.org/faq"
                   className="nav-text"

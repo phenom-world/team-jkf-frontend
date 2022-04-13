@@ -8,8 +8,13 @@ const NotFoundPage = () => {
   return (
     <div className="content">
       <p style={{ textAlign: "center" }}>
-        <div onClick={() => navigate("/dashboard")}>
-          <button className="btn btn-primary n-btn">Go to Home</button>
+        <div>
+          <button
+            className="btn btn-primary n-btn"
+            onClick={() => navigate("/dashboard")}
+          >
+            Go to Home
+          </button>
         </div>
       </p>
     </div>
