@@ -3,6 +3,8 @@ import "./NotFoundPage.css";
 import { Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+
+
 const NotFoundPage = () => {
   const navigate = useNavigate();
   return (
