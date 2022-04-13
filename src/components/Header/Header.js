@@ -68,22 +68,37 @@ function Header() {
                 title="TEAM JKF"
                 id="collasible-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/about"
+                  className="nav-text"
+                >
                   ABOUT US
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/our-vision"
+                  className="nav-text"
+                >
                   OUR VISION
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3 " className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/our-mission"
+                  className="nav-text"
+                >
                   OUR MISSION
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4" className="nav-text">
-                  JOIN THE CRUSADE
+                <NavDropdown.Item className="nav-text">
+                  <Link to="/register">JOIN THE CRUSADE</Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.5" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/faq"
+                  className="nav-text"
+                >
                   FAQ
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.6" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/news-update"
+                  className="nav-text"
+                >
                   NEWS UPDATE
                 </NavDropdown.Item>
               </NavDropdown>
@@ -94,22 +109,40 @@ function Header() {
                 onMouseLeave={hideDropdownI}
                 id="collasible-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/the-man-jkf"
+                  className="nav-text"
+                >
                   THE MAN JKF
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/beyond-politics"
+                  className="nav-text"
+                >
                   BEYOND POLITICS
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/jkfs-political-evolution"
+                  className="nav-text"
+                >
                   POLITICAL EVOLUTION
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/ekiti-success-story"
+                  className="nav-text"
+                >
                   EKITI SUCCESS STORY
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.5" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/words-on-marble"
+                  className="nav-text"
+                >
                   WORDS ON MARBLE
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.6" className="nav-text">
+                <NavDropdown.Item
+                  href="https://teamjkf.org/gallery"
+                  className="nav-text"
+                >
                   GALLERY
                 </NavDropdown.Item>
               </NavDropdown>

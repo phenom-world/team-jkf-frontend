@@ -110,8 +110,12 @@ function Dashboard() {
                     Downloads
                   </Nav.Link>
                 </Nav.Item>
+
                 <Nav.Item>
-                  <Nav.Link eventKey="link-3">
+                  <Nav.Link
+                    eventKey="link-3"
+                    href="https://teamjkf.org/contact/"
+                  >
                     {" "}
                     <span style={{ fontSize: "1em", color: "#fff" }}>
                       <span style={{ fontSize: "1em", color: "#fff" }}>
@@ -121,13 +125,20 @@ function Dashboard() {
                     Support
                   </Nav.Link>
                 </Nav.Item>
+
                 <Nav.Item>
                   <Nav.Link eventKey="link-4">
-                    {" "}
-                    <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <i class="fa-solid fa-people-group"></i>
-                    </span>{" "}
-                    Community
+                    <Link
+                      to="/community"
+                      className="navbar-link"
+                      style={{ marginLeft: "auto" }}
+                    >
+                      {" "}
+                      <span style={{ fontSize: "1em", color: "#fff" }}>
+                        <i class="fa-solid fa-people-group"></i>
+                      </span>{" "}
+                      Community
+                    </Link>{" "}
                   </Nav.Link>
                 </Nav.Item>
 
