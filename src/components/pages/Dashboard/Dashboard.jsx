@@ -43,15 +43,17 @@ function Dashboard() {
                   <Image
                     src="https://res.cloudinary.com/valodagreat/image/upload/v1641822940/WhatsApp_Image_2022-01-10_at_2.51.59_PM_kimsyr.jpg"
                     alt="user-dp"
-                    fluid
+                    width="150"
+                    height="150"
+                    className="rounded-circle"
                   />
                 </div>
                 <div>
-                  <div className="p-3 dash-desc">
+                  <div className="p-3 dash-desc d-flex flex-column justify-content-center align-items-center align-items-sm-start">
                     <h3>
                       {firstname} {lastname}
                     </h3>
-                    <div className="d-flex flex-column justify-content-between">
+                    <div className="d-flex flex-column justify-content-between align-items-sm-start align-items-center">
                       <span>
                         <b>
                           Hello {firstname} {lastname}
