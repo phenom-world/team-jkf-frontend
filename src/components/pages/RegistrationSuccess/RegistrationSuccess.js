@@ -15,7 +15,7 @@ const RegistrationSuccess = () => {
     <div>
       <LoadState />
     </div>
-  ) : true ? (
+  ) : message || resendLink_message ? (
     <div>
       <Container className="m-5 mx-auto d-flex flex-column ">
         <Card
