@@ -35,16 +35,18 @@ const ForgotPassword = () => {
       </div>
       {error && <Message variant="danger">{error}</Message>}
       <Container className="m-5 mx-auto d-flex flex-column">
-        <p className="text-center">
+        <p className="text-center small_size">
           Please enter your email address, you will receive an email message
           with instructions on how to reset your password
         </p>
         <form onSubmit={handleSubmit}>
           <div className="d-flex flex-column align-items-center ">
             <div className="form-group input">
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="email" className=" small_size">
+                Email Address
+              </label>
               <input
-                className="form-control "
+                className="form-control small_size"
                 id="email"
                 type="email"
                 onChange={handleChange}
@@ -54,14 +56,14 @@ const ForgotPassword = () => {
               {isloading ? (
                 <Loader />
               ) : (
-                <button className="btn btn-primary" type="submit">
+                <button className="btn btn-primary small_size" type="submit">
                   {" "}
                   Get new Password
                 </button>
               )}
             </div>
             <div className="login__form__div">
-              <Link to="/login" className="text-decoration-none">
+              <Link to="/login" className="text-decoration-none small_size">
                 &#8592; Back to Login
               </Link>{" "}
             </div>

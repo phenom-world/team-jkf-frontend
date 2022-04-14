@@ -25,11 +25,11 @@ const PasswordResetComplete = () => {
               <i className="fas fa-check-circle"></i>
             </span>
           </div>
-          <h5>Password Changed!</h5>
+          <h5 className=" small_size">Password Changed!</h5>
           <p className="mb-5">{message}</p>
           <span>
             You can{" "}
-            <Link to="/login" className="text-decoration-none">
+            <Link to="/login" className="text-decoration-none small_size">
               Sign In
             </Link>{" "}
             now
