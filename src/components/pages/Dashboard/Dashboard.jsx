@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import LoadState from "../../Spinner/LoadState";
 import { Footer } from "../index.js";
+import moment from "moment";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -26,6 +27,8 @@ function Dashboard() {
     dispatch({ type: "LOGOUT" });
     navigate("/login");
   };
+
+  console.log(moment(createdAt).format("DD/MM/YYYY[T]HH:mm:ss"));
 
   useEffect(() => {
     if (user) dispatch(getUser());
@@ -61,9 +64,21 @@ function Dashboard() {
                         </b>
                       </span>
                       <span className="pt-1">You are logged as {username}</span>
-                      <span>Unique ID: {tjkfid} </span>
+                      <span>
+                        Unique ID:{" "}
+                        <span
+                          style={{
+                            backgroundColor: "#3F9CC2",
+                            padding: "0 5px",
+                          }}
+                        >
+                          {" "}
+                          {tjkfid}{" "}
+                        </span>
+                      </span>
                       <span className="pt-2">
-                        Member since {new Date(createdAt).toLocaleString()}
+                        Member since{" "}
+                        {moment(createdAt).format("MMMM d, YYYY h:mma")}
                       </span>
                     </div>
                   </div>
