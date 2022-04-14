@@ -43,6 +43,7 @@ export const signup = (formData, navigate) => async (dispatch) => {
     dispatch({ type: END_REGISTER_LOADING });
     navigate("/register-success");
   } catch (error) {
+    console.log(error);
     dispatch({
       type: REGISTER_FAILURE,
       payload: `${error.response.data.message}`,
@@ -115,6 +116,7 @@ export const verifyUser = (token, navigate) => async (dispatch) => {
   try {
     dispatch({ type: START_VERIFY_USER_LOADING });
     const { data } = await api.verify(token);
+    console.log(data);
     dispatch({ type: VERIFY_USER, payload: data });
     dispatch({ type: END_VERIFY_USER_LOADING });
     navigate("/dashboard");

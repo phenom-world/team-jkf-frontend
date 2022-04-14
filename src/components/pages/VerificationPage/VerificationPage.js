@@ -30,7 +30,7 @@ function VerificationPage() {
       <Container className="m-5 mx-auto d-flex flex-column ">
         <Card
           style={{ maxWidth: "30rem" }}
-          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center"
+          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center complete_card"
         >
           <div>
             <div>
