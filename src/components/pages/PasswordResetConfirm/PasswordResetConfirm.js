@@ -67,7 +67,7 @@ const PasswordResetConfirm = () => {
       <Container className="m-5 mx-auto d-flex flex-column ">
         <Card
           style={{ maxWidth: "30rem" }}
-          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center"
+          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center complete_card"
         >
           <div>
             <div>
@@ -76,14 +76,17 @@ const PasswordResetConfirm = () => {
               </span>
             </div>
             <div>
-              <h4>Invalid/Expired Link </h4>
-              <p>
+              <h4 className=" small_size">Invalid/Expired Link </h4>
+              <p className=" small_size">
                 The password reset link was invalid, it has already been used or
                 expired. Please request a new one
               </p>
-              <p>
+              <p className=" small_size">
                 <span>
-                  <Link to="/password_reset" className="text-decoration-none">
+                  <Link
+                    to="/password_reset"
+                    className="text-decoration-none small_size"
+                  >
                     Click Here
                   </Link>
                 </span>

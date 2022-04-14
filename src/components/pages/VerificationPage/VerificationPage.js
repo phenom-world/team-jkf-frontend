@@ -27,7 +27,7 @@ function VerificationPage() {
     </div>
   ) : (
     <div>
-      <Container className="m-5 mx-auto d-flex flex-column ">
+      <Container className="m-5 mx-auto d-flex flex-column small_size">
         <Card
           style={{ maxWidth: "30rem" }}
           className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center complete_card"
@@ -39,11 +39,14 @@ function VerificationPage() {
               </span>
             </div>
             <div>
-              <h4>{verifyUserError}</h4>
+              <h4 className=" small_size">{verifyUserError}</h4>
               <p> Resend Verification Link</p>
               <p>
                 <span>
-                  <Link to="/resend_link" className="text-decoration-none">
+                  <Link
+                    to="/resend_link"
+                    className="text-decoration-none small_size"
+                  >
                     Click Here
                   </Link>
                 </span>

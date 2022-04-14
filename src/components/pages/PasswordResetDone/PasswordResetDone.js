@@ -8,7 +8,7 @@ const PasswordResetDone = () => {
       <Container className="m-5 mx-auto d-flex flex-column ">
         <Card
           style={{ maxWidth: "30rem" }}
-          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center"
+          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center complete_card"
         >
           <div>
             <div>
@@ -17,12 +17,14 @@ const PasswordResetDone = () => {
               </span>
             </div>
             <div>
-              <h4>We have emailed you instructions to reset your password</h4>
-              <p>
+              <h4 className=" small_size">
+                We have emailed you instructions to reset your password
+              </h4>
+              <p className=" small_size">
                 If an account exists with the email you entered. You will
                 receive the token.
               </p>
-              <p>
+              <p className=" small_size">
                 <i>
                   If you don't receive an email. Check your spam folder or make
                   sure you entered the correct email.

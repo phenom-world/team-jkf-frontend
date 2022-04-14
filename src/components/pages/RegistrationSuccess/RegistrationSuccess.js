@@ -15,12 +15,12 @@ const RegistrationSuccess = () => {
     <div>
       <LoadState />
     </div>
-  ) : message || resendLink_message ? (
+  ) : true ? (
     <div>
       <Container className="m-5 mx-auto d-flex flex-column ">
         <Card
           style={{ maxWidth: "30rem" }}
-          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center"
+          className="m-5 mx-auto d-flex flex-column p-4  align-items-center shadow border-0 text-center complete_card"
         >
           <div>
             <div>
@@ -30,17 +30,22 @@ const RegistrationSuccess = () => {
             </div>
             <div>
               <h4>{message ? message : resendLink_message}</h4>
-              <h6>Please confirm your Team-jkf account</h6>
-              <p className="mt-3 text-success">
+              <h6 className=" small_size">
+                Please confirm your Team-jkf account
+              </h6>
+              <p className="mt-3 text-success small_size">
                 <i>
                   To access your account, Check your inbox or Spam folder for a
                   secure link to proceed.
                 </i>
               </p>
-              <p>
+              <p className=" small_size">
                 Not received verification link?{" "}
                 <span>
-                  <Link to="/resend_link" className="text-decoration-none">
+                  <Link
+                    to="/resend_link"
+                    className="text-decoration-none small_size"
+                  >
                     Click Here
                   </Link>
                 </span>
