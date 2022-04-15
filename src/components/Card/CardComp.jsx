@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Downloads from "../Downloads/Downloads";
+import newsUpdate from "../../Images/updates.jpg";
 
 function CardComp({ onClick, showResults }) {
   return showResults ? (
@@ -16,7 +17,7 @@ function CardComp({ onClick, showResults }) {
               <Card style={{ maxWidth: "18rem" }}>
                 <Card.Img
                   variant="top"
-                  src="https://media.istockphoto.com/vectors/new-update-with-notification-bell-icon-flat-for-bussines-website-of-vector-id1222643784?k=20&m=1222643784&s=612x612&w=0&h=zKF1sGqCM5lmV4oWKU2la0MhkfyDYby0wvwTpUn6qTo="
+                  src={newsUpdate}
                   style={{ maxHeight: "160px" }}
                 />
                 <Card.Body>
