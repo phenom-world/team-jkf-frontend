@@ -18,7 +18,7 @@ function CardComp({ onClick, showResults }) {
                 <Card.Img
                   variant="top"
                   src={newsUpdate}
-                  style={{ maxHeight: "160px" }}
+                  style={{ maxHeight: "150px" }}
                 />
                 <Card.Body>
                   <Card.Title>News Update</Card.Title>
