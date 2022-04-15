@@ -9,6 +9,7 @@ import {
   resetPasswordReducer,
   forgotPasswordReducer,
   updateUserReducer,
+  userTeamsReducer,
 } from "./auth";
 
 export const reducers = combineReducers({
@@ -20,4 +21,5 @@ export const reducers = combineReducers({
   forgotPasswordReducer,
   resetPasswordReducer,
   updateUserReducer,
+  userTeamsReducer,
 });

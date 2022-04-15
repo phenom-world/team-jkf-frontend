@@ -23,6 +23,7 @@ function Dashboard() {
   const { firstname, lastname, tjkfid, createdAt, username } = userDetails;
   const [showResults, setShowResults] = React.useState(true);
   const onClick = () => setShowResults((prev) => !prev);
+
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     navigate("/login");
@@ -85,22 +86,8 @@ function Dashboard() {
                 </div>
               </div>
             </Container>
-            <div className="dashboard-tab">
-              <Nav>
-                <Nav.Item onClick={onClick}>
-                  <Nav.Link>
-                    <Link
-                      to="/dashboard"
-                      className="navbar-link"
-                      style={{ marginLeft: "auto" }}
-                    >
-                      <span style={{ fontSize: "1em", color: "#fff" }}>
-                        <i className="fa-solid fa-house-chimney"></i>
-                      </span>{" "}
-                      Dashboard
-                    </Link>
-                  </Nav.Link>
-                </Nav.Item>
+            <div className="dashboard-tab ">
+              <Nav className="mx-3">
                 <Nav.Item>
                   <Nav.Link eventKey="link-1">
                     <Link
@@ -117,11 +104,9 @@ function Dashboard() {
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey="link-2">
+                  <Nav.Link eventKey="link-2" onClick={onClick}>
                     <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <span style={{ fontSize: "1em", color: "#fff" }}>
-                        <i class="fa-solid fa-download"></i>
-                      </span>{" "}
+                      <i class="fa-solid fa-download"></i>
                     </span>{" "}
                     Downloads
                   </Nav.Link>
@@ -134,9 +119,7 @@ function Dashboard() {
                   >
                     {" "}
                     <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <span style={{ fontSize: "1em", color: "#fff" }}>
-                        <i class="fa-solid fa-circle-question"></i>
-                      </span>{" "}
+                      <i class="fa-solid fa-circle-question"></i>
                     </span>{" "}
                     Support
                   </Nav.Link>

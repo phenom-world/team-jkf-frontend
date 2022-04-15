@@ -23,6 +23,12 @@
   margin-right: 2rem;
 }
 
+.nav-item .active {
+  background-color: #095667 !important;
+}
+.nav-item .active span {
+  background-color: #095667 !important;
+}
 .dropdown-menu {
   background-color: rgb(185, 0, 0) !important;
   overflow: hidden !important;

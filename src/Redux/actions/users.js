@@ -31,6 +31,10 @@ import {
   START_RESET_PASSWORD_LOADING,
   END_RESET_PASSWORD_LOADING,
   RESET_PASSWORD_FAILURE,
+  START_USER_TEAMS_LOADING,
+  USER_TEAMS,
+  END_USER_TEAMS_LOADING,
+  USER_TEAMS_FAILURE,
 } from "../constants/actionTypes";
 
 import * as api from "../../network/index.js";
@@ -46,7 +50,7 @@ export const signup = (formData, navigate) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: REGISTER_FAILURE,
-      payload: `${error.response.data.message}`,
+      payload: `${error?.response?.data?.message}`,
     });
   }
 };
@@ -61,7 +65,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: AUTH_FAILURE,
-      payload: `${error.response.data.message}`,
+      payload: `${error?.response?.data?.message}`,
     });
   }
 };
@@ -77,7 +81,22 @@ export const getUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAILURE,
-      payload: `${error.response.data.message}`,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};
+
+export const getUserTeams = () => async (dispatch) => {
+  try {
+    dispatch({ type: START_USER_TEAMS_LOADING });
+    const { data } = await api.getUserTeams();
+    console.log(data);
+    dispatch({ type: USER_TEAMS, data });
+    dispatch({ type: END_USER_TEAMS_LOADING });
+  } catch (error) {
+    dispatch({
+      type: USER_TEAMS_FAILURE,
+      payload: `${error?.response?.data?.message}`,
     });
   }
 };
@@ -92,7 +111,7 @@ export const updateUser = (formData, navigate) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: UPDATE_USER_FAILURE,
-      payload: `${error.response.data.message}`,
+      payload: `${error?.response?.data?.message}`,
     });
   }
 };
@@ -138,7 +157,7 @@ export const reset = (formData, navigate) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FORGOT_PASSWORD_FAILURE,
-      payload: `${error.response.data.message}`,
+      payload: `${error?.response?.data?.message}`,
     });
   }
 };
@@ -155,7 +174,7 @@ export const resetPassword =
     } catch (error) {
       dispatch({
         type: RESET_PASSWORD_FAILURE,
-        payload: `${error.response.data.message}`,
+        payload: `${error?.response?.data?.message}`,
       });
     }
   };

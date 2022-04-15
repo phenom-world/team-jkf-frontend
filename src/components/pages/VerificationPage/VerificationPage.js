@@ -25,7 +25,7 @@ function VerificationPage() {
     <div>
       <LoadState />
     </div>
-  ) : (
+  ) : verifyUserError ? (
     <div>
       <Container className="m-5 mx-auto d-flex flex-column small_size">
         <Card
@@ -57,7 +57,7 @@ function VerificationPage() {
       </Container>
       <Footer />
     </div>
-  );
+  ) : null;
 }
 
 export default VerificationPage;

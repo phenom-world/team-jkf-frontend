@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Community.css";
 import { Link } from "react-router-dom";
 import MembersCard from "../../MembersCard/MembersCard";
@@ -6,8 +6,25 @@ import Team1 from "../../../Images/Team1_logo.png";
 import Team2 from "../../../Images/Team2_logo.png";
 import NavSearch from "../../NavSearch/NavSearch";
 import { Footer } from "../index";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import LoadState from "../../Spinner/LoadState";
+import { getUserTeams } from "../../../Redux/actions/users";
 
 const Community = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("result"));
+  const { isloading, userTeams } = useSelector(
+    (state) => state.userTeamsReducer
+  );
+
+  console.log(userTeams);
+
+  useEffect(() => {
+    if (user) dispatch(getUserTeams());
+  }, []);
+
   return (
     <div>
       <div className="title">

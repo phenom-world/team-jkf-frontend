@@ -32,6 +32,10 @@ import {
   END_RESET_PASSWORD_LOADING,
   RESET_PASSWORD_FAILURE,
   LOGOUT,
+  START_USER_TEAMS_LOADING,
+  USER_TEAMS,
+  END_USER_TEAMS_LOADING,
+  USER_TEAMS_FAILURE,
 } from "../constants/actionTypes";
 
 export const authReducer = (state = {}, action) => {
@@ -99,6 +103,21 @@ export const userDetailsReducer = (state = { userDetails: {} }, action) => {
     case END_USER_DETAILS_LOADING:
       return { ...state, isloading: false };
     case USER_DETAILS_FAILURE:
+      return { ...state, isloading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const userTeamsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_TEAMS:
+      return { ...state, message: action?.data };
+    case START_USER_TEAMS_LOADING:
+      return { ...state, isloading: true };
+    case END_USER_TEAMS_LOADING:
+      return { ...state, isloading: false };
+    case USER_TEAMS_FAILURE:
       return { ...state, isloading: false, error: action.payload };
     default:
       return state;

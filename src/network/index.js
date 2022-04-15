@@ -28,3 +28,4 @@ export const updatePassword = (formData) =>
   API.put("/users/updatepassword/", formData);
 export const resetPassword = (formData, token) =>
   API.put(`/users/resetpassword/${token}`, formData);
+export const getUserTeams = () => API.get("/teams/getuserteams");

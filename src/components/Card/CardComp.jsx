@@ -53,7 +53,7 @@ function CardComp({ onClick, showResults }) {
       </Container>
     </div>
   ) : (
-    <Downloads />
+    <Downloads onClick={onClick} />
   );
 }
 
