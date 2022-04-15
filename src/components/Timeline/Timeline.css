@@ -1,0 +1,13 @@
+/* Timeline.css */
+.timeline {
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-item {
+  list-style: none;
+}
+
+.timeline-item:last-child {
+  border-bottom: none;
+}

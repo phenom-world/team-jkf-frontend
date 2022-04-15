@@ -9,8 +9,11 @@ import {
   resetPasswordReducer,
   forgotPasswordReducer,
   updateUserReducer,
-  userTeamsReducer,
+  getUserReducer,
+  getUsersReducer,
 } from "./auth";
+import { userTeamsReducer, getTeamReducer } from "./teams";
+import { getPostsReducer, sendPostReducer } from "./posts";
 
 export const reducers = combineReducers({
   authReducer,
@@ -22,4 +25,9 @@ export const reducers = combineReducers({
   resetPasswordReducer,
   updateUserReducer,
   userTeamsReducer,
+  getUserReducer,
+  getUsersReducer,
+  getTeamReducer,
+  getPostsReducer,
+  sendPostReducer,
 });

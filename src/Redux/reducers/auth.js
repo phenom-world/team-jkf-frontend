@@ -32,10 +32,14 @@ import {
   END_RESET_PASSWORD_LOADING,
   RESET_PASSWORD_FAILURE,
   LOGOUT,
-  START_USER_TEAMS_LOADING,
-  USER_TEAMS,
-  END_USER_TEAMS_LOADING,
-  USER_TEAMS_FAILURE,
+  START_GET_USER_LOADING,
+  GET_USER,
+  END_GET_USER_LOADING,
+  GET_USER_FAILURE,
+  START_GET_USERS_LOADING,
+  GET_USERS,
+  END_GET_USERS_LOADING,
+  GET_USERS_FAILURE,
 } from "../constants/actionTypes";
 
 export const authReducer = (state = {}, action) => {
@@ -94,10 +98,10 @@ export const updateUserReducer = (state = {}, action) => {
       return state;
   }
 };
-export const userDetailsReducer = (state = { userDetails: {} }, action) => {
+export const userDetailsReducer = (state = { userDetail: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS:
-      return { ...state, userDetails: action?.data };
+      return { ...state, userDetail: action?.data };
     case START_USER_DETAILS_LOADING:
       return { ...state, isloading: true };
     case END_USER_DETAILS_LOADING:
@@ -109,20 +113,35 @@ export const userDetailsReducer = (state = { userDetails: {} }, action) => {
   }
 };
 
-export const userTeamsReducer = (state = {}, action) => {
+export const getUserReducer = (state = { userProfileDetails: {} }, action) => {
   switch (action.type) {
-    case USER_TEAMS:
-      return { ...state, message: action?.data };
-    case START_USER_TEAMS_LOADING:
+    case GET_USER:
+      return { ...state, userProfileDetails: action?.data };
+    case START_GET_USER_LOADING:
       return { ...state, isloading: true };
-    case END_USER_TEAMS_LOADING:
+    case END_GET_USER_LOADING:
       return { ...state, isloading: false };
-    case USER_TEAMS_FAILURE:
+    case GET_USER_FAILURE:
       return { ...state, isloading: false, error: action.payload };
     default:
       return state;
   }
 };
+export const getUsersReducer = (state = { users: [] }, action) => {
+  switch (action.type) {
+    case GET_USERS:
+      return { ...state, users: action?.data };
+    case START_GET_USERS_LOADING:
+      return { ...state, getUsersLoading: true };
+    case END_GET_USERS_LOADING:
+      return { ...state, getUsersLoading: false };
+    case GET_USERS_FAILURE:
+      return { ...state, getUsersLoading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
 export const resendLinkReducer = (state = {}, action) => {
   switch (action.type) {
     case RESEND_LINK:

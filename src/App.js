@@ -9,7 +9,6 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import PublicRoutes from "./PublicRoutes";
 import {
   Header,
-  Footer,
   BackToTop,
   Login,
   Register,
@@ -57,16 +56,17 @@ function App() {
             <Route path="/" element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route exact path="/update-profile" element={<UpdateProfile />} />
+            <Route exact path="/community" element={<Community />} />
           </Route>
           {/* Public Routes */}
           <Route path="/" element={<PublicRoutes />}>
             <Route path="/login" element={<Login />} />
           </Route>
           {/* Other Routes */}
-          <Route exact path="/community/profileid" element={<UserProfile />} />
-          <Route exact path="/community/profileidt" element={<TeamProfile />} />
+          <Route exact path="/community/users/:id" element={<UserProfile />} />
+          {/* prettier-ignore */}
+          <Route exact path="/community/teams/:teamname" element={<TeamProfile />} />
           <Route path="/register" element={<Register />} exact />
-          <Route exact path="/community" element={<Community />} />
           {/* prettier-ignore */}
           <Route exact path="/register-success" element={<RegistrationSuccess />} />
           <Route exact path={`/verify/:token`} element={<VerificationPage />} />

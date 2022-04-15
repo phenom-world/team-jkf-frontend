@@ -22,7 +22,7 @@ const ProfileCard = ({ name, imageUrl }) => {
                 className="img"
               />
               <div className="header-content ">
-                <h2 className="username text-white ">@adminikas</h2>
+                <h2 className="username text-white ">{name}</h2>
                 <div className="item-meta">
                   <span className="activity text-secondary ">
                     Active 4 days, 9 hours ago

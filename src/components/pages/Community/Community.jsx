@@ -9,7 +9,9 @@ import { Footer } from "../index";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import LoadState from "../../Spinner/LoadState";
-import { getUserTeams } from "../../../Redux/actions/users";
+import { getUserTeams } from "../../../Redux/actions/teams";
+import { getUsers } from "../../../Redux/actions/users";
+import Team from "../../Team/Team";
 
 const Community = () => {
   const dispatch = useDispatch();
@@ -18,14 +20,24 @@ const Community = () => {
   const { isloading, userTeams } = useSelector(
     (state) => state.userTeamsReducer
   );
+  const { getUsersLoading, users } = useSelector(
+    (state) => state.getUsersReducer
+  );
 
-  console.log(userTeams);
+  const { teamloading, TeamDetails } = useSelector(
+    (state) => state.getTeamReducer
+  );
 
   useEffect(() => {
-    if (user) dispatch(getUserTeams());
-  }, []);
+    if (user) {
+      dispatch(getUserTeams());
+      dispatch(getUsers());
+    }
+  }, [dispatch]);
 
-  return (
+  return getUsersLoading ? (
+    <LoadState />
+  ) : (
     <div>
       <div className="title">
         <p>Community</p>
@@ -111,6 +123,10 @@ const Community = () => {
               </span>
               | Popular | Alphabetical
             </div>
+            {userTeams?.map((team, i) => (
+              <Team teamname={team?.teamname} key={i} />
+            ))}
+
             <div className="group">
               <div className="group__logo">
                 <img src={Team1} alt="My logo" />
@@ -160,20 +176,20 @@ const Community = () => {
           </div>
           <p>Viewing 1 - 6 of 6 active members</p>
           <div className="members__card">
+            {users?.map((user) => (
+              <MembersCard
+                key={user._id}
+                name={user.username}
+                id={user._id}
+                Id={user.tjkfid}
+                friend={true}
+              />
+            ))}
             <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
             <MembersCard name="Akinola Akinyemi Emmaneul" friend={false} />
             <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
             <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
             <MembersCard name="Akinola Akinyemi Emmaneul" friend={true} />
-
-            {/* {active_members.map(() => {
-              <MembersCard
-                name="Akinola Akinyemi Emmaneul"
-                friend={true}
-                Id={user_id}
-                imageUrl={imageUrl}
-              />;
-            })} */}
           </div>
           <p>Viewing 1 - 6 of 6 active members</p>
         </div>

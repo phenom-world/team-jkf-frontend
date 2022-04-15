@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Message from "../../Message/Message";
 import Loader from "../../Loader/Loader";
-import { getUser } from "../../../Redux/actions/users";
+import { userDetails } from "../../../Redux/actions/users";
 import LoadState from "../../Spinner/LoadState";
 import Field from "../../../components/Form/Field/Field";
 import Select from "../../../components/Form/Select/Select";
@@ -15,7 +15,7 @@ import { Footer } from "../index";
 import {statesList, electoralParticipationList, maritalStatusList, genderList, educationStatusList,politicalInterestList, employmentStatusList} from "../../utils";
 
 const UpdateProfile = () => {
-  const { isloading, userDetails } = useSelector(
+  const { isloading, userDetail } = useSelector(
     (state) => state.userDetailsReducer
   );
   const { updateUserloading, updateUserError } = useSelector(
@@ -25,7 +25,7 @@ const UpdateProfile = () => {
   const { firstname, lastname, username, lga, phone, gender, state, statecode, maritalStatus, educationStatus, employmentStatus, politicalInterest, electoralParticipation } = userDetails;
   //prettier-ignore
 
-  const [formData, setFormData] = useState(userDetails);
+  const [formData, setFormData] = useState(userDetail);
   const [inputState, setInputState] = useState([state, statecode]);
   const [updateGender, setUpdateGender] = useState(gender);
   const [MaritalStatus, setMaritalStatus] = useState(maritalStatus);
@@ -48,8 +48,8 @@ const UpdateProfile = () => {
 
   // prettier-ignore
   useEffect(() => {
-    if (user) dispatch(getUser());
-    setFormData(userDetails)
+    if (user) dispatch(userDetails());
+    setFormData(userDetail)
     setUpdateGender(gender);
     setMaritalStatus(maritalStatus);
     setEducationStatus(educationStatus);

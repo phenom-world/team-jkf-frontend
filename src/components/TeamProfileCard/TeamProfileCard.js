@@ -4,27 +4,13 @@ import { Link } from "react-router-dom";
 import Team1 from "../../Images/Team1_logo.png";
 import GroupCard from "../GroupCard/GroupCard";
 import { useSelector } from "react-redux";
-// import { useNavigate } from "react-router";
 import LoadState from "../Spinner/LoadState";
 import PostCard from "../GroupCard/PostCard";
 import NavSearch from "../NavSearch/NavSearch";
 import "./TeamProfileCard.css";
-// import { getUserTeams } from "../../../Redux/actions/users";
 
-const TeamProfileCard = ({ name }) => {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-  // const user = JSON.parse(localStorage.getItem("result"));
-  const { isloading, userTeams } = useSelector(
-    (state) => state.userTeamsReducer
-  );
-
-  // console.log(userTeams);
-
-  // useEffect(() => {
-  //   if (user) dispatch(getUserTeams());
-  // }, []);
-
+const TeamProfileCard = ({ name, username, id, teamId, posts }) => {
+  const isloading = false;
   return (
     <div>
       {isloading ? (
@@ -121,7 +107,12 @@ const TeamProfileCard = ({ name }) => {
               </div>
             </div>
             <div className=" bg-light w-100 p-4 d-flex flex-column justify-content-start align-items-start gap-2 border border-grey">
-              <PostCard />
+              <PostCard
+                username={username}
+                id={id}
+                teamId={teamId}
+                posts={posts}
+              />
               <GroupCard />
               <GroupCard />
             </div>

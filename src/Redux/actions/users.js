@@ -31,10 +31,14 @@ import {
   START_RESET_PASSWORD_LOADING,
   END_RESET_PASSWORD_LOADING,
   RESET_PASSWORD_FAILURE,
-  START_USER_TEAMS_LOADING,
-  USER_TEAMS,
-  END_USER_TEAMS_LOADING,
-  USER_TEAMS_FAILURE,
+  START_GET_USER_LOADING,
+  GET_USER,
+  END_GET_USER_LOADING,
+  GET_USER_FAILURE,
+  START_GET_USERS_LOADING,
+  GET_USERS,
+  END_GET_USERS_LOADING,
+  GET_USERS_FAILURE,
 } from "../constants/actionTypes";
 
 import * as api from "../../network/index.js";
@@ -70,12 +74,13 @@ export const signin = (formData, navigate) => async (dispatch) => {
   }
 };
 
-export const getUser = () => async (dispatch) => {
+export const userDetails = () => async (dispatch) => {
   try {
     dispatch({ type: START_USER_DETAILS_LOADING });
     const {
       data: { data },
     } = await api.getMe();
+
     dispatch({ type: USER_DETAILS, data });
     dispatch({ type: END_USER_DETAILS_LOADING });
   } catch (error) {
@@ -86,16 +91,33 @@ export const getUser = () => async (dispatch) => {
   }
 };
 
-export const getUserTeams = () => async (dispatch) => {
+export const getUser = (id) => async (dispatch) => {
   try {
-    dispatch({ type: START_USER_TEAMS_LOADING });
-    const { data } = await api.getUserTeams();
+    dispatch({ type: START_GET_USER_LOADING });
+    const {
+      data: { data },
+    } = await api.getUser(id);
     console.log(data);
-    dispatch({ type: USER_TEAMS, data });
-    dispatch({ type: END_USER_TEAMS_LOADING });
+    dispatch({ type: GET_USER, data });
+    dispatch({ type: END_GET_USER_LOADING });
   } catch (error) {
     dispatch({
-      type: USER_TEAMS_FAILURE,
+      type: GET_USER_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};
+export const getUsers = () => async (dispatch) => {
+  try {
+    dispatch({ type: START_GET_USERS_LOADING });
+    const {
+      data: { data },
+    } = await api.getUsers();
+    dispatch({ type: GET_USERS, data });
+    dispatch({ type: END_GET_USERS_LOADING });
+  } catch (error) {
+    dispatch({
+      type: GET_USERS_FAILURE,
       payload: `${error?.response?.data?.message}`,
     });
   }

@@ -4,7 +4,7 @@ import { Container, Image, Nav } from "react-bootstrap";
 import DashboardStory from "../../DashboardStory/DashboardStory";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
-import { getUser } from "../../../Redux/actions/users";
+import { userDetails } from "../../../Redux/actions/users";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import LoadState from "../../Spinner/LoadState";
@@ -15,12 +15,12 @@ function Dashboard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("result"));
-  const { isloading, userDetails } = useSelector(
+  const { isloading, userDetail } = useSelector(
     (state) => state.userDetailsReducer
   );
 
   //prettier-ignore
-  const { firstname, lastname, tjkfid, createdAt, username } = userDetails;
+  const { firstname, lastname, tjkfid, createdAt, username } = userDetail;
   const [showResults, setShowResults] = React.useState(true);
   const onClick = () => setShowResults((prev) => !prev);
 
@@ -32,7 +32,7 @@ function Dashboard() {
   console.log(moment(createdAt).format("DD/MM/YYYY[T]HH:mm:ss"));
 
   useEffect(() => {
-    if (user) dispatch(getUser());
+    if (user) dispatch(userDetails());
   }, []);
 
   return (
