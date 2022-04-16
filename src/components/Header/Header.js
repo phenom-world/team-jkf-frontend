@@ -59,7 +59,7 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mx-auto">
-              <Nav.Link href="#action1">HOME</Nav.Link>
+              <Nav.Link href="https://teamjkf.org">HOME</Nav.Link>
               <NavDropdown
                 show={show}
                 onMouseEnter={showDropdown}
