@@ -8,7 +8,6 @@ import {
 import ProtectedRoutes from "./ProtectedRoutes";
 import PublicRoutes from "./PublicRoutes";
 import {
-  Header,
   BackToTop,
   Login,
   Register,
@@ -28,8 +27,8 @@ import {
   ResendLink,
   VerificationPage,
   TeamMembers,
-} from "./components/pages";
-
+} from "./pages";
+import Header from "./components/Header/Header";
 import "./App.css";
 
 function Navbar() {

@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import TeamNav from "../TeamNav/TeamNav";
 import "./TeamProfileCard.css";
 import { Link } from "react-router-dom";
-import { Footer } from "../pages";
+import { Footer } from "../../pages/index";
 
 const TeamProfileCard = ({ teamname, name, children }) => {
   return (
