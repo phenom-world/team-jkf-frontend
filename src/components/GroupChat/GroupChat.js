@@ -9,7 +9,7 @@ function Chat(props) {
       <div className="tweet-header">
         <span className="tweet-user">@{user}</span>
       </div>
-      <div className="tweet-content">{children}</div>
+      <div className="tweet-content text-wrap">{children}</div>
     </div>
   );
 }
