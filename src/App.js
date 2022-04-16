@@ -27,7 +27,9 @@ import {
   PasswordResetComplete,
   ResendLink,
   VerificationPage,
+  TeamMembers,
 } from "./components/pages";
+
 import "./App.css";
 
 function Navbar() {
@@ -64,8 +66,14 @@ function App() {
           </Route>
           {/* Other Routes */}
           <Route exact path="/community/users/:id" element={<UserProfile />} />
+
           {/* prettier-ignore */}
           <Route exact path="/community/teams/:teamname" element={<TeamProfile />} />
+          <Route
+            exact
+            path="/community/teams/:teamname/members"
+            element={<TeamMembers />}
+          />
           <Route path="/register" element={<Register />} exact />
           {/* prettier-ignore */}
           <Route exact path="/register-success" element={<RegistrationSuccess />} />

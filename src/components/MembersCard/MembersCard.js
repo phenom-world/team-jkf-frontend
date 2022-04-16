@@ -1,18 +1,8 @@
 import React from "react";
 import "./MembersCard.css";
-import { Link } from "react-router-dom";
 import profile from "../../Images/profile.jpg";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
 
-const MembersCard = ({ name, friend, id, Id }) => {
-  const navigate = useNavigate();
-
-  // const getUser = (id) => {
-  //   navigate(`/community/users/${id}`);
-  //   return null;
-  // };
-
+const MembersCard = ({ name, friend, Id }) => {
   return (
     <div className="member__container">
       <div className="member__details">

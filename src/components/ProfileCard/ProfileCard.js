@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Image, Nav } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./ProfileCard.css";
 
@@ -12,7 +12,6 @@ const ProfileCard = ({ name, imageUrl }) => {
           <div className="header" id="item-header-cover-image">
             <div className="db-img-cont header-avatar ">
               {/* prettier-ignore */}
-
               <Image
                 src={imageUrl}
                 alt="Profile Picture"

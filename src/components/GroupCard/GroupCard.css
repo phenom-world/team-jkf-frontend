@@ -83,10 +83,10 @@
   }
 }
 
-.separator {
-  background-color: rgb(204, 204, 204);
-  border-top: 0;
-  border-bottom: 0;
-  height: 1px;
-  margin-bottom: 1rem;
+[class~="separator"]:not(:last-of-type) {
+  background-color: rgb(204, 204, 204) !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  height: 1px !important;
+  margin-bottom: 1rem !important;
 }
