@@ -145,7 +145,7 @@ function Header() {
                   GALLERY
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#action2">CONTACT</Nav.Link>
+              <Nav.Link href="https://teamjkf.org/contact">CONTACT</Nav.Link>
 
               {!user ? (
                 <>
