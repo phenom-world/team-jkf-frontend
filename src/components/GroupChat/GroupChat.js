@@ -7,7 +7,7 @@ function Chat(props) {
   return (
     <div className="tweet">
       <div className="tweet-header">
-        <span className="tweet-user">@{user}</span>·
+        <span className="tweet-user">@{user}</span>
       </div>
       <div className="tweet-content">{children}</div>
     </div>

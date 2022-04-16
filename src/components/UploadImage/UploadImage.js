@@ -39,7 +39,7 @@ const UploadAndDisplayImage = ({ imageUrl }) => {
         name="myImage"
         style={{ display: "none" }}
         onChange={(event) => {
-          console.log(event.target.files[0]);
+          // console.log(event.target.files[0]);
           setSelectedImage(event.target.files[0]);
         }}
       />

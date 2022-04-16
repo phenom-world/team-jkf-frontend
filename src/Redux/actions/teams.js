@@ -21,7 +21,7 @@ export const getUserTeams = () => async (dispatch) => {
     const {
       data: { data },
     } = await api.getUserTeams();
-    console.log(data);
+
     dispatch({ type: USER_TEAMS, data });
     dispatch({ type: END_USER_TEAMS_LOADING });
   } catch (error) {
@@ -38,7 +38,7 @@ export const getTeam = (teamname) => async (dispatch) => {
     const {
       data: { data },
     } = await api.getTeam(teamname);
-    console.log(data);
+
     dispatch({ type: GET_TEAM, data });
     dispatch({ type: END_GET_TEAM_LOADING });
   } catch (error) {
@@ -53,7 +53,6 @@ export const getTeams = () => async (dispatch) => {
   try {
     dispatch({ type: START_GET_TEAMS_LOADING });
     const { data } = await api.getTeams();
-    console.log(data);
     dispatch({ type: GET_TEAMS, data });
     dispatch({ type: END_GET_TEAMS_LOADING });
   } catch (error) {

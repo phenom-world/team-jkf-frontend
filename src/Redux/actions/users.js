@@ -51,7 +51,6 @@ export const signup = (formData, navigate) => async (dispatch) => {
     dispatch({ type: END_REGISTER_LOADING });
     navigate("/register-success");
   } catch (error) {
-    console.log(error);
     dispatch({
       type: REGISTER_FAILURE,
       payload: `${error?.response?.data?.message}`,
@@ -97,7 +96,7 @@ export const getUser = (id) => async (dispatch) => {
     const {
       data: { data },
     } = await api.getUser(id);
-    console.log(data);
+
     dispatch({ type: GET_USER, data });
     dispatch({ type: END_GET_USER_LOADING });
   } catch (error) {
@@ -157,7 +156,6 @@ export const verifyUser = (token, navigate) => async (dispatch) => {
   try {
     dispatch({ type: START_VERIFY_USER_LOADING });
     const { data } = await api.verify(token);
-    console.log(data);
     dispatch({ type: VERIFY_USER, payload: data });
     dispatch({ type: END_VERIFY_USER_LOADING });
     navigate("/dashboard");
@@ -190,7 +188,7 @@ export const resetPassword =
       dispatch({ type: START_RESET_PASSWORD_LOADING });
       const { data } = await api.resetPassword(formData, token);
       dispatch({ type: RESET_PASSWORD, payload: data.message });
-      console.log(data);
+
       dispatch({ type: END_RESET_PASSWORD_LOADING });
       navigate("/reset/done");
     } catch (error) {

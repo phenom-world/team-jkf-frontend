@@ -80,7 +80,6 @@ const UpdateProfile = () => {
     const value = e.target.value;
     if (value !== "") {
       setUpdateGender(value);
-      console.log(value);
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };

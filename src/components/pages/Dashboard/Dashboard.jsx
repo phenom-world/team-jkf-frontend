@@ -5,7 +5,6 @@ import DashboardStory from "../../DashboardStory/DashboardStory";
 import "./Dashboard.css";
 import { useSelector } from "react-redux";
 import { userDetails } from "../../../Redux/actions/users";
-import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import LoadState from "../../Spinner/LoadState";
 import { Footer } from "../index.js";
@@ -13,7 +12,6 @@ import moment from "moment";
 
 function Dashboard() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("result"));
   const { isloading, userDetail } = useSelector(
     (state) => state.userDetailsReducer
@@ -26,7 +24,7 @@ function Dashboard() {
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    navigate("/login");
+    window.location.assign("https://teamjkf.org");
   };
 
   console.log(moment(createdAt).format("DD/MM/YYYY[T]HH:mm:ss"));

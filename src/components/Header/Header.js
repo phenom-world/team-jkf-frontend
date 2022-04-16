@@ -26,7 +26,7 @@ function Header() {
   };
   const logout = () => {
     dispatch({ type: "LOGOUT" });
-    navigate("/login");
+    window.location.assign("https://teamjkf.org");
   };
 
   useEffect(() => {

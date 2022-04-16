@@ -8,7 +8,6 @@ const initialState = {
 const ChangePassword = () => {
   const [formData, setFormData] = useState(initialState);
   const handleSubmit = (e) => {
-    console.log(formData);
     e.preventDefault();
     // dispatch(signup(formData, navigate));
   };

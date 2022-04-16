@@ -42,6 +42,7 @@ export const getTeamReducer = (state = { TeamDetails: {} }, action) => {
       return state;
   }
 };
+
 export const getTeams = (state = {}, action) => {
   switch (action.type) {
     case GET_TEAMS:

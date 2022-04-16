@@ -42,7 +42,7 @@ function ComposeForm({ username, teamId }) {
         />
       </div>
 
-      <button className="btn compose-form-submit small_size">Post</button>
+      <button className="compose-form-submit small_size">Post</button>
     </form>
   );
 }
