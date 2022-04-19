@@ -14,14 +14,7 @@ const Teams = () => {
         <h2>Teams </h2>
         <div className="members__card">
           {teams?.map((user) => (
-            <TeamCard
-              key={user._id}
-              name={user.username ? user.username : user.teamname}
-              currentUserId={id}
-              memberId={user.id}
-              Id={user.tjkfid}
-              isTeam={isTeam}
-            />
+            <TeamCard key={user.teamId} name={user.teamname} currentUserId={id} teamId={user.teamId} Id={user.tjkfid} isTeam={isTeam} />
           ))}
         </div>
       </div>

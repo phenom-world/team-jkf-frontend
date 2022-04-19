@@ -31,7 +31,7 @@ export const userTeamsReducer = (state = { userTeams: [] }, action) => {
 export const getTeamReducer = (state = { TeamDetails: {} }, action) => {
   switch (action.type) {
     case GET_TEAM:
-      return { ...state, TeamDetails: action?.data };
+      return { ...state, TeamDetails: action?.payload };
     case START_GET_TEAM_LOADING:
       return { ...state, teamloading: true };
     case END_GET_TEAM_LOADING:

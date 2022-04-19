@@ -4,20 +4,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/friends";
 
-const TeamCard = ({ name, isFriend, memberId, isrequest, currentUserId, Id, requestsent, isTeam }) => {
+const TeamCard = ({ name, isFriend, teamId, isrequest, currentUserId, Id, requestsent, isTeam }) => {
   const dispatch = useDispatch();
   const { message } = useSelector((state) => state.friendsReducer);
   const sendRequest = () => {
-    dispatch(addFriend({ fromId: currentUserId, toId: memberId }));
+    dispatch(addFriend({ fromId: currentUserId, toId: teamId }));
     setButtonValue("Request Sent");
   };
 
   const acceptRequest = () => {
-    dispatch(acceptInvite({ fromId: currentUserId, toId: memberId }));
+    dispatch(acceptInvite({ fromId: currentUserId, toId: teamId }));
     setButtonValue("Request Sent");
   };
   const declineRequest = () => {
-    dispatch(deleteInvite({ fromId: currentUserId, toId: memberId }));
+    dispatch(deleteInvite({ fromId: currentUserId, toId: teamId }));
     setButtonValue("Request Sent");
   };
 
@@ -27,7 +27,7 @@ const TeamCard = ({ name, isFriend, memberId, isrequest, currentUserId, Id, requ
     <div className="member__container">
       <div className="member__details">
         <div className="profile__image">
-          <Link to={`/community/users/${memberId}`}>
+          <Link to={`/community/teams/${name}`}>
             <img src={profile} alt="image1" style={{ cursor: "pointer" }} />
           </Link>
           <h6 style={{ textTransform: "uppercase" }} className="mb-0">
