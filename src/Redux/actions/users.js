@@ -39,6 +39,10 @@ import {
   GET_USERS,
   END_GET_USERS_LOADING,
   GET_USERS_FAILURE,
+  GET_FRIENDS,
+  START_GET_FRIENDS_LOADING,
+  END_GET_FRIENDS_LOADING,
+  GET_FRIENDS_FAILURE,
 } from "../constants/actionTypes";
 
 import * as api from "../../network/index.js";
@@ -96,8 +100,7 @@ export const getUser = (id) => async (dispatch) => {
     const {
       data: { data },
     } = await api.getUser(id);
-
-    dispatch({ type: GET_USER, data });
+    dispatch({ type: GET_USER, payload: data });
     dispatch({ type: END_GET_USER_LOADING });
   } catch (error) {
     dispatch({
@@ -106,6 +109,24 @@ export const getUser = (id) => async (dispatch) => {
     });
   }
 };
+
+export const getFriends = () => async (dispatch) => {
+  try {
+    dispatch({ type: START_GET_FRIENDS_LOADING });
+    const {
+      data: { data },
+    } = await api.getFriends();
+
+    dispatch({ type: GET_FRIENDS, payload: data });
+    dispatch({ type: END_GET_FRIENDS_LOADING });
+  } catch (error) {
+    dispatch({
+      type: GET_FRIENDS_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};
+
 export const getUsers = () => async (dispatch) => {
   try {
     dispatch({ type: START_GET_USERS_LOADING });
@@ -182,19 +203,18 @@ export const reset = (formData, navigate) => async (dispatch) => {
   }
 };
 
-export const resetPassword =
-  (formData, token, navigate) => async (dispatch) => {
-    try {
-      dispatch({ type: START_RESET_PASSWORD_LOADING });
-      const { data } = await api.resetPassword(formData, token);
-      dispatch({ type: RESET_PASSWORD, payload: data.message });
+export const resetPassword = (formData, token, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: START_RESET_PASSWORD_LOADING });
+    const { data } = await api.resetPassword(formData, token);
+    dispatch({ type: RESET_PASSWORD, payload: data.message });
 
-      dispatch({ type: END_RESET_PASSWORD_LOADING });
-      navigate("/reset/done");
-    } catch (error) {
-      dispatch({
-        type: RESET_PASSWORD_FAILURE,
-        payload: `${error?.response?.data?.message}`,
-      });
-    }
-  };
+    dispatch({ type: END_RESET_PASSWORD_LOADING });
+    navigate("/reset/done");
+  } catch (error) {
+    dispatch({
+      type: RESET_PASSWORD_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};

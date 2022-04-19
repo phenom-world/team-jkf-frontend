@@ -11,9 +11,7 @@ import LoadState from "../../components/Spinner/LoadState";
 const UserProfile = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { isloading, userProfileDetails } = useSelector(
-    (state) => state.getUserReducer
-  );
+  const { userProfileloading, userProfileDetails } = useSelector((state) => state.getUserReducer);
 
   useEffect(() => {
     dispatch(getUser(id));
@@ -21,7 +19,7 @@ const UserProfile = () => {
 
   const { firstname, lastname, username } = userProfileDetails;
 
-  return isloading ? (
+  return userProfileloading ? (
     <LoadState />
   ) : (
     <div>
@@ -33,15 +31,12 @@ const UserProfile = () => {
             </Link>
             <span className="text-danger">
               {" "}
-              {firstname?.firstname}
-              {lastname?.lastname}
+              {firstname}
+              {lastname}
             </span>
           </p>
         </div>
-        <ProfileCard
-          name={username?.username}
-          imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm"
-        />
+        <ProfileCard name={username} imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
       </div>
       <Footer />
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Register.css";
 import Button from "../../components/Button/Button";
 import { signup } from "../../Redux/actions/users";
@@ -7,7 +7,11 @@ import { useNavigate, Link } from "react-router-dom";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
+import { auth, provider } from "../../firebase";
+import { signInWithPopup } from "firebase/auth";
+
 import Select from "../../components/Form/Select/Select";
+
 import { Footer } from "../index";
 
 //prettier-ignore
@@ -26,6 +30,20 @@ const initialState = {
   password: "",
 };
 
+const onGoogleLogin = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+      // dispatch({
+      //   type: actionTypes.SET_USER,
+      //   user: result.user,
+      // });
+    })
+    .catch((err) => alert(err.message));
+};
+
 const Register = () => {
   const [formData, setFormData] = useState(initialState);
   const [inputState, setInputState] = useState("");
@@ -35,6 +53,7 @@ const Register = () => {
   const navigate = useNavigate();
   const { isloading, error } = useSelector((state) => state.registerReducer);
   // prettier-ignore
+
   const states = statesList.map((state, i) => ({
     name: state,
     statecode: i < 9 ? "00" + Number(i) : "0" + Number(i),
@@ -119,16 +138,7 @@ const Register = () => {
       inValid = false;
       errors["confirmPassword"] = "Please enter your confirm password.";
     }
-    if (
-      typeof formData["password"] !== "undefined" &&
-      typeof formData["confirmPassword"] !== "undefined"
-    ) {
-      // var pattern2 = new RegExp("^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$");
-      // if (!pattern2.test(formData["password"])) {
-      //   setIsValid(false);
-      //   errors["password"] =
-      //     "*Password must contain a minimum eight characters, at least one letter and one number:";
-      // }
+    if (typeof formData["password"] !== "undefined" && typeof formData["confirmPassword"] !== "undefined") {
       if (formData["password"] !== formData["confirmPassword"]) {
         inValid = false;
         errors["password"] = "Passwords don't match.";
@@ -168,14 +178,7 @@ const Register = () => {
                 formType="form__div__1"
                 errors={errors}
               />
-              <Field
-                label="email"
-                type="email"
-                labelValue="Email"
-                handleChange={handleChange}
-                formType="form__div__1"
-                errors={errors}
-              />
+              <Field label="email" type="email" labelValue="Email" handleChange={handleChange} formType="form__div__1" errors={errors} />
               <Field
                 label="phone"
                 type="tel"
@@ -296,15 +299,25 @@ const Register = () => {
           <p>- OR REGISTER WITH -</p>
         </div>
         <div className="social_handle">
-          <Button type="button" className={"handle facebook"}>
-            Facebook
-          </Button>
-          <Button type="button" className={"handle google"}>
-            Google
-          </Button>
-          <Button type="button" className={"handle instagram"}>
-            Instagram
-          </Button>
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <Button className={"handle facebook"}>Facebook</Button>
+          </div>
+          <div onClick={onGoogleLogin}>
+            <Button className={"handle google"}>Google</Button>
+          </div>
+          <div
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+            }}
+          >
+            <Button className={"handle instagram"}>Instagram</Button>
+          </div>
         </div>
       </form>
       <Footer />

@@ -10,7 +10,7 @@ const Downloads = ({ onClick }) => {
         {""} <span className="text-secondary">No Downloads Available</span>{" "}
         <button className="mx-2 border-0 " onClick={onClick}>
           <span style={{ fontSize: "1em" }}>
-            <i class="fa-solid fa-circle-xmark "></i>
+            <i className="fa-solid fa-circle-xmark "></i>
           </span>{" "}
         </button>
       </h6>

@@ -7,6 +7,8 @@ import { useNavigate, Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
 import Message from "../../components/Message/Message";
+import { auth, provider } from "../../firebase";
+import { signInWithPopup } from "firebase/auth";
 import { Footer } from "../index";
 
 const initialState = {
@@ -21,8 +23,18 @@ const Login = () => {
   const navigate = useNavigate();
   let { isloading, error } = useSelector((state) => state.authReducer);
 
-  const onClickTwitter = () => {
-    console.log(123);
+  const onGoogleLogin = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        // dispatch({
+        //   type: actionTypes.SET_USER,
+        //   user: result.user,
+        // });
+      })
+      .catch((err) => alert(err.message));
   };
 
   const validate = () => {
@@ -65,14 +77,7 @@ const Login = () => {
         <div className="login__container">
           <div className="login__form__section">
             <div className="login__form">
-              <Field
-                label="username"
-                type="text"
-                labelValue="Username"
-                handleChange={handleChange}
-                formType="form__div"
-                errors={errors}
-              />
+              <Field label="username" type="text" labelValue="Username" handleChange={handleChange} formType="form__div" errors={errors} />
               <Field
                 label="password"
                 type="password"
@@ -119,15 +124,8 @@ const Login = () => {
                 >
                   <Button className={"handle facebook"}>Facebook</Button>
                 </div>
-                <div
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }}
-                >
-                  <Button className={"handle google"} onClick={onClickTwitter}>
-                    Google
-                  </Button>
+                <div onClick={onGoogleLogin}>
+                  <Button className={"handle google"}>Google</Button>
                 </div>
                 <div
                   onClick={(e) => {
@@ -135,12 +133,7 @@ const Login = () => {
                     e.stopPropagation();
                   }}
                 >
-                  <Button
-                    className={"handle instagram"}
-                    onClick={onClickTwitter}
-                  >
-                    Instagram
-                  </Button>
+                  <Button className={"handle instagram"}>Instagram</Button>
                 </div>
               </div>
             </div>

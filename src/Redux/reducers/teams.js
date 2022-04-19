@@ -43,16 +43,16 @@ export const getTeamReducer = (state = { TeamDetails: {} }, action) => {
   }
 };
 
-export const getTeams = (state = {}, action) => {
+export const getTeamsReducer = (state = { teams: [] }, action) => {
   switch (action.type) {
     case GET_TEAMS:
-      return { ...state, message: action?.data };
+      return { ...state, teams: action?.payload };
     case START_GET_TEAMS_LOADING:
-      return { ...state, isloading: true };
+      return { ...state, getteamsloading: true };
     case END_GET_TEAMS_LOADING:
-      return { ...state, isloading: false };
+      return { ...state, getteamsloading: false };
     case GET_TEAMS_FAILURE:
-      return { ...state, isloading: false, error: action.payload };
+      return { ...state, getteamsloading: false, error: action.payload };
     default:
       return state;
   }

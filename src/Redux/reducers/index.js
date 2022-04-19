@@ -11,9 +11,11 @@ import {
   updateUserReducer,
   getUserReducer,
   getUsersReducer,
+  getFriendsReducer,
 } from "./auth";
-import { userTeamsReducer, getTeamReducer } from "./teams";
+import { userTeamsReducer, getTeamReducer, getTeamsReducer } from "./teams";
 import { getPostsReducer, sendPostReducer } from "./posts";
+import { friendsReducer } from "./friends";
 
 export const reducers = combineReducers({
   authReducer,
@@ -26,8 +28,11 @@ export const reducers = combineReducers({
   updateUserReducer,
   userTeamsReducer,
   getUserReducer,
+  getFriendsReducer,
   getUsersReducer,
   getTeamReducer,
+  getTeamsReducer,
   getPostsReducer,
   sendPostReducer,
+  friendsReducer,
 });

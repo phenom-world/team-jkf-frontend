@@ -1,51 +1,23 @@
-import {
-  CREATE,
-  START_LOADING,
-  END_LOADING,
-  DELETE,
-} from "../constants/actionTypes";
+import { ADD_FRIEND, START_INVITE_LOADING, END_INVITE_LOADING, GET_INVITES, ACCEPT_INVITE, DELETE_INVITE } from "../constants/actionTypes";
 
-import * as api from "../api/index.js";
-
-export const addFriends = (id) => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
-    const { data } = await api.addFriends(id);
-    dispatch({ type: FETCH_ALL, payload: data });
-    dispatch({ type: END_LOADING });
-  } catch (error) {
-    
-  }
-};
-export const getfriendrequests = (searchQuery) => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
-    const {
-      data: { data },
-    } = await api.fetchPostsBySearch(searchQuery);
-
-    dispatch({ type: FETCH_BY_SEARCH, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-export const acceptfriendrequest = (post) => async (dispatch) => {
-  try {
-    dispatch({ type: START_LOADING });
-    const { data } = await api.createPost(post);
-    dispatch({ type: CREATE, payload: data });
-  } catch (error) {
-    console.log(error.message);
-  }
-};
-
-export const rejectfriendrequest = (id) => async (dispatch) => {
-  try {
-    await api.deletePost(id);
-
-    dispatch({ type: DELETE, payload: id });
-  } catch (error) {
-    console.log(error.message);
+export const friendsReducer = (state = { friends: [], requestloading: true }, action) => {
+  switch (action.type) {
+    case START_INVITE_LOADING:
+      return { ...state, requestloading: true };
+    case END_INVITE_LOADING:
+      return { ...state, requestloading: false };
+    case ADD_FRIEND:
+      return { ...state, message: action?.payload };
+    case GET_INVITES:
+      return { ...state, friends: action?.payload };
+    case ACCEPT_INVITE:
+      return { ...state, posts: action?.payload };
+    case DELETE_INVITE:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post._id !== action.payload),
+      };
+    default:
+      return state;
   }
 };

@@ -3,7 +3,7 @@ export { default as Footer } from "../components/Footer/Footer";
 export { default as BackToTop } from "../components/BackToTop/BackToTop";
 export { default as Login } from "./Login/Login";
 export { default as Register } from "./Register/Register";
-export { default as Community } from "./Community/Community";
+export { default as Community } from "../components/Community/Community";
 export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as UserProfile } from "./UserProfile/UserProfile";
 export { default as TeamProfile } from "./TeamProfile/TeamProfile";

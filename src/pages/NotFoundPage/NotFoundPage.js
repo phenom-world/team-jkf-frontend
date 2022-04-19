@@ -12,7 +12,7 @@ const NotFoundPage = () => {
           <h1 className="error">
             4
             <span>
-              <i class="fas fa-ghost"></i>
+              <i className="fas fa-ghost"></i>
             </span>
             4
           </h1>

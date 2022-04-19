@@ -19,14 +19,13 @@ function Dashboard() {
   //prettier-ignore
   const { firstname, lastname, tjkfid, createdAt, username } = userDetail;
   const [showResults, setShowResults] = React.useState(true);
+
   const onClick = () => setShowResults((prev) => !prev);
 
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     window.location.assign("https://teamjkf.org");
   };
-
-  console.log(moment(createdAt).format("DD/MM/YYYY[T]HH:mm:ss"));
 
   useEffect(() => {
     dispatch(userDetails());
@@ -86,24 +85,18 @@ function Dashboard() {
             <div className="dashboard-tab ">
               <Nav className="mx-3">
                 <Nav.Item>
-                  <Nav.Link eventKey="link-1">
-                    <Link
-                      to="/update-profile"
-                      className="navbar-link"
-                      style={{ marginLeft: "auto" }}
-                    >
-                      {" "}
-                      <span style={{ fontSize: "1em", color: "#fff" }}>
-                        <i class="fa-solid fa-user"></i>
-                      </span>{" "}
-                      Profile Update
-                    </Link>
+                  <Nav.Link eventKey="link-1" as={Link} to="/update-profile">
+                    {" "}
+                    <span style={{ fontSize: "1em", color: "#fff" }}>
+                      <i className="fa-solid fa-user"></i>
+                    </span>{" "}
+                    Profile Update
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="link-2" onClick={onClick}>
                     <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <i class="fa-solid fa-download"></i>
+                      <i className="fa-solid fa-download"></i>
                     </span>{" "}
                     Downloads
                   </Nav.Link>
@@ -116,32 +109,26 @@ function Dashboard() {
                   >
                     {" "}
                     <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <i class="fa-solid fa-circle-question"></i>
+                      <i className="fa-solid fa-circle-question"></i>
                     </span>{" "}
                     Support
                   </Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item>
-                  <Nav.Link eventKey="link-4">
-                    <Link
-                      to="/community"
-                      className="navbar-link"
-                      style={{ marginLeft: "auto" }}
-                    >
-                      {" "}
-                      <span style={{ fontSize: "1em", color: "#fff" }}>
-                        <i class="fa-solid fa-people-group"></i>
-                      </span>{" "}
-                      Community
-                    </Link>{" "}
+                  <Nav.Link eventKey="link-4" as={Link} to="/community">
+                    {" "}
+                    <span style={{ fontSize: "1em", color: "#fff" }}>
+                      <i className="fa-solid fa-people-group"></i>
+                    </span>{" "}
+                    Community{" "}
                   </Nav.Link>
                 </Nav.Item>
 
                 <Nav.Item>
                   <Nav.Link eventKey="link-5" onClick={logout}>
                     <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <i class="fa-solid fa-right-from-bracket"></i>
+                      <i className="fa-solid fa-right-from-bracket"></i>
                     </span>{" "}
                     Logout
                   </Nav.Link>

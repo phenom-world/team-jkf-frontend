@@ -40,6 +40,10 @@ import {
   GET_USERS,
   END_GET_USERS_LOADING,
   GET_USERS_FAILURE,
+  GET_FRIENDS,
+  START_GET_FRIENDS_LOADING,
+  END_GET_FRIENDS_LOADING,
+  GET_FRIENDS_FAILURE,
 } from "../constants/actionTypes";
 
 export const authReducer = (state = {}, action) => {
@@ -116,17 +120,33 @@ export const userDetailsReducer = (state = { userDetail: {} }, action) => {
 export const getUserReducer = (state = { userProfileDetails: {} }, action) => {
   switch (action.type) {
     case GET_USER:
-      return { ...state, userProfileDetails: action?.data };
+      return { ...state, userProfileDetails: action?.payload };
     case START_GET_USER_LOADING:
-      return { ...state, isloading: true };
+      return { ...state, userProfileloading: true };
     case END_GET_USER_LOADING:
-      return { ...state, isloading: false };
+      return { ...state, userProfileloading: false };
     case GET_USER_FAILURE:
-      return { ...state, isloading: false, error: action.payload };
+      return { ...state, userProfileloading: false, error: action.payload };
     default:
       return state;
   }
 };
+
+export const getFriendsReducer = (state = { friends: [] }, action) => {
+  switch (action.type) {
+    case GET_FRIENDS:
+      return { ...state, friends: action?.payload };
+    case START_GET_FRIENDS_LOADING:
+      return { ...state, getfriendsloading: true };
+    case END_GET_FRIENDS_LOADING:
+      return { ...state, getfriendsloading: false };
+    case GET_FRIENDS_FAILURE:
+      return { ...state, getfriendsloading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
 export const getUsersReducer = (state = { users: [] }, action) => {
   switch (action.type) {
     case GET_USERS:
