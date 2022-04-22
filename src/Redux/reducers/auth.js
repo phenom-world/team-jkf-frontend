@@ -84,6 +84,22 @@ export const registerReducer = (state = {}, action) => {
   }
 };
 
+export const socialRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case REGISTER:
+      localStorage.setItem("result", JSON.stringify(action.payload.data));
+      return { ...state, message: action?.payload };
+    case START_REGISTER_LOADING:
+      return { ...state, isloading: true };
+    case END_REGISTER_LOADING:
+      return { ...state, isloading: false };
+    case REGISTER_FAILURE:
+      return { ...state, isloading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
 export const updateUserReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_USER:
@@ -157,6 +173,15 @@ export const getUsersReducer = (state = { users: [] }, action) => {
       return { ...state, getUsersLoading: false };
     case GET_USERS_FAILURE:
       return { ...state, getUsersLoading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const socialFormReducer = (state = { users: [] }, action) => {
+  switch (action.type) {
+    case "SET_USER":
+      return { ...state, user: action.user };
     default:
       return state;
   }

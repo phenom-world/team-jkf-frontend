@@ -1,5 +1,13 @@
 .dashboard-container {
-  background-color: #0084a1;
+  background-image: url(https://res.cloudinary.com/dzxnpdr2t/image/upload/v1650531009/Team-Jkf/k-engineer-bg-item-3_pvnl2k.png),
+    url(https://res.cloudinary.com/dzxnpdr2t/image/upload/v1650531024/Team-Jkf/basics-b-basics_krctbj.png),
+    url(https://res.cloudinary.com/dzxnpdr2t/image/upload/v1650531035/Team-Jkf/basics-b-basics_fvb7bi.png),
+    url(https://res.cloudinary.com/dzxnpdr2t/image/upload/v1650531045/Team-Jkf/basics-b-basics-left_rcsi55.png),
+    url(https://res.cloudinary.com/dzxnpdr2t/image/upload/v1650531055/Team-Jkf/basics-b-basics-left_un5x93.png),
+    linear-gradient(324.82deg, #e1efff 8.78%, rgba(225, 239, 255, 0) 77.54%);
+  background-repeat: no-repeat;
+  background-position: 5% 3%, 90% 100%, 95% 10%, 10% 70%, 120% 120%;
+  background-size: auto, 18%, 10%, auto, auto, cover;
 }
 
 .db-img-cont {
@@ -11,12 +19,12 @@
   border-radius: 50%;
   max-height: 100% !important;
   max-width: auto !important;
-  border: 4px solid #0084a1;
-  box-shadow: 1px 0px 4px 5px rgba(68, 68, 68, 0.6);
+  border: 4px solid #fff;
+  box-shadow: 1px 0px 4px 2px rgba(68, 68, 68, 0.6);
 }
 
 .dash-desc {
-  color: white;
+  color: rgb(78, 86, 94);
 }
 
 .dashboard-tab {
@@ -36,11 +44,22 @@
   background-color: #095667 !important;
 }
 
+.profile-update {
+  padding: 4px 15px 4px 15px;
+  border-radius: 100px;
+  border: 1px solid #9ea8b2;
+  font-size: 13px;
+}
+.dashboard-resp {
+  padding: 3rem 0;
+}
+
 @media screen and (max-width: 480px) {
   .dashboard-resp {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem 0;
   }
 }

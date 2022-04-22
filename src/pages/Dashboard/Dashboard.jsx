@@ -12,9 +12,7 @@ import moment from "moment";
 
 function Dashboard() {
   const dispatch = useDispatch();
-  const { isloading, userDetail } = useSelector(
-    (state) => state.userDetailsReducer
-  );
+  const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
 
   //prettier-ignore
   const { firstname, lastname, tjkfid, createdAt, username } = userDetail;
@@ -38,8 +36,8 @@ function Dashboard() {
       ) : (
         <>
           <div className="dashboard-container overflow-auto">
-            <Container className="justify-content-start">
-              <div className="dashboard-resp d-flex py-5 gap-4">
+            <Container className="justify-content-between ">
+              <div className="dashboard-resp d-flex pt-5  gap-4">
                 <div className="db-img-cont">
                   <Image
                     src="https://res.cloudinary.com/valodagreat/image/upload/v1641822940/WhatsApp_Image_2022-01-10_at_2.51.59_PM_kimsyr.jpg"
@@ -61,38 +59,21 @@ function Dashboard() {
                         </b>
                       </span>
                       <span className="pt-1">You are logged as {username}</span>
-                      <span>
-                        Unique ID:{" "}
-                        <span
-                          style={{
-                            backgroundColor: "#3F9CC2",
-                            padding: "0 5px",
-                          }}
-                        >
-                          {" "}
-                          {tjkfid}{" "}
-                        </span>
-                      </span>
-                      <span className="pt-2">
-                        Member since{" "}
-                        {moment(createdAt).format("MMMM d, YYYY h:mma")}
-                      </span>
+                      <span>Unique ID: {tjkfid}</span>
+                      <span className="pt-2">Member since {moment(createdAt).format("MMMM d, YYYY h:mma")}</span>
                     </div>
                   </div>
                 </div>
               </div>
+              <div className="d-flex justify-content-start align-items-center text-black-50 profile-update">
+                <Link to="/update-profile" className="text-decoration-none text-black-50 ">
+                  {" "}
+                  <span className="mx-2">Update Profile</span> <i className="fa-solid fa-angle-right"> </i>
+                </Link>
+              </div>
             </Container>
             <div className="dashboard-tab ">
               <Nav className="mx-3">
-                <Nav.Item>
-                  <Nav.Link eventKey="link-1" as={Link} to="/update-profile">
-                    {" "}
-                    <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <i className="fa-solid fa-user"></i>
-                    </span>{" "}
-                    Profile Update
-                  </Nav.Link>
-                </Nav.Item>
                 <Nav.Item>
                   <Nav.Link eventKey="link-2" onClick={onClick}>
                     <span style={{ fontSize: "1em", color: "#fff" }}>
@@ -103,10 +84,7 @@ function Dashboard() {
                 </Nav.Item>
 
                 <Nav.Item>
-                  <Nav.Link
-                    eventKey="link-3"
-                    href="https://teamjkf.org/contact/"
-                  >
+                  <Nav.Link eventKey="link-3" href="https://teamjkf.org/contact/">
                     {" "}
                     <span style={{ fontSize: "1em", color: "#fff" }}>
                       <i className="fa-solid fa-circle-question"></i>

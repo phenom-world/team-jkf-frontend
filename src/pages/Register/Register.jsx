@@ -30,20 +30,6 @@ const initialState = {
   password: "",
 };
 
-const onGoogleLogin = (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      console.log(result);
-      // dispatch({
-      //   type: actionTypes.SET_USER,
-      //   user: result.user,
-      // });
-    })
-    .catch((err) => alert(err.message));
-};
-
 const Register = () => {
   const [formData, setFormData] = useState(initialState);
   const [inputState, setInputState] = useState("");
@@ -53,7 +39,17 @@ const Register = () => {
   const navigate = useNavigate();
   const { isloading, error } = useSelector((state) => state.registerReducer);
   // prettier-ignore
-
+  const onGoogleLogin = (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  signInWithPopup(auth, provider).then((result) => {
+    dispatch({
+      type: "SET_USER",
+      user: result.user,
+    });
+    navigate("/auth/register")
+  }).catch((err) => alert(err.message));
+};
   const states = statesList.map((state, i) => ({
     name: state,
     statecode: i < 9 ? "00" + Number(i) : "0" + Number(i),

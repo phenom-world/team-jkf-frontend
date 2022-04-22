@@ -51,9 +51,24 @@ export const signup = (formData, navigate) => async (dispatch) => {
   try {
     dispatch({ type: START_REGISTER_LOADING });
     const { data } = await api.signUp(formData);
+    console.log(data);
     dispatch({ type: REGISTER, payload: data.message });
     dispatch({ type: END_REGISTER_LOADING });
     navigate("/register-success");
+  } catch (error) {
+    dispatch({
+      type: REGISTER_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};
+export const socialSignup = (formData, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: START_REGISTER_LOADING });
+    const { data } = await api.signUp(formData);
+    dispatch({ type: REGISTER, payload: data.message });
+    dispatch({ type: END_REGISTER_LOADING });
+    navigate("/dashboard");
   } catch (error) {
     dispatch({
       type: REGISTER_FAILURE,

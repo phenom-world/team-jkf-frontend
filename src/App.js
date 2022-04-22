@@ -26,6 +26,7 @@ import Header from "./components/Header/Header";
 import CommunityContainer from "./pages/CommunityContainer/CommunityContainer";
 import Teams from "./components/Teams/Teams";
 import FriendsList from "./components/FriendsList/FriendsList";
+import SocialMediaForm from "./pages/SocialMediaForm/SocialMediaForm";
 import Invitations from "./components/Invitations/Invitations";
 import "./App.css";
 
@@ -71,6 +72,7 @@ function App() {
           </Route>
           {/* Other Routes */}
           <Route path="/register" element={<Register />} exact />
+          <Route exact path="/auth/register" element={<SocialMediaForm />} />
           <Route exact path="/register-success" element={<RegistrationSuccess />} />
           <Route exact path={`/verify/:token`} element={<VerificationPage />} />
           <Route exact path="/password_change" element={<ChangePassword />} />

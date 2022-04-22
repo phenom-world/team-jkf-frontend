@@ -15,13 +15,9 @@ import { Footer } from "../index";
 import {statesList, electoralParticipationList, maritalStatusList, genderList, educationStatusList,politicalInterestList, employmentStatusList} from "../../components/utils";
 
 const UpdateProfile = () => {
-  const { isloading, userDetail } = useSelector(
-    (state) => state.userDetailsReducer
-  );
+  const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
 
-  const { updateUserloading, updateUserError } = useSelector(
-    (state) => state.updateUserReducer
-  );
+  const { updateUserloading, updateUserError } = useSelector((state) => state.updateUserReducer);
   //prettier-ignore
   const { firstname, lastname, username, lga, phone, gender, state, statecode, maritalStatus, educationStatus, employmentStatus, politicalInterest, electoralParticipation } = userDetail;
   //prettier-ignore
@@ -33,9 +29,7 @@ const UpdateProfile = () => {
   const [EducationStatus, setEducationStatus] = useState(educationStatus);
   const [EmploymentStatus, setEmploymentStatus] = useState(employmentStatus);
   const [PoliticalInterest, setPoliticalInterest] = useState(politicalInterest);
-  const [ElectoralParticipation, setElectoralParticipation] = useState(
-    electoralParticipation
-  );
+  const [ElectoralParticipation, setElectoralParticipation] = useState(electoralParticipation);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
