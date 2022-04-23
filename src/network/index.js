@@ -43,8 +43,6 @@ export const getPosts = (teamId) => API.get(`/teammessages/getmessages/${teamId}
 export const addFriend = (request) => API.post(`/request/addfriend`, request);
 export const getInvites = () => API.get("/request/getfriendrequests");
 // prettier-ignore
-export const acceptInvite = (request) =>
-  API.put("/request/acceptfriendrequest", request);
+export const acceptInvite = (request) => API.put("/request/acceptfriendrequest", request);
 // prettier-ignore
-export const deleteInvite = (request) =>
-  API.delete("/request/rejectfriendrequest", request);
+export const deleteInvite = (request) => API.delete("/request/rejectfriendrequest", {data: request});

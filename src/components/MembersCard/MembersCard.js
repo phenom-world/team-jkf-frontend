@@ -39,7 +39,19 @@ const MembersCard = ({ name, isFriend, memberId, currentUserId, Id, teams, isReq
         </div>
         <p className="activity">Active 5 days, 4 hours ago</p>
       </div>
-      {isRequest === "Request Received" ? (
+      {Message === "friend" ? null : Message === "request sent" || isRequest == "Request Sent" ? (
+        <div>
+          <button className="friend__btn" disabled>
+            Request Sent
+          </button>
+        </div>
+      ) : Message === "add friend" || (!isFriend && isRequest !== "Request Received") ? (
+        <div>
+          <button className="friend__btn btn-primary" onClick={sendRequest}>
+            Add Friend
+          </button>
+        </div>
+      ) : isRequest === "Request Received" ? (
         <div className="d-flex flex-column align-center justify-center gap-2">
           <button className="friend__btn btn-primary" onClick={acceptRequest}>
             ACCEPT
@@ -48,27 +60,7 @@ const MembersCard = ({ name, isFriend, memberId, currentUserId, Id, teams, isReq
             DECLINE
           </button>
         </div>
-      ) : Message === "request sent" || isRequest == "Request Sent" ? (
-        <div>
-          <button className="friend__btn" disabled>
-            Request Sent
-          </button>
-        </div>
-      ) : teams ? (
-        <div>
-          <button className="friend__btn btn-primary" onClick={sendRequest}>
-            Join Team
-          </button>
-        </div>
-      ) : Message === "add friend" || !isFriend ? (
-        <div>
-          <button className="friend__btn btn-primary" onClick={sendRequest}>
-            Add Friend
-          </button>
-        </div>
-      ) : (
-        Message === "friend" && null
-      )}
+      ) : null}
     </div>
   );
 };

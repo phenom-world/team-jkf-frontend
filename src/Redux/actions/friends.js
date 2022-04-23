@@ -34,9 +34,11 @@ export const acceptInvite = (request) => async (dispatch) => {
 
 export const deleteInvite = (request) => async (dispatch) => {
   try {
+    console.log(request);
     const { data } = await api.deleteInvite(request);
-    dispatch({ type: DELETE_INVITE, payload: data.message });
+    console.log(data);
+    // dispatch({ type: DELETE_INVITE, payload: data.message });
   } catch (error) {
-    console.log(error.message);
+    console.log(error?.response?.data?.message);
   }
 };
