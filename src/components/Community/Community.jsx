@@ -8,7 +8,7 @@ const Community = () => {
   const { userDetail } = useSelector((state) => state.userDetailsReducer);
   const { users } = useSelector((state) => state.getUsersReducer);
   const { id } = userDetail;
-
+  console.log(users);
   return (
     <>
       <div className="section__2">
@@ -38,6 +38,7 @@ const Community = () => {
               memberId={user.id}
               Id={user.tjkfid}
               isFriend={user.isFriend}
+              isRequest={user.isRequest}
             />
           ))}
         </div>

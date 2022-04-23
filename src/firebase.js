@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDbDrZWQCcXmC0pDCUZoH_gc-JB4vIIsHs",
@@ -14,8 +15,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth();
-
+auth.languageCode = "it";
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
 
-export { auth, provider };
+const fbProvider = new FacebookAuthProvider();
+fbProvider.setCustomParameters({
+  display: "popup",
+});
+
+export { auth, provider, fbProvider };

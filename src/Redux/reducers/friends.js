@@ -11,12 +11,9 @@ export const friendsReducer = (state = { friends: [], requestloading: true }, ac
     case GET_INVITES:
       return { ...state, friends: action?.payload };
     case ACCEPT_INVITE:
-      return { ...state, posts: action?.payload };
+      return { ...state, message: action?.payload };
     case DELETE_INVITE:
-      return {
-        ...state,
-        posts: state.posts.filter((post) => post._id !== action.payload),
-      };
+      return { ...state, message: action?.payload };
     default:
       return state;
   }

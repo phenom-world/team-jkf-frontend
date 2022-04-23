@@ -26,7 +26,7 @@ export const addFriend = (request) => async (dispatch) => {
 export const acceptInvite = (request) => async (dispatch) => {
   try {
     const { data } = await api.acceptInvite(request);
-    console.log(data);
+    dispatch({ type: ACCEPT_INVITE, payload: data.message });
   } catch (error) {
     console.log(error.message);
   }
@@ -35,7 +35,7 @@ export const acceptInvite = (request) => async (dispatch) => {
 export const deleteInvite = (request) => async (dispatch) => {
   try {
     const { data } = await api.deleteInvite(request);
-    console.log(data);
+    dispatch({ type: DELETE_INVITE, payload: data.message });
   } catch (error) {
     console.log(error.message);
   }

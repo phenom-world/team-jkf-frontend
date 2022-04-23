@@ -5,24 +5,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/friends";
 
-const MembersCard = ({ name, isFriend, memberId, isrequest, currentUserId, Id, requestsent, teams }) => {
+const MembersCard = ({ name, isFriend, memberId, currentUserId, Id, teams, isRequest }) => {
   const dispatch = useDispatch();
-  const { message } = useSelector((state) => state.friendsReducer);
-  const sendRequest = () => {
-    dispatch(addFriend({ fromId: currentUserId, toId: memberId }));
-    setButtonValue("Request Sent");
+  const [Message, setMessage] = useState("");
+
+  const sendRequest = async () => {
+    await dispatch(addFriend({ fromId: currentUserId, toId: memberId }));
+    setMessage("request sent");
   };
 
-  const acceptRequest = () => {
-    dispatch(acceptInvite({ fromId: currentUserId, toId: memberId }));
-    setButtonValue("Request Sent");
+  const acceptRequest = async () => {
+    await dispatch(acceptInvite({ fromId: memberId, toId: currentUserId }));
+    setMessage("friend");
   };
-  const declineRequest = () => {
-    dispatch(deleteInvite({ fromId: currentUserId, toId: memberId }));
-    setButtonValue("Request Sent");
+  const declineRequest = async () => {
+    await dispatch(deleteInvite({ fromId: memberId, toId: currentUserId }));
+    setMessage("add friend");
   };
-
-  const [buttonValue, setButtonValue] = useState("AddFriend");
 
   return (
     <div className="member__container">
@@ -40,7 +39,7 @@ const MembersCard = ({ name, isFriend, memberId, isrequest, currentUserId, Id, r
         </div>
         <p className="activity">Active 5 days, 4 hours ago</p>
       </div>
-      {isrequest ? (
+      {isRequest === "Request Received" ? (
         <div className="d-flex flex-column align-center justify-center gap-2">
           <button className="friend__btn btn-primary" onClick={acceptRequest}>
             ACCEPT
@@ -49,10 +48,10 @@ const MembersCard = ({ name, isFriend, memberId, isrequest, currentUserId, Id, r
             DECLINE
           </button>
         </div>
-      ) : requestsent ? (
+      ) : Message === "request sent" || isRequest == "Request Sent" ? (
         <div>
           <button className="friend__btn" disabled>
-            {buttonValue}
+            Request Sent
           </button>
         </div>
       ) : teams ? (
@@ -61,13 +60,15 @@ const MembersCard = ({ name, isFriend, memberId, isrequest, currentUserId, Id, r
             Join Team
           </button>
         </div>
-      ) : !isFriend ? (
+      ) : Message === "add friend" || !isFriend ? (
         <div>
           <button className="friend__btn btn-primary" onClick={sendRequest}>
-            {buttonValue}
+            Add Friend
           </button>
         </div>
-      ) : null}
+      ) : (
+        Message === "friend" && null
+      )}
     </div>
   );
 };

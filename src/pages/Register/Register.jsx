@@ -7,7 +7,8 @@ import { useNavigate, Link } from "react-router-dom";
 import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
-import { auth, provider } from "../../firebase";
+import { auth, provider, fbProvider } from "../../firebase";
+import { FacebookAuthProvider } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
 
 import Select from "../../components/Form/Select/Select";
@@ -55,6 +56,34 @@ const Register = () => {
     statecode: i < 9 ? "00" + Number(i) : "0" + Number(i),
   }));
 
+  const onFacebookLogin = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    signInWithPopup(auth, fbProvider)
+      .then((result) => {
+        // The signed-in user info.
+        const user = result.user;
+
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        // const credential = FacebookAuthProvider.credentialFromResult(result);
+        // const accessToken = credential.accessToken;
+        console.log(user);
+        // console.log(accessToken);
+        // ...
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+
+        // ...
+      });
+  };
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -295,12 +324,7 @@ const Register = () => {
           <p>- OR REGISTER WITH -</p>
         </div>
         <div className="social_handle">
-          <div
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-          >
+          <div onClick={onFacebookLogin}>
             <Button className={"handle facebook"}>Facebook</Button>
           </div>
           <div onClick={onGoogleLogin}>
