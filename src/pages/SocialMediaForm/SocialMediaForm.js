@@ -27,6 +27,7 @@ const SocialMediaForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const required = true;
+  const readonly = true;
 
   const states = statesList.map((state, i) => ({
     name: state,
@@ -98,6 +99,7 @@ const SocialMediaForm = () => {
                 formType="form__div__1"
                 value={email}
                 required={required}
+                readonly={readonly}
               />
               <Field
                 label="username"

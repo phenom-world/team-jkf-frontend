@@ -22,19 +22,14 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { isloading, error } = useSelector((state) => state.authReducer);
-  // const { user } = useSelector((state) => state.socialFormReducer);
-  // const { email, uid } = user;
 
   const onGoogleLogin = (e) => {
     e.preventDefault();
     e.stopPropagation();
     signInWithPopup(auth, provider)
       .then((result) => {
-        dispatch({
-          type: "SET_USER",
-          user: result.user,
-        });
-        // dispatch(signin({ email: email, password: uid, isSocial: true }, navigate));
+        dispatch(signin({ email: result.user.email, password: result.user.uid, isSocial: true }, navigate));
+        console.log(result.user.email);
       })
       .catch((err) => alert(err.message));
   };
