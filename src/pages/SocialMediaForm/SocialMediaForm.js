@@ -14,7 +14,7 @@ import {statesList, genderList} from "../../components/utils";
 
 const SocialMediaForm = () => {
   const { user } = useSelector((state) => state.socialFormReducer);
-  const { isloading, error } = useSelector((state) => state.registerReducer);
+  const { isloading, error } = useSelector((state) => state.socialRegisterReducer);
 
   //prettier-ignore
   const { displayName, email , uid} = user;

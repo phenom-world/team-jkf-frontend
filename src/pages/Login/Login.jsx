@@ -22,8 +22,8 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let { isloading, error } = useSelector((state) => state.authReducer);
-  const { user } = useSelector((state) => state.socialFormReducer);
-  const { email, uid } = user;
+  // const { user } = useSelector((state) => state.socialFormReducer);
+  // const { email, uid } = user;
 
   const onGoogleLogin = (e) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ const Login = () => {
           type: "SET_USER",
           user: result.user,
         });
-        dispatch(signin({ email: email, password: uid, isSocial: true }, navigate));
+        // dispatch(signin({ email: email, password: uid, isSocial: true }, navigate));
       })
       .catch((err) => alert(err.message));
   };

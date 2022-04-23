@@ -44,6 +44,10 @@ import {
   START_GET_FRIENDS_LOADING,
   END_GET_FRIENDS_LOADING,
   GET_FRIENDS_FAILURE,
+  START_SOCIAL_REGISTER_LOADING,
+  SOCIAL_REGISTER,
+  END_SOCIAL_REGISTER_LOADING,
+  SOCIAL_REGISTER_FAILURE,
 } from "../constants/actionTypes";
 
 export const authReducer = (state = {}, action) => {
@@ -86,14 +90,14 @@ export const registerReducer = (state = {}, action) => {
 
 export const socialRegisterReducer = (state = {}, action) => {
   switch (action.type) {
-    case REGISTER:
-      localStorage.setItem("result", JSON.stringify(action.payload.data));
+    case SOCIAL_REGISTER:
+      localStorage.setItem("result", JSON.stringify(action.payload));
       return { ...state, message: action?.payload };
-    case START_REGISTER_LOADING:
+    case START_SOCIAL_REGISTER_LOADING:
       return { ...state, isloading: true };
-    case END_REGISTER_LOADING:
+    case END_SOCIAL_REGISTER_LOADING:
       return { ...state, isloading: false };
-    case REGISTER_FAILURE:
+    case SOCIAL_REGISTER_FAILURE:
       return { ...state, isloading: false, error: action.payload };
     default:
       return state;

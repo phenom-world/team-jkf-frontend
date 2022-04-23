@@ -43,6 +43,10 @@ import {
   START_GET_FRIENDS_LOADING,
   END_GET_FRIENDS_LOADING,
   GET_FRIENDS_FAILURE,
+  START_SOCIAL_REGISTER_LOADING,
+  SOCIAL_REGISTER,
+  END_SOCIAL_REGISTER_LOADING,
+  SOCIAL_REGISTER_FAILURE,
 } from "../constants/actionTypes";
 
 import * as api from "../../network/index.js";
@@ -62,16 +66,17 @@ export const signup = (formData, navigate) => async (dispatch) => {
     });
   }
 };
+
 export const socialSignup = (formData, navigate) => async (dispatch) => {
   try {
-    dispatch({ type: START_REGISTER_LOADING });
+    dispatch({ type: START_SOCIAL_REGISTER_LOADING });
     const { data } = await api.signUp(formData);
-    dispatch({ type: REGISTER, payload: data.message });
-    dispatch({ type: END_REGISTER_LOADING });
+    dispatch({ type: SOCIAL_REGISTER, payload: data });
+    dispatch({ type: END_SOCIAL_REGISTER_LOADING });
     navigate("/dashboard");
   } catch (error) {
     dispatch({
-      type: REGISTER_FAILURE,
+      type: SOCIAL_REGISTER_FAILURE,
       payload: `${error?.response?.data?.message}`,
     });
   }
