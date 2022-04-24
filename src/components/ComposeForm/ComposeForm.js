@@ -30,8 +30,8 @@ function ComposeForm({ username, teamId }) {
   };
 
   return (
-    <form className="compose-form" onSubmit={handleSubmit}>
-      <div className="compose-form-container">
+    <form className="compose-form mb-4" onSubmit={handleSubmit}>
+      <div className="compose-form-container ">
         <Avatar imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
         <textarea
           value={editorValue}

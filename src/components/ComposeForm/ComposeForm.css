@@ -12,6 +12,7 @@
 }
 
 .compose-form-textarea {
+  font-family: "Open Sans", "Helvetica Neue", sans-serif !important;
   background: none;
   border: 0;
   outline: none;
