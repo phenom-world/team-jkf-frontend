@@ -15,11 +15,10 @@ export const getinvites = () => async (dispatch) => {
     const {
       data: { data },
     } = await api.getInvites();
-    console.log(data)
+    console.log(data);
     dispatch({ type: GET_INVITES, payload: data });
     dispatch({ type: END_INVITE_LOADING });
   } catch (error) {
-    console.log(error?.response?.data?.message);
     dispatch({
       type: GET_INVITE_FAILURE,
       payload: `${error?.response?.data?.message}`,

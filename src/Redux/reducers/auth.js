@@ -65,9 +65,6 @@ export const authReducer = (state = {}, action) => {
       return { ...state, isloading: true };
     case END_AUTH_LOADING:
       return { ...state, isloading: false };
-    case LOGOUT:
-      localStorage.clear();
-      return { ...state, authData: null };
     default:
       return state;
   }

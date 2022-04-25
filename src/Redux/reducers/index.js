@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-
+import { LOGOUT } from "../constants/actionTypes";
 import {
   authReducer,
   registerReducer,
@@ -40,3 +40,14 @@ export const reducers = combineReducers({
   sendPostReducer,
   friendsReducer,
 });
+
+
+export const rootReducer = (state, action) => {
+  if (action.type === LOGOUT) {
+    localStorage.clear();
+    return reducers(undefined, action);
+  }
+  return reducers(state, action);
+};
+
+
