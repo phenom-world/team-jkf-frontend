@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MembersCard from "../MembersCard/MembersCard";
 import { useSelector } from "react-redux";
 import Message from "../Message/Message";
+import { useDispatch } from "react-redux";
+import LoadState from "../Spinner/LoadState";
+import { getinvites } from "../../Redux/actions/friends";
 
 const Invitations = () => {
   const { userDetail } = useSelector((state) => state.userDetailsReducer);
-  const { friends, error } = useSelector((state) => state.friendsReducer);
+  const { friends, error, requestloading } = useSelector((state) => state.friendsReducer);
   const { id } = userDetail;
   const isRequest = "Request Received";
+  const dispatch = useDispatch();
 
-  return (
+  useEffect(() => {
+    dispatch(getinvites());
+  }, [dispatch]);
+
+  return requestloading ? (
+    <div className="section__2">
+      <LoadState />
+    </div>
+  ) : (
     <>
       {" "}
       <div className="section__2">

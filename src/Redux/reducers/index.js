@@ -41,7 +41,6 @@ export const reducers = combineReducers({
   friendsReducer,
 });
 
-
 export const rootReducer = (state, action) => {
   if (action.type === LOGOUT) {
     localStorage.clear();
@@ -49,5 +48,3 @@ export const rootReducer = (state, action) => {
   }
   return reducers(state, action);
 };
-
-

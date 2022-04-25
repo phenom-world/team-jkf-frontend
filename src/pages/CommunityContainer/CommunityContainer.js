@@ -13,19 +13,16 @@ import { getinvites } from "../../Redux/actions/friends";
 const CommunityContainer = () => {
   const dispatch = useDispatch();
   const { isloading } = useSelector((state) => state.userTeamsReducer);
-  const { getfriendsloading } = useSelector((state) => state.getFriendsReducer);
   const { getUsersLoading } = useSelector((state) => state.getUsersReducer);
 
   useEffect(() => {
     dispatch(getUserTeams());
     dispatch(getUsers());
     dispatch(userDetails());
-    dispatch(getFriends());
-    dispatch(getTeams());
-    dispatch(getinvites());
+  
   }, [dispatch]);
 
-  return isloading || getUsersLoading || getfriendsloading ? (
+  return isloading || getUsersLoading ? (
     <LoadState />
   ) : (
     <div>

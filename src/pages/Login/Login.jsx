@@ -7,7 +7,7 @@ import { useNavigate, Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
 import Message from "../../components/Message/Message";
-import { auth, provider } from "../../firebase";
+import { auth, provider, fbProvider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { Footer } from "../index";
 
@@ -29,7 +29,15 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         dispatch(signin({ email: result.user.email, password: result.user.uid, isSocial: true }, navigate));
-    
+      })
+      .catch((err) => alert(err.message));
+  };
+  const onFacebookLogin = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    signInWithPopup(auth, fbProvider)
+      .then((result) => {
+        dispatch(signin({ email: result.user.email, password: result.user.uid, isSocial: true }, navigate));
       })
       .catch((err) => alert(err.message));
   };
@@ -113,24 +121,11 @@ const Login = () => {
                 <p>- OR LOGIN WITH -</p>
               </div>
               <div className="social_handle">
-                <div
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }}
-                >
+                <div onClick={onFacebookLogin}>
                   <Button className={"handle facebook"}>Facebook</Button>
                 </div>
                 <div onClick={onGoogleLogin}>
                   <Button className={"handle google"}>Google</Button>
-                </div>
-                <div
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }}
-                >
-                  <Button className={"handle instagram"}>Instagram</Button>
                 </div>
               </div>
             </div>

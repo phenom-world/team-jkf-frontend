@@ -30,11 +30,6 @@ export const getUsers = () => API.get("/users/getusers");
 export const getUser = (id) => API.get(`/users/getuser/${id}`);
 export const getFriends = () => API.get("/users/friends");
 
-//Teams
-export const getUserTeams = () => API.get("/teams/getuserteams");
-export const getTeams = () => API.get("/teams/getteams");
-export const getTeam = (teamname) => API.get(`/teams/getTeam/${teamname}`);
-
 //Posts
 export const makePost = (post, teamId) => API.post(`/teammessages/send-message/${teamId}`, post);
 export const getPosts = (teamId) => API.get(`/teammessages/getmessages/${teamId}`);
@@ -46,3 +41,21 @@ export const getInvites = () => API.get("/request/getfriendrequests");
 export const acceptInvite = (request) => API.put("/request/acceptfriendrequest", request);
 // prettier-ignore
 export const deleteInvite = (request) => API.delete("/request/rejectfriendrequest", {data: request});
+
+//Teams
+export const getUserTeams = () => API.get("/teams/getuserteams");
+export const getTeams = () => API.get("/teams/getteams");
+export const getTeam = (teamname) => API.get(`/teams/getTeam/${teamname}`);
+export const getTeamMembers =(teamname) => API.get(`/teams/getTeamMembers/${teamname}`);
+
+//Team requests
+export const getTeamRequests = (teamname) => API.get("/teams/getTeamRequests", teamname);
+export const sendTeamRequest = (request) => API.post("/teams/sendTeamRequest", request);
+export const leaveTeam =() => API.get("/teams/leaveteam");
+
+//admin roles
+export const createTeam =() => API.post("/teams/create-team");
+export const addUser =() => API.put("/teams/addUser");
+export const removeUser =() => API.put("/teams/removeUser");
+export const getAllRequests = () => API.get("/teams/getAllRequests");
+export const getMemberRequests = () => API.get("/teams/getMemberRequests");

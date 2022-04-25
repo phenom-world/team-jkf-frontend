@@ -6,19 +6,20 @@ import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/frien
 
 const TeamCard = ({ name, isFriend, teamId, isrequest, currentUserId, Id, requestsent, isTeam }) => {
   const dispatch = useDispatch();
-  const { message } = useSelector((state) => state.friendsReducer);
-  const sendRequest = () => {
-    dispatch(addFriend({ fromId: currentUserId, toId: teamId }));
-    setButtonValue("Request Sent");
+  const [Message, setMessage] = useState("");
+
+  const sendRequest = async () => {
+    await dispatch(addFriend({ fromId: currentUserId, toId: teamId }));
+    setMessage("request sent");
   };
 
-  const acceptRequest = () => {
-    dispatch(acceptInvite({ fromId: currentUserId, toId: teamId }));
-    setButtonValue("Request Sent");
+  const acceptRequest = async () => {
+    await dispatch(acceptInvite({ fromId: teamId, toId: currentUserId }));
+    setMessage("friend");
   };
-  const declineRequest = () => {
-    dispatch(deleteInvite({ fromId: currentUserId, toId: teamId }));
-    setButtonValue("Request Sent");
+  const declineRequest = async () => {
+    await dispatch(deleteInvite({ fromId: teamId, toId: currentUserId }));
+    setMessage("add friend");
   };
 
   const [buttonValue, setButtonValue] = useState("AddFriend");

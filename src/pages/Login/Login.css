@@ -14,6 +14,7 @@
   flex-direction: column;
   font-size: 1rem;
   font-weight: 400;
+  width: 100%;
 }
 .login__form__section > p {
   font-size: 0.9rem;
@@ -27,7 +28,7 @@
   flex-direction: column;
   font-size: 1rem;
   font-weight: 400;
-  width: 100%;
+  width: 35%;
 }
 
 .login__form__label {
@@ -42,7 +43,7 @@
 .form__div {
   margin: 0.7rem 0;
   max-height: 6rem;
-  width: 60%;
+  width: 90%;
 }
 .form__div:first-child {
   margin-top: 2rem;
@@ -103,7 +104,7 @@
 
   .form__div {
     margin: 0.6rem 0 !important;
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;

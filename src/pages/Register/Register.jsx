@@ -330,14 +330,6 @@ const Register = () => {
           <div onClick={onGoogleLogin}>
             <Button className={"handle google"}>Google</Button>
           </div>
-          <div
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-          >
-            <Button className={"handle instagram"}>Instagram</Button>
-          </div>
         </div>
       </form>
       <Footer />

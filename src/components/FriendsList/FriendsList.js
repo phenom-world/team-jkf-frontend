@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MembersCard from "../MembersCard/MembersCard";
 import NavSearch from "../NavSearch/NavSearch";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getFriends } from "../../Redux/actions/users";
+import LoadState from "../Spinner/LoadState";
 
 const FriendsList = () => {
   const { userDetail } = useSelector((state) => state.userDetailsReducer);
-  const { friends } = useSelector((state) => state.getFriendsReducer);
+  const { friends, getfriendsloading } = useSelector((state) => state.getFriendsReducer);
+  const dispatch = useDispatch();
   const { id } = userDetail;
   const isFriend = true;
-  return (
+
+  useEffect(() => {
+    dispatch(getFriends());
+  }, [dispatch]);
+
+  return getfriendsloading ? (
+    <div className="section__2">
+      <LoadState />
+    </div>
+  ) : (
     <>
       <div className="section__2">
         <h2>Friends </h2>
