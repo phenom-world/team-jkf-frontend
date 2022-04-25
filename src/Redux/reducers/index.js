@@ -17,7 +17,7 @@ import {
 } from "./auth";
 import { userTeamsReducer, getTeamReducer, getTeamsReducer } from "./teams";
 import { getPostsReducer, sendPostReducer } from "./posts";
-import { friendsReducer } from "./friends";
+import { friendsReducer } from "./request";
 
 export const reducers = combineReducers({
   authReducer,

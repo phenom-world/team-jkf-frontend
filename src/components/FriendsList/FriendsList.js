@@ -11,7 +11,6 @@ const FriendsList = () => {
   const { friends, getfriendsloading } = useSelector((state) => state.getFriendsReducer);
   const dispatch = useDispatch();
   const { id } = userDetail;
-  const isFriend = true;
 
   useEffect(() => {
     dispatch(getFriends());
@@ -43,7 +42,7 @@ const FriendsList = () => {
         <p>Viewing 1 - 6 of 6 active members</p>
         <div className="members__card">
           {friends?.map((user) => (
-            <MembersCard key={user._id} name={user.username} currentUserId={id} memberId={user.id} Id={user.tjkfid} isFriend />
+            <MembersCard key={user._id} name={user.username} currentUserId={id} memberId={user._id} Id={user.tjkfid} isFriend />
           ))}
         </div>
         <p>Viewing 1 - 6 of 6 active members</p>

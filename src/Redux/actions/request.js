@@ -15,7 +15,6 @@ export const getinvites = () => async (dispatch) => {
     const {
       data: { data },
     } = await api.getInvites();
-    console.log(data);
     dispatch({ type: GET_INVITES, payload: data });
     dispatch({ type: END_INVITE_LOADING });
   } catch (error) {
@@ -29,7 +28,6 @@ export const getinvites = () => async (dispatch) => {
 export const addFriend = (request) => async (dispatch) => {
   try {
     const { data } = await api.addFriend(request);
-    dispatch({ type: ADD_FRIEND, payload: data.message });
   } catch (error) {
     console.log(error);
   }

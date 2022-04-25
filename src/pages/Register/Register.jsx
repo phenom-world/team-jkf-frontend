@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Register.css";
 import Button from "../../components/Button/Button";
 import { signup } from "../../Redux/actions/users";
@@ -8,7 +8,7 @@ import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
 import { auth, provider, fbProvider } from "../../firebase";
-import { FacebookAuthProvider } from "firebase/auth";
+// import { FacebookAuthProvider } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
 
 import Select from "../../components/Form/Select/Select";
@@ -74,12 +74,12 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
         // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
         // The email of the user's account used.
-        const email = error.email;
+        // const email = error.email;
         // The AuthCredential type that was used.
-        const credential = FacebookAuthProvider.credentialFromError(error);
+        // const credential = FacebookAuthProvider.credentialFromError(error);
 
         // ...
       });

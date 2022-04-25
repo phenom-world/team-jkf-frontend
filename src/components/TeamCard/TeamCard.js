@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import profile from "../../Images/profile.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/friends";
+import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/request";
 
 const TeamCard = ({ name, isFriend, teamId, isrequest, currentUserId, Id, requestsent, isTeam }) => {
   const dispatch = useDispatch();

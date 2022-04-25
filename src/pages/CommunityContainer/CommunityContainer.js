@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userDetails } from "../../Redux/actions/users";
 import LoadState from "../../components//Spinner/LoadState";
-import { getUserTeams, getTeams } from "../../Redux/actions/teams";
-import { getUsers, getFriends } from "../../Redux/actions/users";
-import { getinvites } from "../../Redux/actions/friends";
+import { getUserTeams } from "../../Redux/actions/teams";
+import { getUsers } from "../../Redux/actions/users";
 
 const CommunityContainer = () => {
   const dispatch = useDispatch();
@@ -19,7 +18,6 @@ const CommunityContainer = () => {
     dispatch(getUserTeams());
     dispatch(getUsers());
     dispatch(userDetails());
-  
   }, [dispatch]);
 
   return isloading || getUsersLoading ? (

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./MembersCard.css";
 import profile from "../../Images/profile.jpg";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/friends";
+import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/request";
 
 const MembersCard = ({ name, isFriend, memberId, currentUserId, Id, teams, isRequest }) => {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ const MembersCard = ({ name, isFriend, memberId, currentUserId, Id, teams, isReq
         </div>
         <p className="activity">Active 5 days, 4 hours ago</p>
       </div>
-      {Message === "friend" ? null : Message === "request sent" || isRequest == "Request Sent" ? (
+      {Message === "friend" ? null : Message === "request sent" || isRequest === "Request Sent" ? (
         <div>
           <button className="friend__btn" disabled>
             Request Sent
