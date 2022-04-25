@@ -2,12 +2,13 @@ import React, { useCallback, useState, useEffect } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, Navigate, useNavigate } from "react-router-dom";
 import { Image } from "react-bootstrap";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("result"));
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const location = useLocation();
   const [show, setShow] = useState(false);
   const [showI, setShowI] = useState(false);
@@ -26,7 +27,8 @@ function Header() {
 
   const logout = useCallback(() => {
     dispatch({ type: "LOGOUT" });
-    window.location.assign("https://teamjkf.org");
+    // window.location.assign("https://teamjkf.org");
+    navigate('/login')
   }, [dispatch]);
 
   useEffect(() => {

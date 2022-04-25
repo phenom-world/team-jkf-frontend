@@ -57,8 +57,7 @@ const UpdateProfile = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(userDetail);
-  console.log(gender);
+
 
   const onStateChange = (e) => {
     const value = e.target.value.split(",");

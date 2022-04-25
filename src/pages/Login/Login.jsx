@@ -29,7 +29,7 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         dispatch(signin({ email: result.user.email, password: result.user.uid, isSocial: true }, navigate));
-        console.log(result.user.email);
+    
       })
       .catch((err) => alert(err.message));
   };

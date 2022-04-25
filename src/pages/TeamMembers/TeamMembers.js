@@ -12,14 +12,10 @@ import LoadState from "../../components/Spinner/LoadState";
 const TeamMembers = () => {
   const { teamname } = useParams();
   const dispatch = useDispatch();
-  const { teamloading, TeamDetails } = useSelector(
-    (state) => state.getTeamReducer
-  );
+  const { teamloading, TeamDetails } = useSelector((state) => state.getTeamReducer);
   const { teamId, userNames } = TeamDetails;
-  const { isloading, userDetail } = useSelector(
-    (state) => state.userDetailsReducer
-  );
-
+  const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
+  
   useEffect(() => {
     dispatch(userDetails());
     dispatch(getTeam(teamname));
@@ -30,18 +26,11 @@ const TeamMembers = () => {
     <LoadState />
   ) : (
     <div>
-      <TeamProfileCard
-        name={teamname ? teamname : "TeamJKF Oyo"}
-        username={userDetail?.username}
-        userNames={userNames}
-      >
+      <TeamProfileCard name={teamname ? teamname : "TeamJKF Oyo"} username={userDetail?.username} userNames={userNames}>
         <ul className="timeline w-100 mt-2">
           {userNames?.map((username, i) => (
             <>
-              <li
-                className="timeline-item small_size listyle-none mb-3"
-                key={i}
-              >
+              <li className="timeline-item small_size listyle-none mb-3" key={i}>
                 <div className="d-flex align-items-center gap-2 text-wrap ">
                   <Avatar imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
                   <span className="tweet-user">@{username}</span>

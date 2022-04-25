@@ -55,7 +55,6 @@ export const signup = (formData, navigate) => async (dispatch) => {
   try {
     dispatch({ type: START_REGISTER_LOADING });
     const { data } = await api.signUp(formData);
-    console.log(data);
     dispatch({ type: REGISTER, payload: data.message });
     dispatch({ type: END_REGISTER_LOADING });
     navigate("/register-success");

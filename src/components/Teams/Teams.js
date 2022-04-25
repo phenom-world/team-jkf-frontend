@@ -6,7 +6,7 @@ const Teams = () => {
   const { userDetail } = useSelector((state) => state.userDetailsReducer);
   const { teams } = useSelector((state) => state.getTeamsReducer);
   const { id } = userDetail;
-  const isTeam = false;
+  
 
   return (
     <>
@@ -14,7 +14,7 @@ const Teams = () => {
         <h2>Teams </h2>
         <div className="members__card">
           {teams?.map((user) => (
-            <TeamCard key={user.teamId} name={user.teamname} currentUserId={id} teamId={user.teamId} Id={user.tjkfid} isTeam={isTeam} />
+            <TeamCard key={user.teamId} name={user.teamname} currentUserId={id} teamId={user.teamId} Id={user.tjkfid} isTeam={user.isTeam} />
           ))}
         </div>
       </div>

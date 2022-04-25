@@ -23,7 +23,7 @@ const TeamProfile = () => {
   const { getPostsLoading, posts } = useSelector(
     (state) => state.getPostsReducer
   );
-  const { teamId } = TeamDetails;
+  const { teamId, isTeam } = TeamDetails;
 
   useEffect(() => {
     dispatch(userDetails());
@@ -45,6 +45,7 @@ const TeamProfile = () => {
             id={userDetail.id}
             teamId={teamId}
             posts={posts}
+            isTeam ={isTeam}
           />
           <GroupCard />
           <GroupCard />

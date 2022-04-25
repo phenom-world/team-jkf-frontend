@@ -4,7 +4,7 @@ import "./UploadImage.css";
 
 const UploadAndDisplayImage = ({ imageUrl }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-  console.log(imageUrl);
+
   return (
     <div>
       {selectedImage ? (

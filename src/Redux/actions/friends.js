@@ -1,4 +1,12 @@
-import { ADD_FRIEND, START_INVITE_LOADING, END_INVITE_LOADING, GET_INVITES, ACCEPT_INVITE, DELETE_INVITE } from "../constants/actionTypes";
+import {
+  ADD_FRIEND,
+  START_INVITE_LOADING,
+  END_INVITE_LOADING,
+  GET_INVITES,
+  GET_INVITE_FAILURE,
+  ACCEPT_INVITE,
+  DELETE_INVITE,
+} from "../constants/actionTypes";
 import * as api from "../../network/index.js";
 
 export const getinvites = () => async (dispatch) => {
@@ -7,10 +15,15 @@ export const getinvites = () => async (dispatch) => {
     const {
       data: { data },
     } = await api.getInvites();
+    console.log(data)
     dispatch({ type: GET_INVITES, payload: data });
     dispatch({ type: END_INVITE_LOADING });
   } catch (error) {
-    console.log(error);
+    console.log(error?.response?.data?.message);
+    dispatch({
+      type: GET_INVITE_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
   }
 };
 
@@ -37,7 +50,7 @@ export const deleteInvite = (request) => async (dispatch) => {
     console.log(request);
     const { data } = await api.deleteInvite(request);
     console.log(data);
-    // dispatch({ type: DELETE_INVITE, payload: data.message });
+    dispatch({ type: DELETE_INVITE, payload: data.message });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }

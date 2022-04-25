@@ -4,7 +4,7 @@ import { makePost, getPosts } from "../../Redux/actions/posts";
 import { useDispatch } from "react-redux";
 import "./ComposeForm.css";
 
-function ComposeForm({ username, teamId }) {
+function ComposeForm({ username, teamId, isTeam }) {
   const [editorValue, setEditorValue] = useState("");
 
   const dispatch = useDispatch();
@@ -30,20 +30,25 @@ function ComposeForm({ username, teamId }) {
   };
 
   return (
-    <form className="compose-form mb-4" onSubmit={handleSubmit}>
-      <div className="compose-form-container ">
-        <Avatar imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
-        <textarea
-          value={editorValue}
-          onChange={handleEditorValueChange}
-          className="compose-form-textarea small_size"
-          placeholder={`What's on your mind? ${username}`}
-          onKeyPress={handleKeyPress}
-        />
-      </div>
-
-      <button className="compose-form-submit small_size">Post</button>
-    </form>
+    <>
+      {isTeam && (
+        <>
+          <form className="compose-form mb-4" onSubmit={handleSubmit}>
+            <div className="compose-form-container ">
+              <Avatar imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
+              <textarea
+                value={editorValue}
+                onChange={handleEditorValueChange}
+                className="compose-form-textarea small_size"
+                placeholder={`What's on your mind? ${username}`}
+                onKeyPress={handleKeyPress}
+              />
+            </div>
+            <button className="compose-form-submit small_size">Post</button>
+          </form>
+        </>
+      )}
+    </>
   );
 }
 

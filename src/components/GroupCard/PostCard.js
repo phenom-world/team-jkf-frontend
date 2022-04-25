@@ -2,10 +2,10 @@ import React from "react";
 import ComposeForm from "../ComposeForm/ComposeForm";
 import Timeline from "../Timeline/Timeline";
 
-const PostCard = ({ username, id, teamId, posts }) => {
+const PostCard = ({ username, id, teamId, posts , isTeam}) => {
   return (
     <div className="post-container ">
-      <ComposeForm username={username} id={id} teamId={teamId} />
+      <ComposeForm username={username} id={id} teamId={teamId} isTeam={isTeam}/>
       <Timeline posts={posts} />
     </div>
   );
