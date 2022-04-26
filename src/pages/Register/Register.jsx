@@ -8,7 +8,7 @@ import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
 import { auth, provider, fbProvider } from "../../firebase";
-// import { FacebookAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
 
 import Select from "../../components/Form/Select/Select";
@@ -61,26 +61,17 @@ const Register = () => {
     e.stopPropagation();
     signInWithPopup(auth, fbProvider)
       .then((result) => {
-        // The signed-in user info.
-        const user = result.user;
+        console.log(result.user);
+        dispatch({
+          type: "SET_USER",
+          user: result.user,
+        });
+        navigate("/auth/register");
 
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        // const credential = FacebookAuthProvider.credentialFromResult(result);
-        // const accessToken = credential.accessToken;
-        console.log(user);
-        // console.log(accessToken);
         // ...
       })
       .catch((error) => {
-        console.log(error);
-        // Handle Errors here.
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // The email of the user's account used.
-        // const email = error.email;
-        // The AuthCredential type that was used.
-        // const credential = FacebookAuthProvider.credentialFromError(error);
-
+        alert(error.message);
         // ...
       });
   };

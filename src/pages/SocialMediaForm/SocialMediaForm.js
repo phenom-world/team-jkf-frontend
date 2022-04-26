@@ -17,10 +17,10 @@ const SocialMediaForm = () => {
   const { isloading, error } = useSelector((state) => state.socialRegisterReducer);
 
   //prettier-ignore
-  const { displayName, email , uid} = user;
+  const { displayName, email , uid, photoURL} = user;
 
   //prettier-ignore
-  const [formData, setFormData] = useState({ firstname: displayName.split(" ")[1], lastname: displayName.split(" ")[0], email: email, password: uid, isSocial: true });
+  const [formData, setFormData] = useState({ firstname: displayName.split(" ")[1], lastname: displayName.split(" ")[0], email: email, password: uid, isSocial: true, imageURL: photoURL });
   const [inputState, setInputState] = useState("");
   const [updateGender, setUpdateGender] = useState("");
 
