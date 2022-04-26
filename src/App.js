@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PublicRoutes from "./PublicRoutes";
@@ -21,6 +22,8 @@ import {
   ResendLink,
   VerificationPage,
   TeamMembers,
+  Teams as TeamsList,
+  Users,
 } from "./pages";
 import Header from "./components/Header/Header";
 import CommunityContainer from "./pages/CommunityContainer/CommunityContainer";
@@ -29,10 +32,11 @@ import FriendsList from "./components/FriendsList/FriendsList";
 import SocialMediaForm from "./pages/SocialMediaForm/SocialMediaForm";
 import Invitations from "./components/Invitations/Invitations";
 import "./App.css";
+import Unauthorized from "./pages/Unauthorized/Unauthorized";
+import TeamLists from "./pages/TeamLists/TeamLists";
 
 function Navbar() {
   let location = useLocation();
-
   if (location.pathname === "/404") {
     return null;
   }
@@ -51,7 +55,6 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          {/* Protected Routes */}
           <Route path="/" element={<ProtectedRoutes />}>
             <Route path="/" element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
@@ -63,9 +66,16 @@ function App() {
               <Route path="teams" element={<Teams />} />
             </Route>
             <Route exact path="/community/users/:id" element={<UserProfile />} />
+            <Route path="/community/teamlists" element={<TeamLists />} />
             <Route exact path="/community/teams/:teamname" element={<TeamProfile />} />
             <Route exact path="/community/teams/:teamname/members" element={<TeamMembers />} />
           </Route>
+          {/* Admin Access Routes */}
+          <Route path="admin" element={<ProtectedRoutes />}>
+            <Route path="teams" element={<TeamsList />} />
+            <Route path="users" element={<Users />} />
+          </Route>
+
           {/* Public Routes */}
           <Route path="/" element={<PublicRoutes />}>
             <Route path="/login" element={<Login />} />
@@ -82,7 +92,8 @@ function App() {
           <Route exact path="/password_reset/done" element={<PasswordResetDone />} />
           <Route exact path="/resetPassword/:token" element={<PasswordResetConfirm />} />
           <Route exact path="/reset/done" element={<PasswordResetComplete />} />
-          <Route path="*" element={<Navigate to="/404" />} exact />
+          <Route path="/unauthorized" element={<Unauthorized />} exact />
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="/404" element={<NotFoundPage />} exact />
         </Routes>
       </BrowserRouter>

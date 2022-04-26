@@ -45,7 +45,9 @@
   color: rgb(185, 0, 0) !important;
   transform: translate(1em, 0);
 }
-
+.table_container{
+  padding: 1rem 4rem 4rem 4rem;
+}
 @media screen and (max-width: 768px) {
   .navbar-nav a {
     font-weight: 600;

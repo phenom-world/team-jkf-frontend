@@ -30,7 +30,7 @@ const Community = () => {
         </div>
         <p>Viewing 1 - 6 of 6 active members</p>
         <div className="members__card">
-          {users?.map((user) => (
+          {users?.slice(0, 6)?.map((user) => (
             <MembersCard
               key={user.id}
               name={user.username}

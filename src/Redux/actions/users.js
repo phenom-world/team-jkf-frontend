@@ -81,13 +81,13 @@ export const socialSignup = (formData, navigate) => async (dispatch) => {
   }
 };
 
-export const signin = (formData, navigate) => async (dispatch) => {
+export const signin = (formData, navigate, from) => async (dispatch) => {
   try {
     dispatch({ type: START_AUTH_LOADING });
     const { data } = await api.signIn(formData);
     dispatch({ type: AUTH, data });
     dispatch({ type: END_AUTH_LOADING });
-    navigate("/dashboard");
+    navigate(from, { replace: true });
   } catch (error) {
     dispatch({
       type: AUTH_FAILURE,

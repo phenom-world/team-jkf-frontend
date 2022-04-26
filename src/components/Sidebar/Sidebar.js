@@ -61,28 +61,9 @@ const Sidebar = () => {
             </span>
             | Popular | Alphabetical
           </div>
-          {userTeams?.map((team, i) => (
+          {userTeams?.slice(0, 4)?.map((team, i) => (
             <Team teamname={team?.teamname} key={i} />
           ))}
-
-          <div className="group">
-            <div className="group__logo">
-              <img src={Team1} alt="My logo" />
-            </div>
-            <div className="group__details">
-              <p>Team JKF Oyo</p>
-              <p>Active 5 days, 4 hours ago</p>
-            </div>
-          </div>
-          <div className="group">
-            <div className="group__logo">
-              <img src={Team2} alt="My logo" />
-            </div>
-            <div className="group__details">
-              <p>TeamJKF Ekiti</p>
-              <p> Active 7 months ago</p>
-            </div>
-          </div>
         </div>
         <div className="updates">
           <p>Latest Updates</p>

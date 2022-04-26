@@ -9,9 +9,12 @@ import {
 import {
   START_GROUP_INVITE_LOADING,
   END_GROUP_INVITE_LOADING,
+  START_ADD_USER_LOADING,
+  END_ADD_USER_LOADING,
   GET_GROUP_INVITE_FAILURE,
   GET_GROUP_INVITES,
   ACCEPT_GROUP_INVITE,
+  DECLINE_GROUP_INVITE,
   DELETE_GROUP_INVITE,
 } from "../constants/teamTypes";
 
@@ -37,17 +40,23 @@ export const friendsReducer = (state = { friends: [] }, action) => {
 export const teamRequestReducer = (state = { teamRequests: [] }, action) => {
   switch (action.type) {
     case GET_GROUP_INVITES:
-      return { ...state, friends: action?.payload };
+      return { ...state, teamRequests: action?.payload };
     case START_GROUP_INVITE_LOADING:
       return { ...state, requestloading: true };
     case END_GROUP_INVITE_LOADING:
       return { ...state, requestloading: false };
+    case START_ADD_USER_LOADING:
+      return { ...state, isLoading: true };
+    case END_ADD_USER_LOADING:
+      return { ...state, isLoading: false };
     case GET_GROUP_INVITE_FAILURE:
       return { ...state, requestloading: false, error: action.payload };
     case ACCEPT_GROUP_INVITE:
       return { ...state, message: action?.payload };
+    case DECLINE_GROUP_INVITE:
+      return { ...state, declinemessage: action?.payload };
     case DELETE_GROUP_INVITE:
-      return { ...state, message: action?.payload };
+      return { ...state, deletemessage: action?.payload };
     default:
       return state;
   }

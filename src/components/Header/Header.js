@@ -1,17 +1,21 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import decode from "jwt-decode";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { Image } from "react-bootstrap";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("result"));
+  const { userDetail } = useSelector((state) => state.userDetailsReducer);
+  const { isAdmin } = userDetail;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const [show, setShow] = useState(false);
   const [showI, setShowI] = useState(false);
+  const [showP, setShowP] = useState(false);
   const showDropdown = (e) => {
     setShow(!show);
   };
@@ -23,6 +27,12 @@ function Header() {
   };
   const hideDropdownI = (e) => {
     setShowI(false);
+  };
+  const showDropdownP = (e) => {
+    setShowP(!show);
+  };
+  const hideDropdownP = (e) => {
+    setShowP(false);
   };
 
   const logout = useCallback(() => {
@@ -135,6 +145,24 @@ function Header() {
                     LOGOUT
                   </Nav.Link>
                 </>
+              )}
+
+              {user && isAdmin && (
+                <NavDropdown
+                  title="ADMIN"
+                  show={showP}
+                  onMouseEnter={showDropdownP}
+                  onMouseLeave={hideDropdownP}
+                  id="collasible-nav-dropdown"
+                  className="navbar-link"
+                >
+                  <NavDropdown.Item as={Link} to="/admin/users" className="nav-text">
+                    Users
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/admin/teams" className="nav-text">
+                    Teams
+                  </NavDropdown.Item>
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>

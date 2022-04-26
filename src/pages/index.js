@@ -8,6 +8,8 @@ export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as UserProfile } from "./UserProfile/UserProfile";
 export { default as TeamProfile } from "./TeamProfile/TeamProfile";
 export { default as TeamMembers } from "./TeamMembers/TeamMembers";
+export { default as Teams } from "./TeamsList/Teams";
+export { default as Users } from "./UsersList/Users";
 export { default as RegistrationSuccess } from "./RegistrationSuccess/RegistrationSuccess";
 export { default as NotFoundPage } from "./NotFoundPage/NotFoundPage";
 export { default as ResendLink } from "./ResendVerificationLink/ResendLink";

@@ -1,5 +1,4 @@
 import {
-  ADD_FRIEND,
   START_INVITE_LOADING,
   END_INVITE_LOADING,
   GET_INVITES,
@@ -7,6 +6,19 @@ import {
   ACCEPT_INVITE,
   DELETE_INVITE,
 } from "../constants/actionTypes";
+import {
+  START_GROUP_INVITE_LOADING,
+  END_GROUP_INVITE_LOADING,
+  START_ADD_USER_LOADING,
+  END_ADD_USER_LOADING,
+  GET_GROUP_INVITE_FAILURE,
+  GET_GROUP_INVITES,
+  ACCEPT_GROUP_INVITE,
+  DECLINE_GROUP_INVITE,
+  DELETE_GROUP_INVITE,
+  CREATE_TEAM,
+} from "../constants/teamTypes";
+
 import * as api from "../../network/index.js";
 
 export const getinvites = () => async (dispatch) => {
@@ -48,6 +60,77 @@ export const deleteInvite = (request) => async (dispatch) => {
     const { data } = await api.deleteInvite(request);
     console.log(data);
     dispatch({ type: DELETE_INVITE, payload: data.message });
+  } catch (error) {
+    console.log(error?.response?.data?.message);
+  }
+};
+
+//TEAM INVITES
+export const getTeamRequests = () => async (dispatch) => {
+  try {
+    dispatch({ type: START_GROUP_INVITE_LOADING });
+    const {
+      data: { data },
+    } = await api.getallrequests();
+    dispatch({ type: GET_GROUP_INVITES, payload: data });
+    dispatch({ type: END_GROUP_INVITE_LOADING });
+  } catch (error) {
+    dispatch({
+      type: GET_GROUP_INVITE_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};
+
+export const sendTeamRequest = (name) => async (dispatch) => {
+  try {
+    const { data } = await api.sendteamrequest(name);
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const leaveTeam = (request) => async (dispatch) => {
+  try {
+    const { data } = await api.leaveteam(request);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const addUser = (request) => async (dispatch) => {
+  try {
+    dispatch({ type: START_ADD_USER_LOADING });
+    const { data } = await api.adduser(request);
+    dispatch({ type: ACCEPT_GROUP_INVITE, payload: data.message });
+    dispatch({ type: END_ADD_USER_LOADING });
+  } catch (error) {
+    console.log(error?.response?.data?.message);
+  }
+};
+export const declineUser = (request) => async (dispatch) => {
+  try {
+    const { data } = await api.declineuser(request);
+    dispatch({ type: DECLINE_GROUP_INVITE, payload: data.message });
+  } catch (error) {
+    console.log(error?.response?.data?.message);
+  }
+};
+
+export const removeUser = (request) => async (dispatch) => {
+  try {
+    const { data } = await api.removeuser(request);
+    dispatch({ type: DELETE_GROUP_INVITE, payload: data.message });
+  } catch (error) {
+    console.log(error?.response?.data?.message);
+  }
+};
+
+export const createTeam = (formData) => async (dispatch) => {
+  try {
+    const { data } = await api.createteam(formData);
+    dispatch({ type: CREATE_TEAM, payload: data.message });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }

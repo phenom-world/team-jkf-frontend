@@ -2,27 +2,16 @@ import React, { useState } from "react";
 import profile from "../../Images/profile.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addFriend, acceptInvite, deleteInvite } from "../../Redux/actions/request";
+import { sendTeamRequest } from "../../Redux/actions/request";
 
-const TeamCard = ({ name, isFriend, teamId, isrequest, currentUserId, Id, requestsent, isTeam }) => {
+const TeamCard = ({ name, isTeam, teamId, isRequest, currentUserId, Id }) => {
   const dispatch = useDispatch();
   const [Message, setMessage] = useState("");
 
   const sendRequest = async () => {
-    await dispatch(addFriend({ fromId: currentUserId, toId: teamId }));
+    await dispatch(sendTeamRequest(name));
     setMessage("request sent");
   };
-
-  const acceptRequest = async () => {
-    await dispatch(acceptInvite({ fromId: teamId, toId: currentUserId }));
-    setMessage("friend");
-  };
-  const declineRequest = async () => {
-    await dispatch(deleteInvite({ fromId: teamId, toId: currentUserId }));
-    setMessage("add friend");
-  };
-
-  const [buttonValue, setButtonValue] = useState("AddFriend");
 
   return (
     <div className="member__container">
@@ -40,13 +29,13 @@ const TeamCard = ({ name, isFriend, teamId, isrequest, currentUserId, Id, reques
         </div>
         <p className="activity">Active 5 days, 4 hours ago</p>
       </div>
-      {requestsent ? (
+      {Message === "friend" ? null : Message === "request sent" || isRequest === "Request Sent" ? (
         <div>
           <button className="friend__btn" disabled>
-            {buttonValue}
+            Request Sent
           </button>
         </div>
-      ) : !isTeam ? (
+      ) : Message === "add friend" || (!isTeam && isRequest !== "Request Received") ? (
         <div>
           <button className="friend__btn btn-primary" onClick={sendRequest}>
             Join Team

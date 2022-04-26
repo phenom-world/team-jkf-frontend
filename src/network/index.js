@@ -46,16 +46,18 @@ export const deleteInvite = (request) => API.delete("/request/rejectfriendreques
 export const getUserTeams = () => API.get("/teams/getuserteams");
 export const getTeams = () => API.get("/teams/getteams");
 export const getTeam = (teamname) => API.get(`/teams/getTeam/${teamname}`);
-export const getTeamMembers =(teamname) => API.get(`/teams/getTeamMembers/${teamname}`);
+
+export const getteammembers = (teamname) => API.get(`/teams/getTeamMembers/${teamname}`);
 
 //Team requests
-export const getTeamRequests = (teamname) => API.get("/teams/getTeamRequests", teamname);
-export const sendTeamRequest = (request) => API.post("/teams/sendTeamRequest", request);
-export const leaveTeam =() => API.get("/teams/leaveteam");
+export const getteamrequests = (teamname) => API.get("/teams/getTeamRequests", teamname);
+export const sendteamrequest = (name) => API.post("/teams/sendTeamRequest/" + name);
+export const leaveteam = () => API.get("/teams/leaveteam");
 
 //admin roles
-export const createTeam =() => API.post("/teams/create-team");
-export const addUser =() => API.put("/teams/addUser");
-export const removeUser =() => API.put("/teams/removeUser");
-export const getAllRequests = () => API.get("/teams/getAllRequests");
-export const getMemberRequests = () => API.get("/teams/getMemberRequests");
+export const createteam = () => API.post("/teams/create-team");
+export const adduser = (request) => API.put("/teams/addUser", request);
+export const removeuser = (request) => API.put("/teams/removeUser", request);
+export const declineuser = (request) => API.put("/teams/removeUser", request);
+export const getallrequests = () => API.get("/teams/getAllRequests");
+export const getmemberrequests = () => API.get("/teams/getMemberRequests");

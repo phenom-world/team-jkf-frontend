@@ -3,7 +3,7 @@ import "./Login.css";
 import Button from "../../components/Button/Button";
 import { signin } from "../../Redux/actions/users";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
 import Message from "../../components/Message/Message";
@@ -21,7 +21,9 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   let { isloading, error } = useSelector((state) => state.authReducer);
+  const from = location.state?.from?.pathname || "/dashboard";
 
   const onGoogleLogin = (e) => {
     e.preventDefault();
@@ -67,7 +69,7 @@ const Login = () => {
     e.preventDefault();
     validate();
     if (validate()) {
-      dispatch(signin(formData, navigate));
+      dispatch(signin(formData, navigate, from));
     }
   };
 

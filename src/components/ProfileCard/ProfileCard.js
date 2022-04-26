@@ -23,9 +23,7 @@ const ProfileCard = ({ name, imageUrl }) => {
               <div className="header-content ">
                 <h2 className="username text-white ">{name}</h2>
                 <div className="item-meta">
-                  <span className="activity text-secondary ">
-                    Active 4 days, 9 hours ago
-                  </span>
+                  <span className="activity text-secondary ">Active 4 days, 9 hours ago</span>
                 </div>
               </div>
             </div>
@@ -48,15 +46,12 @@ const ProfileCard = ({ name, imageUrl }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/login" className="text-decoration-none text-dark">
+                <Link to="/community/friends" className="text-decoration-none text-dark">
                   <div>Friends</div>
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/login"
-                  className="text-decoration-none d-flex flex-row text-dark groupspan "
-                >
+                <Link to="/community/teamlists" className="text-decoration-none d-flex flex-row text-dark groupspan ">
                   <div>Group</div>
                   <div className="counter">17</div>
                 </Link>
