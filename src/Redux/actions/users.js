@@ -89,6 +89,7 @@ export const signin = (formData, navigate, from) => async (dispatch) => {
     dispatch({ type: END_AUTH_LOADING });
     navigate(from, { replace: true });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: AUTH_FAILURE,
       payload: `${error?.response?.data?.message}`,

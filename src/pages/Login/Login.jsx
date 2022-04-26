@@ -23,6 +23,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let { isloading, error } = useSelector((state) => state.authReducer);
+
   const from = location.state?.from?.pathname || "/dashboard";
 
   const onGoogleLogin = (e) => {
@@ -30,7 +31,7 @@ const Login = () => {
     e.stopPropagation();
     signInWithPopup(auth, provider)
       .then((result) => {
-        dispatch(signin({ email: result.user.email, password: result.user.uid, isSocial: true }, navigate));
+        dispatch(signin({ email: result.user.email, password: result.user.uid, isSocial: true }, navigate, from));
       })
       .catch((err) => alert(err.message));
   };
