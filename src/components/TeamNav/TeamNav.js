@@ -20,11 +20,7 @@ const TeamNav = ({ name }) => {
           <div className="d-flex justify-content-between flex-column flex-sm-row">
             <div className="d-flex flex-column flex-sm-row">
               <div className=" team__image-group">
-                <img
-                  src={Team1}
-                  alt="My logo"
-                  className="team__image-group-img"
-                />
+                <img src={Team1} alt="My logo" className="team__image-group-img" />
               </div>
               <div className="mx-5 mt-3">
                 <div className="d-flex gap-2">
@@ -38,9 +34,7 @@ const TeamNav = ({ name }) => {
               </div>
             </div>
             <div className="flex-sm-column  d-flex  px-3 mt-1 mt-sm-3 justify-content-sm-start justify-content-center align-items-center align-items-sm-end  gap-2">
-              <h6 className="group-text-2 text-secondary small">
-                Group Administrators
-              </h6>
+              <h6 className="group-text-2 text-secondary small">Group Administrators</h6>
               <Image
                 src="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm"
                 alt="Profile Picture"
@@ -62,27 +56,18 @@ const TeamNav = ({ name }) => {
       <div className="nav-tab">
         <ul>
           <li className="click">
-            <Link
-              to={`/community/teams/${name}`}
-              className=" text-decoration-none text-dark"
-            >
+            <Link to={`/community/teams/${name}`} className=" text-decoration-none text-dark">
               <div>Home</div>
             </Link>
           </li>
 
           <li>
-            <Link
-              to={`/community/teams/${name}/members`}
-              className="text-decoration-none text-dark"
-            >
+            <Link to={`/community/teams/${name}/members`} className="text-decoration-none text-dark">
               <div>Members</div>
             </Link>
           </li>
           <li>
-            <Link
-              to="/invites"
-              className="text-decoration-none d-flex flex-row text-dark groupspan "
-            >
+            <Link to="/invites" className="text-decoration-none d-flex flex-row text-dark groupspan ">
               <div>Send Invites</div>
             </Link>
           </li>
@@ -91,7 +76,6 @@ const TeamNav = ({ name }) => {
       <hr />
       <h3 className="my-4">Group Activities</h3>
       <div className="mb-5 w-100 d-flex justify-content-between align-items-center flex-sm-row flex-column ">
-        <NavSearch />
         <div className="status mt-sm-0 mt-3">
           <select name="status" id="">
             <option value="">Everything</option>

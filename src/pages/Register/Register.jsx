@@ -8,7 +8,6 @@ import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
 import { auth, provider, fbProvider } from "../../firebase";
-import { FacebookAuthProvider } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
 
 import Select from "../../components/Form/Select/Select";
@@ -67,8 +66,6 @@ const Register = () => {
           user: result.user,
         });
         navigate("/auth/register");
-
-        // ...
       })
       .catch((error) => {
         alert(error.message);

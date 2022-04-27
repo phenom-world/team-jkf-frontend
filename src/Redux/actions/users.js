@@ -37,6 +37,7 @@ import {
   GET_USER_FAILURE,
   START_GET_USERS_LOADING,
   GET_USERS,
+  GET_USERS_BY_SEARCH,
   END_GET_USERS_LOADING,
   GET_USERS_FAILURE,
   GET_FRIENDS,
@@ -147,14 +148,30 @@ export const getFriends = () => async (dispatch) => {
   }
 };
 
-export const getUsers = () => async (dispatch) => {
+export const getUsers = (pageNumber, limit) => async (dispatch) => {
   try {
     dispatch({ type: START_GET_USERS_LOADING });
     const {
       data: { data },
-    } = await api.getUsers();
+    } = await api.getUsers(pageNumber, limit);
     dispatch({ type: GET_USERS, data });
     dispatch({ type: END_GET_USERS_LOADING });
+  } catch (error) {
+    dispatch({
+      type: GET_USERS_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};
+export const getUsersBySearch = (query, navigate) => async (dispatch) => {
+  try {
+    dispatch({ type: START_GET_USERS_LOADING });
+    const {
+      data: { data },
+    } = await api.getUsersBySearch(query);
+    dispatch({ type: GET_USERS_BY_SEARCH, data });
+    dispatch({ type: END_GET_USERS_LOADING });
+    navigate(`/community/search?searchQuery=${query || "none"} `);
   } catch (error) {
     dispatch({
       type: GET_USERS_FAILURE,

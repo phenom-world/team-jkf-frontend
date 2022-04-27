@@ -26,7 +26,9 @@ export const updateProfile = (formData) =>
 export const updatePassword = (formData) => API.put("/users/updatepassword/", formData);
 export const resetPassword = (formData, token) => API.put(`/users/resetpassword/${token}`, formData);
 
-export const getUsers = () => API.get("/users/getusers");
+// export const getUsers = () => API.get(`/users/getusers`);
+export const getUsers = (pageNumber, limit) => API.get(`/users/getusers?page=${pageNumber}&limit=${limit}`);
+export const getUsersBySearch = (query) => API.get(`/users/getusers/search?searchQuery=${query || "none"}`);
 export const getUser = (id) => API.get(`/users/getuser/${id}`);
 export const getFriends = () => API.get("/users/friends");
 

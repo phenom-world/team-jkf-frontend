@@ -61,6 +61,7 @@ function App() {
             <Route exact path="/update-profile" element={<UpdateProfile />} />
             <Route path="community" element={<CommunityContainer />}>
               <Route path="" element={<Community />} />
+              <Route path="search" element={<Community />} />
               <Route path="friends" element={<FriendsList />} />
               <Route path="invitations" element={<Invitations />} />
               <Route path="teams" element={<Teams />} />
