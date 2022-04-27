@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./ProfileCard.css";
+import "./ProfileHeader.css";
 
-const ProfileCard = ({ name, imageUrl }) => {
+const ProfileHeader = ({ name, imageUrl }) => {
   return (
     <div>
       <div className=" profile_container overflow-auto ">
@@ -65,4 +65,4 @@ const ProfileCard = ({ name, imageUrl }) => {
   );
 };
 
-export default ProfileCard;
+export default ProfileHeader;

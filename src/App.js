@@ -34,7 +34,8 @@ import Invitations from "./components/Invitations/Invitations";
 import "./App.css";
 import Unauthorized from "./pages/Unauthorized/Unauthorized";
 import TeamLists from "./pages/TeamLists/TeamLists";
-
+import UserProfileCard from "./components/UserProfileCard/UserProfileCard";
+import MessageCard from "./components/MessageCard/MessageCard";
 function Navbar() {
   let location = useLocation();
   if (location.pathname === "/404") {
@@ -66,7 +67,9 @@ function App() {
               <Route path="invitations" element={<Invitations />} />
               <Route path="teams" element={<Teams />} />
             </Route>
-            <Route exact path="/community/users/:id" element={<UserProfile />} />
+            <Route exact path="/community/users/:id" element={<UserProfileCard />}>
+              <Route path="" element={<MessageCard />} />
+            </Route>
             <Route path="/community/teamlists" element={<TeamLists />} />
             <Route exact path="/community/teams/:teamname" element={<TeamProfile />} />
             <Route exact path="/community/teams/:teamname/members" element={<TeamMembers />} />

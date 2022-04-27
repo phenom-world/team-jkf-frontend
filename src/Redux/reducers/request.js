@@ -38,7 +38,7 @@ export const friendsReducer = (state = { friends: [] }, action) => {
 export const teamRequestReducer = (state = { teamRequests: [] }, action) => {
   switch (action.type) {
     case GET_GROUP_INVITES:
-      return { ...state, teamRequests: [...state, action?.payload] };
+      return { ...state, teamRequests: action?.payload };
     case START_GROUP_INVITE_LOADING:
       return { ...state, requestloading: true };
     case END_GROUP_INVITE_LOADING:
@@ -46,11 +46,11 @@ export const teamRequestReducer = (state = { teamRequests: [] }, action) => {
     case GET_GROUP_INVITE_FAILURE:
       return { ...state, requestloading: false, error: action.payload };
     case ACCEPT_GROUP_INVITE:
-      return { ...state, teamRequests: state.teamRequests.filter((team) => team.userId !== action.payload) };
+      return { ...state, teamRequests: state.teamRequests.filter((team) => team._id !== action.payload) };
     case DECLINE_GROUP_INVITE:
-      return { ...state, teamRequests: state.teamRequests.filter((team) => team.userId !== action.payload) };
+      return { ...state, teamRequests: state.teamRequests.filter((team) => team._id !== action.payload) };
     case DELETE_USER:
-      return { ...state, deletemessage: state.teamRequests.filter((team) => team.userId !== action.payload) };
+      return { ...state, deletemessage: state.teamRequests.filter((team) => team._id !== action.payload) };
     default:
       return state;
   }

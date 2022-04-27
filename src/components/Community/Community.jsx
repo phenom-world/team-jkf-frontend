@@ -39,7 +39,7 @@ const Community = () => {
     }
   };
   const handleKeyPress = (e) => {
-    if (e.keycode === 13) searchMember();
+    if (e.key === "Enter") searchMember();
   };
 
   useEffect(() => {
@@ -47,7 +47,9 @@ const Community = () => {
   }, []);
 
   return getUsersLoading ? (
-    <LoadState />
+    <div className="section__2">
+      <LoadState />
+    </div>
   ) : (
     <>
       <div className="section__2">
@@ -58,7 +60,11 @@ const Community = () => {
           </div>
         </div>
         <div className="subnav">
-          <NavSearch onChange={(e) => setQuery(e.target.value)} onKeyPress={handleKeyPress} />
+          <NavSearch
+            onChange={(e) => (setQuery(e.target.value), console.log(e.target.value))}
+            onKeyPress={handleKeyPress}
+            onClick={searchMember}
+          />
           <div className="status ">
             <select name="status" id="" onChange={handleChange} value={selectOption}>
               <option value="Last Active">Last Active</option>
@@ -73,27 +79,25 @@ const Community = () => {
         <div className="members__card">
           {!searchQuery && (
             <>
-              <Row>
-                {items
-                  ?.filter((user) => {
-                    if (query === "") {
-                      return user;
-                    } else if (user.username.toLowerCase().includes(query.toLowerCase())) {
-                      return user;
-                    }
-                  })
-                  .map((user) => (
-                    <MembersCard
-                      key={user.id}
-                      name={user.username}
-                      currentUserId={id}
-                      memberId={user.id}
-                      Id={user.tjkfid}
-                      isFriend={user.isFriend}
-                      isRequest={user.isRequest}
-                    />
-                  ))}
-              </Row>
+              {items
+                ?.filter((user) => {
+                  if (query === "") {
+                    return user;
+                  } else if (user.username.toLowerCase().includes(query.toLowerCase())) {
+                    return user;
+                  }
+                })
+                .map((user) => (
+                  <MembersCard
+                    key={user.id}
+                    name={user.username}
+                    currentUserId={id}
+                    memberId={user.id}
+                    Id={user.tjkfid}
+                    isFriend={user.isFriend}
+                    isRequest={user.isRequest}
+                  />
+                ))}
               <Paginate pages={pages} page={page} />
             </>
           )}

@@ -4,9 +4,11 @@ import Team1 from "../../Images/Team1_logo.png";
 import Team2 from "../../Images/Team2_logo.png";
 import Team from "../../components/Team/Team";
 import { useSelector } from "react-redux";
+import Paginate from "../../components/Paginate/Paginate";
 
 const Sidebar = () => {
-  const { isloading, userTeams } = useSelector((state) => state.userTeamsReducer);
+  const { userTeams } = useSelector((state) => state.userTeamsReducer);
+
   return (
     <>
       <div className="section__1 sidebar">

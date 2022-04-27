@@ -15,7 +15,7 @@ const TeamMembers = () => {
   const { teamloading, TeamDetails } = useSelector((state) => state.getTeamReducer);
   const { teamId, userNames } = TeamDetails;
   const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
-  
+
   useEffect(() => {
     dispatch(userDetails());
     dispatch(getTeam(teamname));
@@ -28,7 +28,7 @@ const TeamMembers = () => {
     <div>
       <TeamProfileCard name={teamname ? teamname : "TeamJKF Oyo"} username={userDetail?.username} userNames={userNames}>
         <ul className="timeline w-100 mt-2">
-          {userNames?.slice(0, 6)?.map((username, i) => (
+          {userNames?.map((username, i) => (
             <>
               <li className="timeline-item small_size listyle-none mb-3" key={i}>
                 <div className="d-flex align-items-center gap-2 text-wrap ">

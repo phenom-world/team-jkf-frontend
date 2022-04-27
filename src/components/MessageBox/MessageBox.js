@@ -2,7 +2,7 @@ import React from "react";
 import ComposeForm from "../ComposeForm/ComposeForm";
 import Timeline from "../Timeline/Timeline";
 
-const PostCard = ({ username, id, teamId, posts, isTeam, isFriend }) => {
+const MessageBox = ({ username, id, teamId, posts, isTeam, isFriend }) => {
   console.log(isFriend);
   return (
     <div className="post-container ">
@@ -12,4 +12,4 @@ const PostCard = ({ username, id, teamId, posts, isTeam, isFriend }) => {
   );
 };
 
-export default PostCard;
+export default MessageBox;

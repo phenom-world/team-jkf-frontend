@@ -38,7 +38,7 @@ const Users = () => {
               </tr>
             </thead>
             <tbody>
-              {teamRequests?.map((user, id) => (
+              {teamRequests.map((user, id) => (
                 <tr key={id}>
                   <td>{user._id}</td>
                   <td>{user.username}</td>
@@ -48,7 +48,7 @@ const Users = () => {
                       variant="primary"
                       className="btn-sm"
                       onClick={() => {
-                        dispatch(addUser({ teamname: user.teamname, username: user.username, userId: user.userId }));
+                        dispatch(addUser({ teamname: user.teamname, username: user.username, userId: user.userId, id: user._id }));
                       }}
                     >
                       ACCEPT{" "}
@@ -56,7 +56,9 @@ const Users = () => {
                     <Button
                       variant="danger"
                       className="btn-sm"
-                      onClick={() => dispatch(declineUser({ teamname: user.teamname, username: user.username, userId: user.userId }))}
+                      onClick={() =>
+                        dispatch(declineUser({ teamname: user.teamname, username: user.username, userId: user.userId, id: user._id }))
+                      }
                     >
                       DECLINE{" "}
                     </Button>

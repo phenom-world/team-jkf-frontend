@@ -70,6 +70,7 @@ export const getTeamRequests = () => async (dispatch) => {
     const {
       data: { data },
     } = await api.getallrequests();
+    console.log(data);
     dispatch({ type: GET_GROUP_INVITES, payload: data });
     dispatch({ type: END_GROUP_INVITE_LOADING });
   } catch (error) {
@@ -100,15 +101,16 @@ export const leaveTeam = (request) => async (dispatch) => {
 export const addUser = (request) => async (dispatch) => {
   try {
     const { data } = await api.adduser(request);
-    dispatch({ type: ACCEPT_GROUP_INVITE, payload: request.userId });
+    dispatch({ type: ACCEPT_GROUP_INVITE, payload: request.id });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }
 };
+
 export const declineUser = (request) => async (dispatch) => {
   try {
     const { data } = await api.declineuser(request);
-    dispatch({ type: DECLINE_GROUP_INVITE, payload: data.message });
+    dispatch({ type: DECLINE_GROUP_INVITE, payload: request.id });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }
@@ -117,7 +119,7 @@ export const declineUser = (request) => async (dispatch) => {
 export const removeUser = (request) => async (dispatch) => {
   try {
     const { data } = await api.removeuser(request);
-    dispatch({ type: DELETE_USER, payload: data.message });
+    dispatch({ type: DELETE_USER, payload: request.id });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }

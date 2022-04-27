@@ -4,7 +4,7 @@ import { makePost, getPosts } from "../../Redux/actions/posts";
 import { useDispatch } from "react-redux";
 import "./ComposeForm.css";
 
-function ComposeForm({ username, teamId, isTeam }) {
+function ComposeForm({ username, teamId, isTeam, isFriend }) {
   const [editorValue, setEditorValue] = useState("");
 
   const dispatch = useDispatch();
@@ -28,10 +28,10 @@ function ComposeForm({ username, teamId, isTeam }) {
       await handleSubmit(e);
     }
   };
-
+  console.log(isFriend);
   return (
     <>
-      {isTeam && (
+      {(isFriend || isTeam) && (
         <>
           <form className="compose-form mb-4" onSubmit={handleSubmit}>
             <div className="compose-form-container ">
@@ -40,7 +40,7 @@ function ComposeForm({ username, teamId, isTeam }) {
                 value={editorValue}
                 onChange={handleEditorValueChange}
                 className="compose-form-textarea small_size"
-                placeholder={`What's on your mind? ${username}`}
+                placeholder={isTeam ? `What's on your mind? ${username}` : `Send Message to ${username}`}
                 onKeyPress={handleKeyPress}
               />
             </div>

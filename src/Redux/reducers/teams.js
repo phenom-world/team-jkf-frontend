@@ -16,7 +16,7 @@ import {
 export const userTeamsReducer = (state = { userTeams: [] }, action) => {
   switch (action.type) {
     case USER_TEAMS:
-      return { ...state, userTeams: [...state.userTeams, action?.data] };
+      return { ...state, userTeams: action?.data };
     case START_USER_TEAMS_LOADING:
       return { ...state, isloading: true };
     case END_USER_TEAMS_LOADING:

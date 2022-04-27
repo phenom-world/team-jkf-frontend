@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import ProfileCard from "../../components/ProfileCard/ProfileCard";
+import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import { Footer } from "../index";
 import { getUser } from "../../Redux/actions/users";
 import { useParams } from "react-router";
@@ -23,7 +23,7 @@ const UserProfile = () => {
     <LoadState />
   ) : (
     <div>
-      <div className="mb-5">
+      <div className="mb-1">
         <div className="title">
           <p>
             <Link to="/dashboard" className="text-decoration-none text-dark">
@@ -36,7 +36,7 @@ const UserProfile = () => {
             </span>
           </p>
         </div>
-        <ProfileCard name={username} imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
+        <ProfileHeader name={username} imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
       </div>
       <Footer />
     </div>
