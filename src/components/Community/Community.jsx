@@ -7,7 +7,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getUsers, getUsersBySearch } from "../../Redux/actions/users";
 import LoadState from "../Spinner/LoadState";
 import Paginate from "../Paginate/Paginate";
-import { Row } from "react-bootstrap";
 import { useSortData } from "../../hooks/UseSortData";
 
 const Community = () => {

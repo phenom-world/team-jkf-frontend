@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Footer from "../../components/Footer/Footer";
 import { UserProfile } from "../../pages";
 import { Outlet } from "react-router";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { userDetails } from "../../Redux/actions/users";
 import LoadState from "../../components//Spinner/LoadState";

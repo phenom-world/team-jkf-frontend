@@ -4,6 +4,15 @@ import { Link } from "react-router-dom";
 import "./ProfileHeader.css";
 
 const ProfileHeader = ({ name, imageUrl }) => {
+  const handleSentMessage = () => {
+    console.log("sent message");
+  };
+  const handleReceivedMessage = () => {
+    console.log("sent message");
+  };
+  const handleStarredMessage = () => {
+    console.log("sent message");
+  };
   return (
     <div>
       <div className=" profile_container overflow-auto ">
@@ -60,6 +69,18 @@ const ProfileHeader = ({ name, imageUrl }) => {
           </div>
           <hr />
         </Container>
+        <div className="d-flex justify-content-start align-items-center">
+          <div onClick={handleSentMessage} className="bg-secondary w-25 text-center">
+            {" "}
+            Sent Message
+          </div>
+          <div onClick={handleReceivedMessage} className="bg-secondary w-25 text-center">
+            Received Message
+          </div>
+          <div onClick={handleStarredMessage} className="bg-secondary w-25 text-center">
+            Starred Message
+          </div>
+        </div>
       </div>
     </div>
   );
