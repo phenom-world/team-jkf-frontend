@@ -37,7 +37,7 @@ export const makePost = (post, teamId) => API.post(`/teammessages/send-message/$
 export const getPosts = (teamId) => API.get(`/teammessages/getmessages/${teamId}`);
 
 //Private Chat
-export const sendmessage = () => API.post(`/privatechat/sendmessage`);
+export const sendmessage = (message) => API.post(`/privatechat/sendmessage`, message);
 export const getreceivedmessages = () => API.get(`/privatechat/receivedmessages`);
 export const getsentmessages = () => API.get(`/privatechat/sentmessages`);
 export const starmessage = (messageId) => API.put(`/privatechat/starorunstarmessage/${messageId}`);

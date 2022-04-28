@@ -1,11 +1,14 @@
 import { useState } from "react";
 import Avatar from "../Avatar/Avatar";
 import { makePost, getPosts } from "../../Redux/actions/posts";
-import { useDispatch } from "react-redux";
+import { sendMessage } from "../../Redux/actions/chat";
+import { useDispatch, useSelector } from "react-redux";
+import Message from "../Message/Message";
 import "./ComposeForm.css";
 
-function ComposeForm({ username, teamId, isTeam, isFriend }) {
+function ComposeForm({ username, teamId, isTeam, isFriend, member }) {
   const [editorValue, setEditorValue] = useState("");
+  const { success } = useSelector((state) => state.messageReducer);
 
   const dispatch = useDispatch();
 
@@ -15,10 +18,16 @@ function ComposeForm({ username, teamId, isTeam, isFriend }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (editorValue !== "" || e.charCode === 13) {
       const post = { message: editorValue };
-      await dispatch(makePost(post, teamId));
-      await dispatch(getPosts(teamId));
+      const message = { message: editorValue, fromusername: username, tousername: member };
+      if (isTeam) {
+        await dispatch(makePost(post, teamId));
+        await dispatch(getPosts(teamId));
+      } else {
+        await dispatch(sendMessage(message));
+      }
     }
     setEditorValue("");
   };
@@ -28,23 +37,23 @@ function ComposeForm({ username, teamId, isTeam, isFriend }) {
       await handleSubmit(e);
     }
   };
-  console.log(isFriend);
   return (
     <>
       {(isFriend || isTeam) && (
         <>
-          <form className="compose-form mb-4" onSubmit={handleSubmit}>
+          {isFriend && success && <Message variant="success"> Message Sent</Message>}
+          <form className={isTeam ? "compose-form mb-4" : "compose-form"} onSubmit={handleSubmit}>
             <div className="compose-form-container ">
-              <Avatar imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
+              {isTeam && <Avatar imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />}
               <textarea
                 value={editorValue}
                 onChange={handleEditorValueChange}
                 className="compose-form-textarea small_size"
-                placeholder={isTeam ? `What's on your mind? ${username}` : `Send Message to ${username}`}
+                placeholder={isTeam ? `What's on your mind? ${username}` : `Send Message to ${member}`}
                 onKeyPress={handleKeyPress}
               />
             </div>
-            <button className="compose-form-submit small_size">Post</button>
+            <button className="compose-form-submit small_size">{isTeam ? "Post" : "Send"}</button>
           </form>
         </>
       )}

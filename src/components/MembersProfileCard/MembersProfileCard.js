@@ -1,7 +1,5 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import TeamNav from "../TeamNav/TeamNav";
-import { Link } from "react-router-dom";
 import { Footer } from "../../pages/index";
 
 const MembersProfileCard = ({ children }) => {

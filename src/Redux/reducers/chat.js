@@ -1,5 +1,6 @@
 import {
   SEND_MESSAGE,
+  SEND_MESSAGE_SUCCESS,
   GET_SENT_MESSAGE,
   GET_SENT_MESSAGE_LOADING,
   END_GET_SENT_MESSAGE_LOADING,
@@ -16,7 +17,7 @@ import * as api from "../../network/index.js";
 export const messageReducer = (state = {}, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
-      return { ...state, message: action?.payload };
+      return { ...state, success: true };
     default:
       return state;
   }

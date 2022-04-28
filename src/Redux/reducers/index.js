@@ -18,6 +18,7 @@ import {
 import { userTeamsReducer, getTeamReducer, getTeamsReducer } from "./teams";
 import { getPostsReducer, sendPostReducer } from "./posts";
 import { friendsReducer, teamRequestReducer } from "./request";
+import { messageReducer } from "./chat";
 
 export const reducers = combineReducers({
   authReducer,
@@ -40,9 +41,8 @@ export const reducers = combineReducers({
   sendPostReducer,
   friendsReducer,
   teamRequestReducer,
+  messageReducer,
 });
-
-
 
 export const rootReducer = (state, action) => {
   if (action.type === LOGOUT) {

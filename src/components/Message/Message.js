@@ -5,7 +5,9 @@ import "./Message.css";
 const Message = ({ variant, children }) => {
   return (
     <>
-      <Alert variant={variant}>{children}</Alert>
+      <Alert variant={variant} isOpen={removeAlert}>
+        {children}
+      </Alert>
     </>
   );
 };

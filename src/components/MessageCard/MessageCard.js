@@ -11,6 +11,9 @@ const MessageCard = () => {
   const dispatch = useDispatch();
   const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
   const { posts } = useSelector((state) => state.getPostsReducer);
+  const { userProfileloading, userProfileDetails } = useSelector((state) => state.getUserReducer);
+
+  const { username } = userProfileDetails;
 
   useEffect(() => {
     dispatch(userDetails());
@@ -23,7 +26,19 @@ const MessageCard = () => {
       <div className="mb-5 mt-4">
         <Container className="justify-content-start d-flex flex-column align-items-start ">
           <div className="bg-light w-100 p-4 d-flex flex-column justify-content-start align-items-start gap-2 border border-grey">
-            <MessageBox username={userDetail?.username} id={userDetail.id} posts={posts} isFriend={true} />
+            {/* <div className="d-flex justify-content-start align-items-center gap-2 mt-2">
+              <div onClick={handleSentMessage} className="bg-secondary text-center">
+                {" "}
+                Sent
+              </div>
+              <div onClick={handleReceivedMessage} className="bg-secondary text-center">
+                Received
+              </div>
+              <div onClick={handleStarredMessage} className="bg-secondary  text-center">
+                Starred
+              </div>
+            </div> */}
+            <MessageBox username={userDetail?.username} id={userDetail.id} posts={posts} isFriend={true} member={username} />
           </div>
         </Container>
       </div>

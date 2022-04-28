@@ -1,5 +1,6 @@
 import {
   SEND_MESSAGE,
+  SEND_MESSAGE_SUCCESS,
   GET_SENT_MESSAGE,
   GET_SENT_MESSAGE_LOADING,
   END_GET_SENT_MESSAGE_LOADING,
@@ -13,13 +14,10 @@ import {
 
 import * as api from "../../network/index.js";
 
-export const sendMessage = () => async (dispatch) => {
+export const sendMessage = (message) => async (dispatch) => {
   try {
-    const {
-      data: { data },
-    } = await api.sendmessage();
-
-    dispatch({ type: SEND_MESSAGE, data });
+    const { data } = await api.sendmessage(message);
+    dispatch({ type: SEND_MESSAGE });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }
