@@ -17,19 +17,18 @@ import * as api from "../../network/index.js";
 export const sendMessage = (message) => async (dispatch) => {
   try {
     const { data } = await api.sendmessage(message);
-    dispatch({ type: SEND_MESSAGE });
+    dispatch({ type: SEND_MESSAGE, payload: data.success });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }
 };
 
-export const getSentMessage = (teamname) => async (dispatch) => {
+export const getSentMessage = () => async (dispatch) => {
   try {
     dispatch({ type: GET_SENT_MESSAGE_LOADING });
     const {
       data: { data },
-    } = await api.getsentmessages(teamname);
-
+    } = await api.getsentmessages();
     dispatch({ type: GET_SENT_MESSAGE, payload: data });
     dispatch({ type: END_GET_SENT_MESSAGE_LOADING });
   } catch (error) {
@@ -42,10 +41,11 @@ export const getSentMessage = (teamname) => async (dispatch) => {
 
 export const getReceivedMessage = () => async (dispatch) => {
   try {
-    dispatch({ type: GET_RECEIVED_MESSAGE_LOADING });
+    // dispatch({ type: GET_RECEIVED_MESSAGE_LOADING });
     const {
       data: { data },
     } = await api.getreceivedmessages();
+
     dispatch({ type: GET_RECEIVED_MESSAGE, payload: data });
     dispatch({ type: END_GET_RECEIVED_MESSAGE_LOADING });
   } catch (error) {

@@ -3,13 +3,12 @@ import Avatar from "../Avatar/Avatar";
 import { makePost, getPosts } from "../../Redux/actions/posts";
 import { sendMessage } from "../../Redux/actions/chat";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../Message/Message";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "./ComposeForm.css";
 
 function ComposeForm({ username, teamId, isTeam, isFriend, member }) {
   const [editorValue, setEditorValue] = useState("");
-  const { success } = useSelector((state) => state.messageReducer);
-
   const dispatch = useDispatch();
 
   const handleEditorValueChange = (e) => {
@@ -19,7 +18,7 @@ function ComposeForm({ username, teamId, isTeam, isFriend, member }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (editorValue !== "" || e.charCode === 13) {
+    if (editorValue !== "" || (e.charCode === 13 && editorValue !== "")) {
       const post = { message: editorValue };
       const message = { message: editorValue, fromusername: username, tousername: member };
       if (isTeam) {
@@ -41,7 +40,6 @@ function ComposeForm({ username, teamId, isTeam, isFriend, member }) {
     <>
       {(isFriend || isTeam) && (
         <>
-          {isFriend && success && <Message variant="success"> Message Sent</Message>}
           <form className={isTeam ? "compose-form mb-4" : "compose-form"} onSubmit={handleSubmit}>
             <div className="compose-form-container ">
               {isTeam && <Avatar imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />}

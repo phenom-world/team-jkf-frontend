@@ -1,6 +1,7 @@
 .profile_container {
-  margin-top: 5rem;
-  height: auto;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  margin-top: 2rem;
 }
 
 #item-header-cover-image {

@@ -18,7 +18,6 @@ const UserProfile = () => {
   }, [dispatch, id]);
 
   const { firstname, lastname, username } = userProfileDetails;
-
   return userProfileloading ? (
     <LoadState />
   ) : (
@@ -36,7 +35,7 @@ const UserProfile = () => {
             </span>
           </p>
         </div>
-        <ProfileHeader name={username} imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
+        <ProfileHeader name={username} id={id} imageUrl="https://www.gravatar.com/avatar/4184d0175a931e706080351239ac19b0?s=150&r=g&d=mm" />
       </div>
       <Footer />
     </div>

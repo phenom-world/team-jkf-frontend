@@ -8,7 +8,6 @@ import {
   Register,
   Dashboard,
   Community,
-  UserProfile,
   TeamProfile,
   NotFoundPage,
   RegistrationSuccess,
@@ -25,7 +24,11 @@ import {
   Teams as TeamsList,
   Users,
 } from "./pages";
+import SentMessage from "./components/SentMessage/SentMessage";
+import Inbox from "./components/Inbox/Inbox";
+import StarredMessage from "./components/StarredMessage/StarredMessage";
 import Header from "./components/Header/Header";
+import Message from "./pages/Message/Message";
 import CommunityContainer from "./pages/CommunityContainer/CommunityContainer";
 import Teams from "./components/Teams/Teams";
 import FriendsList from "./components/FriendsList/FriendsList";
@@ -69,6 +72,12 @@ function App() {
             </Route>
             <Route exact path="/community/users/:id" element={<UserProfileCard />}>
               <Route path="" element={<MessageCard />} />
+              <Route path="message" element={<Message />}>
+                <Route path="" element={<Inbox />} />
+                <Route path="sent" element={<SentMessage />} />
+                <Route path="starred" element={<StarredMessage />} />
+                <Route path="compose" element={<MessageCard />} />
+              </Route>
             </Route>
             <Route path="/community/teamlists" element={<TeamLists />} />
             <Route exact path="/community/teams/:teamname" element={<TeamProfile />} />

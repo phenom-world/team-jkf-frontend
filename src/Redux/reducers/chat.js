@@ -12,12 +12,11 @@ import {
   STAR_MESSAGE,
 } from "../constants/chatType";
 
-import * as api from "../../network/index.js";
 
 export const messageReducer = (state = {}, action) => {
   switch (action.type) {
     case SEND_MESSAGE:
-      return { ...state, success: true };
+      return { ...state, success: action.payload };
     default:
       return state;
   }

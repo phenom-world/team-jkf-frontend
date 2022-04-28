@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
 import Team1 from "../../Images/Team1_logo.png";
-import NavSearch from "../NavSearch/NavSearch";
+import { useSelector } from "react-redux";
+import Message from "../Message/Message";
 
 const TeamNav = ({ name }) => {
+  const { success } = useSelector((state) => state.sendPostReducer);
+
   return (
     <>
       <h3>{name}</h3>
@@ -84,6 +87,9 @@ const TeamNav = ({ name }) => {
             <option value="Alphabetical">Group Updates</option>
           </select>
         </div>
+      </div>
+      <div className="mb-2 d-flex align-items-center w-100 justify-content-center text-center">
+        {success && <Message variant="success"> Message Sent</Message>}
       </div>
     </>
   );
