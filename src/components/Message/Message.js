@@ -14,6 +14,8 @@ const Message = ({ variant, children }) => {
       dispatch({ type: SEND_MESSAGE, payload: false });
       dispatch({ type: "POST", payload: false });
       dispatch({ type: "SOCIAL_REGISTER_FAILURE", payload: false });
+      dispatch({ type: "AUTH_FAILURE", payload: false });
+      dispatch({ type: "REGISTER_FAILURE", payload: false });
     }, 1000);
 
     return () => {
@@ -25,7 +27,9 @@ const Message = ({ variant, children }) => {
     setShow(!show),
     dispatch({ type: SEND_MESSAGE, payload: false }),
     dispatch({ type: "POST", payload: false }),
-    dispatch({ type: "SOCIAL_REGISTER_FAILURE", payload: false })
+    dispatch({ type: "SOCIAL_REGISTER_FAILURE", payload: false }),
+    dispatch({ type: "AUTH_FAILURE", payload: false }),
+    dispatch({ type: "REGISTER_FAILURE", payload: false })
   );
 
   return (
