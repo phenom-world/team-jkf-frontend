@@ -3,13 +3,13 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDbDrZWQCcXmC0pDCUZoH_gc-JB4vIIsHs",
-  authDomain: "team-jkf-dee30.firebaseapp.com",
-  projectId: "team-jkf-dee30",
-  storageBucket: "team-jkf-dee30.appspot.com",
-  messagingSenderId: "408958231596",
-  appId: "1:408958231596:web:5f58c2d21f6b90062b9d89",
-  measurementId: "G-098JLMHKZC",
+  apiKey: "AIzaSyB9x64tsAuaDASDKvoPL3AWzU7ER1BG_5g",
+  authDomain: "teamjkf-app.firebaseapp.com",
+  projectId: "teamjkf-app",
+  storageBucket: "teamjkf-app.appspot.com",
+  messagingSenderId: "465658307156",
+  appId: "1:465658307156:web:cfa516201f4e1e2b3703c1",
+  measurementId: "G-2CDJSPHLSD",
 };
 
 const app = initializeApp(firebaseConfig);

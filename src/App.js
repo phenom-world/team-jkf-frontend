@@ -39,6 +39,7 @@ import Unauthorized from "./pages/Unauthorized/Unauthorized";
 import TeamLists from "./pages/TeamLists/TeamLists";
 import UserProfileCard from "./components/UserProfileCard/UserProfileCard";
 import MessageCard from "./components/MessageCard/MessageCard";
+import MessagePage from "./pages/MessagePage/MessagePage";
 function Navbar() {
   let location = useLocation();
   if (location.pathname === "/404") {
@@ -70,6 +71,8 @@ function App() {
               <Route path="invitations" element={<Invitations />} />
               <Route path="teams" element={<Teams />} />
             </Route>
+            <Route path="/community/messages" element={<MessagePage />} />
+
             <Route exact path="/community/users/:id" element={<UserProfileCard />}>
               <Route path="" element={<MessageCard />} />
               <Route path="message" element={<Message />}>

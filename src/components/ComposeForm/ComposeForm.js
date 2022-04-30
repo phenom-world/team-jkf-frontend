@@ -3,8 +3,6 @@ import Avatar from "../Avatar/Avatar";
 import { makePost, getPosts } from "../../Redux/actions/posts";
 import { sendMessage } from "../../Redux/actions/chat";
 import { useDispatch, useSelector } from "react-redux";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import "./ComposeForm.css";
 
 function ComposeForm({ username, teamId, isTeam, isFriend, member }) {

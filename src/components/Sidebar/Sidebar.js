@@ -30,7 +30,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/messages" className="text-decoration-none text-dark" style={{ marginLeft: "auto" }}>
+              <Link to="/community/messages" className="text-decoration-none text-dark" style={{ marginLeft: "auto" }}>
                 Messages
               </Link>
             </li>
