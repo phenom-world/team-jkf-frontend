@@ -13,6 +13,7 @@ const Message = ({ variant, children }) => {
       setShow(false);
       dispatch({ type: SEND_MESSAGE, payload: false });
       dispatch({ type: "POST", payload: false });
+      dispatch({ type: "SOCIAL_REGISTER_FAILURE", payload: false });
     }, 1000);
 
     return () => {
@@ -20,7 +21,12 @@ const Message = ({ variant, children }) => {
     };
   }, []);
 
-  const onToggle = () => (setShow(!show), dispatch({ type: SEND_MESSAGE, payload: false }), dispatch({ type: "POST", payload: false }));
+  const onToggle = () => (
+    setShow(!show),
+    dispatch({ type: SEND_MESSAGE, payload: false }),
+    dispatch({ type: "POST", payload: false }),
+    dispatch({ type: "SOCIAL_REGISTER_FAILURE", payload: false })
+  );
 
   return (
     <>
