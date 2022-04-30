@@ -7,7 +7,7 @@ import { getTeams } from "../../Redux/actions/teams";
 
 const Teams = () => {
   const { userDetail } = useSelector((state) => state.userDetailsReducer);
-  const { teams, getteamsloading } = useSelector((state) => state.getTeamsReducer);
+  const { teams, getteamsloading } = useSelector((state) => state.getTeamsReducer) || [];
   const { id } = userDetail;
   const dispatch = useDispatch();
   useEffect(() => {
