@@ -9,13 +9,11 @@ import {
 import {
   START_GROUP_INVITE_LOADING,
   END_GROUP_INVITE_LOADING,
-  START_ADD_USER_LOADING,
-  END_ADD_USER_LOADING,
   GET_GROUP_INVITE_FAILURE,
   GET_GROUP_INVITES,
   ACCEPT_GROUP_INVITE,
   DECLINE_GROUP_INVITE,
-  DELETE_GROUP_INVITE,
+  DELETE_USER,
 } from "../constants/teamTypes";
 
 export const friendsReducer = (state = { friends: [] }, action) => {
@@ -45,18 +43,14 @@ export const teamRequestReducer = (state = { teamRequests: [] }, action) => {
       return { ...state, requestloading: true };
     case END_GROUP_INVITE_LOADING:
       return { ...state, requestloading: false };
-    case START_ADD_USER_LOADING:
-      return { ...state, isLoading: true };
-    case END_ADD_USER_LOADING:
-      return { ...state, isLoading: false };
     case GET_GROUP_INVITE_FAILURE:
       return { ...state, requestloading: false, error: action.payload };
     case ACCEPT_GROUP_INVITE:
-      return { ...state, message: action?.payload };
+      return { ...state, teamRequests: state.teamRequests.filter((team) => team._id !== action.payload) };
     case DECLINE_GROUP_INVITE:
-      return { ...state, declinemessage: action?.payload };
-    case DELETE_GROUP_INVITE:
-      return { ...state, deletemessage: action?.payload };
+      return { ...state, teamRequests: state.teamRequests.filter((team) => team._id !== action.payload) };
+    case DELETE_USER:
+      return { ...state, deletemessage: state.teamRequests.filter((team) => team._id !== action.payload) };
     default:
       return state;
   }

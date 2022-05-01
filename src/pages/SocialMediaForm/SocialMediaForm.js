@@ -17,10 +17,10 @@ const SocialMediaForm = () => {
   const { isloading, error } = useSelector((state) => state.socialRegisterReducer);
 
   //prettier-ignore
-  const { displayName, email , uid, photoURL} = user;
+  const { name, email , googleId, photoURL} = user;
 
   //prettier-ignore
-  const [formData, setFormData] = useState({ firstname: displayName.split(" ")[1], lastname: displayName.split(" ")[0], email: email, password: uid, isSocial: true, imageURL: photoURL });
+  const [formData, setFormData] = useState({ firstname: name.split(" ")[1], lastname: name.split(" ")[0], email: email, password: googleId, isSocial: true, imageURL: photoURL });
   const [inputState, setInputState] = useState("");
   const [updateGender, setUpdateGender] = useState("");
 
@@ -79,7 +79,7 @@ const SocialMediaForm = () => {
                 labelValue="Last Name"
                 handleChange={handleChange}
                 formType="form__div__1"
-                value={displayName.split(" ")[0]}
+                value={name.split(" ")[0]}
                 required={required}
               />
               <Field
@@ -89,7 +89,7 @@ const SocialMediaForm = () => {
                 handleChange={handleChange}
                 formType="form__div__1"
                 required={required}
-                value={displayName.split(" ")[1]}
+                value={name.split(" ")[1]}
               />
               <Field
                 label="email"

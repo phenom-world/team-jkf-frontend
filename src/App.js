@@ -8,7 +8,6 @@ import {
   Register,
   Dashboard,
   Community,
-  UserProfile,
   TeamProfile,
   NotFoundPage,
   RegistrationSuccess,
@@ -25,7 +24,11 @@ import {
   Teams as TeamsList,
   Users,
 } from "./pages";
+import SentMessage from "./components/SentMessage/SentMessage";
+import Inbox from "./components/Inbox/Inbox";
+import StarredMessage from "./components/StarredMessage/StarredMessage";
 import Header from "./components/Header/Header";
+import Message from "./pages/Message/Message";
 import CommunityContainer from "./pages/CommunityContainer/CommunityContainer";
 import Teams from "./components/Teams/Teams";
 import FriendsList from "./components/FriendsList/FriendsList";
@@ -34,7 +37,9 @@ import Invitations from "./components/Invitations/Invitations";
 import "./App.css";
 import Unauthorized from "./pages/Unauthorized/Unauthorized";
 import TeamLists from "./pages/TeamLists/TeamLists";
-
+import UserProfileCard from "./components/UserProfileCard/UserProfileCard";
+import MessageCard from "./components/MessageCard/MessageCard";
+import MessagePage from "./pages/MessagePage/MessagePage";
 function Navbar() {
   let location = useLocation();
   if (location.pathname === "/404") {
@@ -61,11 +66,22 @@ function App() {
             <Route exact path="/update-profile" element={<UpdateProfile />} />
             <Route path="community" element={<CommunityContainer />}>
               <Route path="" element={<Community />} />
+              <Route path="search" element={<Community />} />
               <Route path="friends" element={<FriendsList />} />
               <Route path="invitations" element={<Invitations />} />
               <Route path="teams" element={<Teams />} />
             </Route>
-            <Route exact path="/community/users/:id" element={<UserProfile />} />
+            <Route path="/community/messages" element={<MessagePage />} />
+
+            <Route exact path="/community/users/:id" element={<UserProfileCard />}>
+              <Route path="" element={<MessageCard />} />
+              <Route path="message" element={<Message />}>
+                <Route path="" element={<Inbox />} />
+                <Route path="sent" element={<SentMessage />} />
+                <Route path="starred" element={<StarredMessage />} />
+                <Route path="compose" element={<MessageCard />} />
+              </Route>
+            </Route>
             <Route path="/community/teamlists" element={<TeamLists />} />
             <Route exact path="/community/teams/:teamname" element={<TeamProfile />} />
             <Route exact path="/community/teams/:teamname/members" element={<TeamMembers />} />

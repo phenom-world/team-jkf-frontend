@@ -7,20 +7,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { userDetails } from "../../Redux/actions/users";
 import LoadState from "../../components//Spinner/LoadState";
 import { getUserTeams } from "../../Redux/actions/teams";
-import { getUsers } from "../../Redux/actions/users";
 
 const CommunityContainer = () => {
   const dispatch = useDispatch();
   const { isloading } = useSelector((state) => state.userTeamsReducer);
-  const { getUsersLoading } = useSelector((state) => state.getUsersReducer);
 
   useEffect(() => {
     dispatch(getUserTeams());
-    dispatch(getUsers());
     dispatch(userDetails());
   }, [dispatch]);
 
-  return isloading || getUsersLoading ? (
+  return isloading  ? (
     <LoadState />
   ) : (
     <div>

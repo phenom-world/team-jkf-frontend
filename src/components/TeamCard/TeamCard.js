@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { sendTeamRequest } from "../../Redux/actions/request";
 
-const TeamCard = ({ name, isTeam, teamId, isRequest, currentUserId, Id }) => {
+const TeamCard = ({ name, isTeam, isRequest, Id }) => {
   const dispatch = useDispatch();
   const [Message, setMessage] = useState("");
 

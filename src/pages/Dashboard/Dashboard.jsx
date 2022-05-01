@@ -60,7 +60,7 @@ function Dashboard() {
                       </span>
                       <span className="pt-1 text-center">You are logged as {username}</span>
                       <span className="text-center">Unique ID: {tjkfid}</span>
-                      <span className="pt-2 text-center">Member since {moment(createdAt).format("MMMM d, YYYY h:mma")}</span>
+                      <span className="pt-2 text-center">Member since {moment(createdAt).format("DD/MM/YYYY")}</span>
                     </div>
                   </div>
                 </div>

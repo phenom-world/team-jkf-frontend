@@ -8,7 +8,10 @@ import Message from "../../components/Message/Message";
 import Loader from "../../components/Loader/Loader";
 import Field from "../../components/Form/Field/Field";
 import { auth, provider, fbProvider } from "../../firebase";
-import { FacebookAuthProvider } from "firebase/auth";
+import Icon from "../../components/Icon/Icon";
+import { GoogleLogin } from "react-google-login";
+import { Button as MButton } from "@mui/material";
+
 import { signInWithPopup } from "firebase/auth";
 
 import Select from "../../components/Form/Select/Select";
@@ -39,18 +42,20 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isloading, error } = useSelector((state) => state.registerReducer);
-  // prettier-ignore
-  const onGoogleLogin = (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  signInWithPopup(auth, provider).then((result) => {
-    dispatch({
-      type: "SET_USER",
-      user: result.user,
-    });
-    navigate("/auth/register")
-  }).catch((err) => alert(err.message));
-};
+  const googleSuccess = (res) => {
+    try {
+      dispatch({
+        type: "SET_USER",
+        user: res.profileObj,
+      });
+      navigate("/auth/register");
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
+  const googleError = () => console.log("Google Sign In was unsuccessful. Try again later");
+
   const states = statesList.map((state, i) => ({
     name: state,
     statecode: i < 9 ? "00" + Number(i) : "0" + Number(i),
@@ -67,8 +72,6 @@ const Register = () => {
           user: result.user,
         });
         navigate("/auth/register");
-
-        // ...
       })
       .catch((error) => {
         alert(error.message);
@@ -318,9 +321,26 @@ const Register = () => {
           <div onClick={onFacebookLogin}>
             <Button className={"handle facebook"}>Facebook</Button>
           </div>
-          <div onClick={onGoogleLogin}>
+          <GoogleLogin
+            clientId="724048877380-37edbc98eqoqc95oj6u1inf5d9qvg5ba.apps.googleusercontent.com"
+            render={(renderProps) => (
+              <button
+                className={"handle google"}
+                color="primary"
+                onClick={renderProps.onClick}
+                disabled={renderProps.disabled}
+                variant="contained"
+              >
+                Google
+              </button>
+            )}
+            onSuccess={googleSuccess}
+            onFailure={googleError}
+            cookiePolicy="single_host_origin"
+          />
+          {/* <div onClick={onGoogleLogin}>
             <Button className={"handle google"}>Google</Button>
-          </div>
+          </div> */}
         </div>
       </form>
       <Footer />

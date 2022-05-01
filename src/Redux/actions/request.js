@@ -9,13 +9,11 @@ import {
 import {
   START_GROUP_INVITE_LOADING,
   END_GROUP_INVITE_LOADING,
-  START_ADD_USER_LOADING,
-  END_ADD_USER_LOADING,
   GET_GROUP_INVITE_FAILURE,
   GET_GROUP_INVITES,
   ACCEPT_GROUP_INVITE,
   DECLINE_GROUP_INVITE,
-  DELETE_GROUP_INVITE,
+  DELETE_USER,
   CREATE_TEAM,
 } from "../constants/teamTypes";
 
@@ -41,7 +39,7 @@ export const addFriend = (request) => async (dispatch) => {
   try {
     const { data } = await api.addFriend(request);
   } catch (error) {
-    console.log(error);
+    console.log(error?.response?.data?.message);
   }
 };
 
@@ -72,6 +70,7 @@ export const getTeamRequests = () => async (dispatch) => {
     const {
       data: { data },
     } = await api.getallrequests();
+    console.log(data);
     dispatch({ type: GET_GROUP_INVITES, payload: data });
     dispatch({ type: END_GROUP_INVITE_LOADING });
   } catch (error) {
@@ -101,18 +100,17 @@ export const leaveTeam = (request) => async (dispatch) => {
 
 export const addUser = (request) => async (dispatch) => {
   try {
-    dispatch({ type: START_ADD_USER_LOADING });
     const { data } = await api.adduser(request);
-    dispatch({ type: ACCEPT_GROUP_INVITE, payload: data.message });
-    dispatch({ type: END_ADD_USER_LOADING });
+    dispatch({ type: ACCEPT_GROUP_INVITE, payload: request.id });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }
 };
+
 export const declineUser = (request) => async (dispatch) => {
   try {
     const { data } = await api.declineuser(request);
-    dispatch({ type: DECLINE_GROUP_INVITE, payload: data.message });
+    dispatch({ type: DECLINE_GROUP_INVITE, payload: request.id });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }
@@ -121,7 +119,7 @@ export const declineUser = (request) => async (dispatch) => {
 export const removeUser = (request) => async (dispatch) => {
   try {
     const { data } = await api.removeuser(request);
-    dispatch({ type: DELETE_GROUP_INVITE, payload: data.message });
+    dispatch({ type: DELETE_USER, payload: request.id });
   } catch (error) {
     console.log(error?.response?.data?.message);
   }

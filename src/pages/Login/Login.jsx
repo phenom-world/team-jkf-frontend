@@ -9,6 +9,7 @@ import Field from "../../components/Form/Field/Field";
 import Message from "../../components/Message/Message";
 import { auth, provider, fbProvider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
+import { GoogleLogin } from "react-google-login";
 import { Footer } from "../index";
 
 const initialState = {
@@ -26,15 +27,16 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/dashboard";
 
-  const onGoogleLogin = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        dispatch(signin({ email: result.user.email, password: result.user.uid, isSocial: true }, navigate, from));
-      })
-      .catch((err) => alert(err.message));
+  const googleSuccess = (res) => {
+    try {
+      dispatch(signin({ email: res.profileObj.email, password: res.profileObj.googleId, isSocial: true }, navigate, from));
+    } catch (err) {
+      alert(err.message);
+    }
   };
+
+  const googleError = () => console.log("Google Sign In was unsuccessful. Try again later");
+
   const onFacebookLogin = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -127,9 +129,26 @@ const Login = () => {
                 <div onClick={onFacebookLogin}>
                   <Button className={"handle facebook"}>Facebook</Button>
                 </div>
-                <div onClick={onGoogleLogin}>
+                <GoogleLogin
+                  clientId="724048877380-37edbc98eqoqc95oj6u1inf5d9qvg5ba.apps.googleusercontent.com"
+                  render={(renderProps) => (
+                    <button
+                      className={"handle google"}
+                      color="primary"
+                      onClick={renderProps.onClick}
+                      disabled={renderProps.disabled}
+                      variant="contained"
+                    >
+                      Google
+                    </button>
+                  )}
+                  onSuccess={googleSuccess}
+                  onFailure={googleError}
+                  cookiePolicy="single_host_origin"
+                />
+                {/* <div onClick={onGoogleLogin}>
                   <Button className={"handle google"}>Google</Button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

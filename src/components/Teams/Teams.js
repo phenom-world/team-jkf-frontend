@@ -10,11 +10,9 @@ const Teams = () => {
   const { teams, getteamsloading } = useSelector((state) => state.getTeamsReducer);
   const { id } = userDetail;
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getTeams());
   }, [dispatch]);
-
   return getteamsloading ? (
     <div className="section__2">
       <LoadState />
@@ -24,7 +22,7 @@ const Teams = () => {
       <div className="section__2">
         <h2>Teams </h2>
         <div className="members__card">
-          {teams?.slice(0, 6).map((user) => (
+          {teams?.map((user) => (
             <TeamCard
               key={user.teamId}
               name={user.teamname}

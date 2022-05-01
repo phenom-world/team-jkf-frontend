@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MembersCard from "../MembersCard/MembersCard";
 import NavSearch from "../NavSearch/NavSearch";
 import { useSelector } from "react-redux";
@@ -11,6 +11,7 @@ const FriendsList = () => {
   const { friends, getfriendsloading } = useSelector((state) => state.getFriendsReducer);
   const dispatch = useDispatch();
   const { id } = userDetail;
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     dispatch(getFriends());
@@ -30,7 +31,7 @@ const FriendsList = () => {
           </div>
         </div>
         <div className="subnav">
-          <NavSearch />
+          <NavSearch onChange={(e) => setQuery(e.target.value)} />
           <div className="status ">
             <select name="status" id="">
               <option value="Last Active">Last Active</option>
@@ -41,9 +42,17 @@ const FriendsList = () => {
         </div>
         <p>Viewing 1 - 6 of 6 active members</p>
         <div className="members__card">
-          {friends?.map((user) => (
-            <MembersCard key={user._id} name={user.username} currentUserId={id} memberId={user._id} Id={user.tjkfid} isFriend />
-          ))}
+          {friends
+            ?.filter((user) => {
+              if (query === "") {
+                return user;
+              } else if (user.username.toLowerCase().includes(query.toLowerCase())) {
+                return user;
+              }
+            })
+            .map((user) => (
+              <MembersCard key={user._id} name={user.username} currentUserId={id} memberId={user._id} Id={user.tjkfid} isFriend />
+            ))}
         </div>
         <p>Viewing 1 - 6 of 6 active members</p>
       </div>

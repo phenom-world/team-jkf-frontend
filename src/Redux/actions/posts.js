@@ -10,10 +10,8 @@ import * as api from "../../network/index.js";
 
 export const makePost = (post, teamId) => async (dispatch) => {
   try {
-    dispatch({ type: START_POST_LOADING });
     const { data } = await api.makePost(post, teamId);
-    dispatch({ type: POST, payload: data.message });
-    dispatch({ type: END_POST_LOADING });
+    dispatch({ type: POST, payload: data.success });
   } catch (error) {
     dispatch({
       type: POST_FAILURE,
