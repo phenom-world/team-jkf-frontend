@@ -39,7 +39,7 @@ export const addFriend = (request) => async (dispatch) => {
   try {
     const { data } = await api.addFriend(request);
   } catch (error) {
-    console.log(error);
+    console.log(error?.response?.data?.message);
   }
 };
 

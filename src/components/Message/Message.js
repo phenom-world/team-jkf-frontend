@@ -16,7 +16,7 @@ const Message = ({ variant, children }) => {
       dispatch({ type: "SOCIAL_REGISTER_FAILURE", payload: false });
       dispatch({ type: "AUTH_FAILURE", payload: false });
       dispatch({ type: "REGISTER_FAILURE", payload: false });
-    }, 1000);
+    }, 3000);
 
     return () => {
       clearTimeout(timeId);

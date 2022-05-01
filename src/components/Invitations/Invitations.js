@@ -10,7 +10,6 @@ const Invitations = () => {
   const { friends, error, requestloading } = useSelector((state) => state.friendsReducer);
   const isRequest = "Request Received";
   const dispatch = useDispatch();
-  console.log(friends)
 
   useEffect(() => {
     dispatch(getinvites());
@@ -25,10 +24,17 @@ const Invitations = () => {
       {" "}
       <div className="section__2">
         <h2>Invitations </h2>
-        {error && <Message variant="danger">{error}</Message>}
+        {error && <h5 className="text-danger"> No Friend Request</h5>}
         <div className="members__card">
           {friends?.map((user) => (
-            <MembersCard key={user._id} name={user.username} currentUserId={user.toId} memberId={user.fromId} Id={user.tjkfid} isRequest={isRequest} />
+            <MembersCard
+              key={user._id}
+              name={user.username}
+              currentUserId={user.toId}
+              memberId={user.fromId}
+              Id={user.tjkfid}
+              isRequest={isRequest}
+            />
           ))}
         </div>
       </div>
