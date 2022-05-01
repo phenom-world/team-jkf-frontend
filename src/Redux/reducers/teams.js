@@ -43,7 +43,7 @@ export const getTeamReducer = (state = { TeamDetails: {} }, action) => {
   }
 };
 
-export const getTeamsReducer = (state = { teams: [], getteamsloading: true }, action) => {
+export const getTeamsReducer = (state = { teams: [] }, action) => {
   switch (action.type) {
     case GET_TEAMS:
       return { ...state, teams: action?.payload };
