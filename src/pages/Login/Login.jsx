@@ -130,7 +130,7 @@ const Login = () => {
                   <Button className={"handle facebook"}>Facebook</Button>
                 </div>
                 <GoogleLogin
-                  clientId="724048877380-37edbc98eqoqc95oj6u1inf5d9qvg5ba.apps.googleusercontent.com"
+                  clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                   render={(renderProps) => (
                     <button
                       className={"handle google"}
