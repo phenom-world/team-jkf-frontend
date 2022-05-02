@@ -4,8 +4,9 @@ import CardComp from "../Card/CardComp";
 function DashboardStory({ onClick, showResults }) {
   return (
     <div className="mx-5 mt-3">
-      <h3>Welcome to Team JKF</h3>
-      <p>You can now check for news update.</p>
+      <h5>Welcome to Team JKF Membership Platform, You can now check for news update.</h5>
+      <br />
+      <p>News and Update blogpost where members can pass comments on post</p>
       {/* <CardComp showResults={showResults} onClick={onClick} /> */}
     </div>
   );
