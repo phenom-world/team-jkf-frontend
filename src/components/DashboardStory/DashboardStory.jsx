@@ -6,7 +6,7 @@ function DashboardStory({ onClick, showResults }) {
     <div className="mx-5 mt-3">
       <h3>Welcome to Team JKF</h3>
       <p>You can now check for news update.</p>
-      <CardComp showResults={showResults} onClick={onClick} />
+      {/* <CardComp showResults={showResults} onClick={onClick} /> */}
     </div>
   );
 }
