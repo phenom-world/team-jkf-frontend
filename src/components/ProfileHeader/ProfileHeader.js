@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import "./ProfileHeader.css";
 
 const ProfileHeader = ({ name, imageUrl, id }) => {
-
   return (
     <div>
       <div className=" profile_container overflow-auto ">

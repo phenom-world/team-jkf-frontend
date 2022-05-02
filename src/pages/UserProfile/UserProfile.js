@@ -4,6 +4,7 @@ import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import { Footer } from "../index";
 import { getUser } from "../../Redux/actions/users";
 import { useParams } from "react-router";
+import Message from "../../components/Message/Message";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import LoadState from "../../components/Spinner/LoadState";
@@ -11,15 +12,19 @@ import LoadState from "../../components/Spinner/LoadState";
 const UserProfile = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { userProfileloading, userProfileDetails } = useSelector((state) => state.getUserReducer);
 
   useEffect(() => {
     dispatch(getUser(id));
-  }, [dispatch, id]);
+  }, [id, dispatch]);
+
+  const { userProfileloading, userProfileDetails, error } = useSelector((state) => state.getUserReducer);
 
   const { firstname, lastname, username } = userProfileDetails;
+
   return userProfileloading ? (
     <LoadState />
+  ) : error ? (
+    <Message>{error}</Message>
   ) : (
     <div>
       <div className="mb-1">
@@ -30,7 +35,7 @@ const UserProfile = () => {
             </Link>
             <span className="text-danger">
               {" "}
-              {firstname}
+              {firstname} {""}
               {lastname}
             </span>
           </p>

@@ -12,6 +12,12 @@ import {
   END_GET_TEAMS_LOADING,
   GET_TEAMS_FAILURE,
 } from "../constants/actionTypes";
+import {
+  START_GET_TEAM_MEMBERS_LOADING,
+  GET_TEAM_MEMBERS,
+  END_GET_TEAM_MEMBERS_LOADING,
+  GET_TEAM_MEMBERS_FAILURE,
+} from "../constants/teamTypes";
 
 import * as api from "../../network/index.js";
 
@@ -44,6 +50,21 @@ export const getTeam = (teamname) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_TEAM_FAILURE,
+      payload: `${error?.response?.data?.message}`,
+    });
+  }
+};
+export const getTeamMembers = (teamname) => async (dispatch) => {
+  try {
+    dispatch({ type: START_GET_TEAM_MEMBERS_LOADING });
+    const {
+      data: { data },
+    } = await api.getteammembers(teamname);
+    dispatch({ type: GET_TEAM_MEMBERS, payload: data });
+    dispatch({ type: END_GET_TEAM_MEMBERS_LOADING });
+  } catch (error) {
+    dispatch({
+      type: GET_TEAM_MEMBERS_FAILURE,
       payload: `${error?.response?.data?.message}`,
     });
   }

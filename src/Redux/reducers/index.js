@@ -15,7 +15,7 @@ import {
   getFriendsReducer,
   socialRegisterReducer,
 } from "./auth";
-import { userTeamsReducer, getTeamReducer, getTeamsReducer } from "./teams";
+import { userTeamsReducer, getTeamReducer, getTeamsReducer, getTeamMembersReducer } from "./teams";
 import { getPostsReducer, sendPostReducer } from "./posts";
 import { friendsReducer, teamRequestReducer } from "./request";
 import { messageReducer, getReceivedMessageReducer, getSentMessageReducer, getStarredMessageReducer, starReducer } from "./chat";
@@ -44,7 +44,8 @@ export const reducers = combineReducers({
   messageReducer,
   getReceivedMessageReducer,
   getSentMessageReducer,
-  starReducer
+  starReducer,
+  getTeamMembersReducer,
 });
 
 export const rootReducer = (state, action) => {

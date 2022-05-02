@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Image } from "react-bootstrap";
 import Team1 from "../../Images/Team1_logo.png";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import Message from "../Message/Message";
 
 const TeamNav = ({ name }) => {
@@ -58,21 +58,21 @@ const TeamNav = ({ name }) => {
       </div>
       <div className="nav-tab">
         <ul>
-          <li className="click">
-            <Link to={`/community/teams/${name}`} className=" text-decoration-none text-dark">
+          <li>
+            <NavLink to={`/community/teams/${name}`} className=" text-decoration-none text-dark">
               <div>Home</div>
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link to={`/community/teams/${name}/members`} className="text-decoration-none text-dark">
+            <NavLink to={`/community/teams/${name}/members`} className="text-decoration-none text-dark">
               <div>Members</div>
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/invites" className="text-decoration-none d-flex flex-row text-dark groupspan ">
+            <NavLink to="/invites" className="text-decoration-none d-flex flex-row text-dark groupspan ">
               <div>Send Invites</div>
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

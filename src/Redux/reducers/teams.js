@@ -12,6 +12,12 @@ import {
   END_GET_TEAMS_LOADING,
   GET_TEAMS_FAILURE,
 } from "../constants/actionTypes";
+import {
+  START_GET_TEAM_MEMBERS_LOADING,
+  GET_TEAM_MEMBERS,
+  END_GET_TEAM_MEMBERS_LOADING,
+  GET_TEAM_MEMBERS_FAILURE,
+} from "../constants/teamTypes";
 
 export const userTeamsReducer = (state = { userTeams: [] }, action) => {
   switch (action.type) {
@@ -53,6 +59,21 @@ export const getTeamsReducer = (state = { teams: [] }, action) => {
       return { ...state, getteamsloading: false };
     case GET_TEAMS_FAILURE:
       return { ...state, getteamsloading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const getTeamMembersReducer = (state = { members: {} }, action) => {
+  switch (action.type) {
+    case GET_TEAM_MEMBERS:
+      return { ...state, members: action?.payload };
+    case START_GET_TEAM_MEMBERS_LOADING:
+      return { ...state, isloading: true };
+    case END_GET_TEAM_MEMBERS_LOADING:
+      return { ...state, isloading: false };
+    case GET_TEAM_MEMBERS_FAILURE:
+      return { ...state, isloading: false, error: action.payload };
     default:
       return state;
   }

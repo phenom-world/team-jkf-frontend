@@ -14,15 +14,9 @@ import LoadState from "../../components/Spinner/LoadState";
 const TeamProfile = () => {
   const { teamname } = useParams();
   const dispatch = useDispatch();
-  const { teamloading, TeamDetails } = useSelector(
-    (state) => state.getTeamReducer
-  );
-  const { isloading, userDetail } = useSelector(
-    (state) => state.userDetailsReducer
-  );
-  const { getPostsLoading, posts } = useSelector(
-    (state) => state.getPostsReducer
-  );
+  const { teamloading, TeamDetails } = useSelector((state) => state.getTeamReducer);
+  const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
+  const { getPostsLoading, posts } = useSelector((state) => state.getPostsReducer);
   const { teamId, isTeam } = TeamDetails;
 
   useEffect(() => {
@@ -36,17 +30,8 @@ const TeamProfile = () => {
   ) : (
     <div>
       <div className="mb-5">
-        <TeamProfileCard
-          name={teamname ? teamname : "TeamJKF Oyo"}
-          username={userDetail?.username}
-        >
-          <PostCard
-            username={userDetail?.username}
-            id={userDetail.id}
-            teamId={teamId}
-            posts={posts}
-            isTeam ={isTeam}
-          />
+        <TeamProfileCard name={teamname ? teamname : "TeamJKF Oyo"} username={userDetail?.username}>
+          <PostCard username={userDetail?.username} id={userDetail.id} teamId={teamId} posts={posts} isTeam={isTeam} />
           <GroupCard />
           <GroupCard />
         </TeamProfileCard>

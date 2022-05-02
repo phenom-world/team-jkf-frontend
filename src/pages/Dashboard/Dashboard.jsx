@@ -92,7 +92,7 @@ function Dashboard() {
                     Support
                   </Nav.Link>
                 </Nav.Item>
-
+                {/* 
                 <Nav.Item>
                   <Nav.Link eventKey="link-4" as={Link} to="/community">
                     {" "}
@@ -100,6 +100,16 @@ function Dashboard() {
                       <i className="fa-solid fa-people-group"></i>
                     </span>{" "}
                     Community{" "}
+                  </Nav.Link>
+                </Nav.Item> */}
+
+                <Nav.Item>
+                  <Nav.Link eventKey="link-4" href="https://teamjkf.org/news-update">
+                    {" "}
+                    <span style={{ fontSize: "1em", color: "#fff" }}>
+                      <i className="fa-solid fa-people-group"></i>
+                    </span>{" "}
+                    News Update{" "}
                   </Nav.Link>
                 </Nav.Item>
 
