@@ -7,7 +7,7 @@ var style = {
   position: "absolute",
   left: 0,
   right: 0,
-  bottom: -120,
+  bottom: -180,
   height: "60px",
   width: "100%",
   display: "flex",
@@ -19,9 +19,7 @@ function Footer() {
   return (
     <div>
       <div style={style}>
-        <p className="m-0  small">
-          Copyright © {new Date().getFullYear()} TeamJKF all rights reserved.{" "}
-        </p>
+        <p className="m-0  small">Copyright © {new Date().getFullYear()} TeamJKF all rights reserved. </p>
       </div>
     </div>
   );
