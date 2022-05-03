@@ -8,11 +8,11 @@ import "./CardComp.css";
 
 function CardComp({}) {
   const { posts } = useSelector((state) => state.postsReducer);
-  console.log(posts);
+  const recentposts = [...posts].reverse();
   return (
     <div className="mt-3 w-100">
       <Row>
-        {posts?.map((post) => (
+        {recentposts?.map((post) => (
           <Col className="my-4" sm={12} md={6} lg={4} xl={4} key={post._id}>
             <a href={`https://teamjkf.org/unfolding-the-agenda/`} className="text-decoration-none text-dark ">
               <Card style={{ maxWidth: "23rem" }} className="shadow-lg cardstyle mb-5">
