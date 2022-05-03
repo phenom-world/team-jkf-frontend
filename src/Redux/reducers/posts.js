@@ -16,6 +16,7 @@ import {
   GET_POST,
   GET_POSTS,
   UPDATE_POST,
+  COMMENT_POST,
   UPDATE_POST_FAILURE,
 } from "../constants/postTypes";
 
@@ -65,6 +66,15 @@ export const postsReducer = (state = { posts: [], post: {} }, action) => {
 
     case CREATE_POST:
       return { ...state, posts: [...state.posts, action.payload] };
+
+    case COMMENT_POST:
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post._id === action.payload.id) return action.payload;
+          return post;
+        }),
+      };
 
     case CREATE_POST_FAILURE:
       return { ...state, isloading: false, error: action.payload };

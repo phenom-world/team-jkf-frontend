@@ -125,7 +125,7 @@ const Login = () => {
               <div className="social">
                 <p>- OR LOGIN WITH -</p>
               </div>
-              <div className="social_handle">
+              {/* <div className="social_handle">
                 <div onClick={onFacebookLogin}>
                   <Button className={"handle facebook"}>Facebook</Button>
                 </div>
@@ -146,10 +146,10 @@ const Login = () => {
                   onFailure={googleError}
                   cookiePolicy="single_host_origin"
                 />
-                {/* <div onClick={onGoogleLogin}>
+                <div onClick={onGoogleLogin}>
                   <Button className={"handle google"}>Google</Button>
-                </div> */}
-              </div>
+                </div> 
+              </div> */}
             </div>
           </div>
         </div>

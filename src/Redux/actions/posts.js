@@ -117,13 +117,10 @@ export const deletePost = (id) => async (dispatch) => {
 
 export const commentPost = (value, id) => async (dispatch) => {
   try {
-    dispatch({ type: START_LOADING });
-
     const {
       data: { data },
     } = await api.commentpost(value, id);
     dispatch({ type: COMMENT_POST, payload: data });
-    dispatch({ type: END_LOADING });
   } catch (error) {
     dispatch({
       type: COMMENT_POST_FAILURE,

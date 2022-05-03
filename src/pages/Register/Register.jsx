@@ -314,7 +314,7 @@ const Register = () => {
             </span>
           </p>
         </div>
-        <div className="social">
+        {/* <div className="social">
           <p>- OR REGISTER WITH -</p>
         </div>
         <div className="social_handle">
@@ -338,10 +338,10 @@ const Register = () => {
             onFailure={googleError}
             cookiePolicy="single_host_origin"
           />
-          {/* <div onClick={onGoogleLogin}>
+          <div onClick={onGoogleLogin}>
             <Button className={"handle google"}>Google</Button>
-          </div> */}
-        </div>
+          </div> 
+        </div> */}
       </form>
       <Footer />
     </div>

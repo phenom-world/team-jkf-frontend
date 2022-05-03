@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import parse from "html-react-parser";
 import { Container } from "react-bootstrap";
-import { createPost } from "../../Redux/actions/posts";
+import { commentPost } from "../../Redux/actions/posts";
 import { useParams } from "react-router-dom";
 
-const NewsCommentBox = ({ children }) => {
+const NewsCommentBox = ({ setComments }) => {
   const { post } = useSelector((state) => state.postsReducer);
   const [editorValue, setEditorValue] = useState("");
   const dispatch = useDispatch();
@@ -21,10 +21,10 @@ const NewsCommentBox = ({ children }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (editorValue !== "" || (e.charCode === 13 && editorValue !== "")) {
-      const post = { message: editorValue };
-      await dispatch(createPost(post, id));
+      const post = { value: editorValue };
+      const newComment = await dispatch(commentPost(post, id));
+      setComments(newComment);
     }
     setEditorValue("");
   };
