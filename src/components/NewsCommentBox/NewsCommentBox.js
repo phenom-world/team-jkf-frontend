@@ -22,12 +22,13 @@ const NewsCommentBox = ({ setComments }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editorValue !== "" || (e.charCode === 13 && editorValue !== "")) {
-      const post = { value: `${username}: ${editorValue}` };
-      const newComment = await dispatch(commentPost(post, id));
+      const post = { message: editorValue, postId: id };
+      const newComment = await dispatch(commentPost(post));
       setComments(newComment);
     }
     setEditorValue("");
   };
+  
   const handleKeyPress = async (e) => {
     if (e.charCode === 13) {
       await handleSubmit(e);

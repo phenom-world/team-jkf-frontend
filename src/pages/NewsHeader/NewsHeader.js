@@ -6,7 +6,7 @@ import moment from "moment";
 
 const NewsHeader = () => {
   const { post } = useSelector((state) => state.postsReducer);
-  const { title, coverphoto, comment, createdAt, author } = post;
+  const { title, coverphoto, comment } = post;
   return (
     <>
       <div className="title mb-5">
@@ -20,17 +20,6 @@ const NewsHeader = () => {
           <Image src={coverphoto} className="mt-5" style={{ width: "100%" }} />
           <div className="mt-3">
             <h3>{post.title}</h3>
-            <div className="d-flex align-items-center justify-content-flex-start gap-2 mt-2">
-              <div>
-                <i className="fa-solid fa-calendar-days text-danger"></i> {moment(createdAt).format("DD/MM/YYYY")}
-              </div>
-              <div>
-                <i className="fa-solid fa-users text-danger"></i> {author}{" "}
-              </div>
-              <div>
-                <i className="fa-solid fa-comment text-danger"></i> {comment ? comment.length : 0}
-              </div>
-            </div>
           </div>
         </div>
       </Container>

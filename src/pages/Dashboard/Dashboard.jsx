@@ -9,12 +9,12 @@ import { Link } from "react-router-dom";
 import LoadState from "../../components/Spinner/LoadState";
 import { Footer } from "../index.js";
 import moment from "moment";
-import { fetchPosts } from "../../Redux/actions/posts";
+import { fetchPosts, fetchComments } from "../../Redux/actions/posts";
 
 function Dashboard() {
   const dispatch = useDispatch();
   const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
-  const { isloading: postloading } = useSelector((state) => state.postsReducer);
+  const { isloading: postloading, post } = useSelector((state) => state.postsReducer);
   //prettier-ignore
   const { firstname, lastname, tjkfid, createdAt, username } = userDetail;
   const [showResults, setShowResults] = React.useState(true);
@@ -29,7 +29,10 @@ function Dashboard() {
   useEffect(() => {
     dispatch(userDetails());
     dispatch(fetchPosts());
-  }, [dispatch]);
+    if (post._id) dispatch(fetchComments(post._id));
+  }, [dispatch, post._id]);
+
+  
   return (
     <div>
       {isloading || postloading ? (

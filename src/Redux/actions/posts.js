@@ -15,6 +15,10 @@ import {
   UPDATE_POST,
   UPDATE_POST_FAILURE,
   END_LOADING,
+  START_COMMENT_LOADING,
+  END_COMMENT_LOADING,
+  GET_COMMENT,
+  DELETE_COMMENT,
 } from "../constants/postTypes";
 
 export const makePost = (post, teamId) => async (dispatch) => {
@@ -86,6 +90,18 @@ export const fetchPosts = () => async (dispatch) => {
     });
   }
 };
+export const fetchComments = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: START_COMMENT_LOADING });
+    const {
+      data: { data },
+    } = await api.getcomments(id);
+    dispatch({ type: GET_COMMENT, payload: data });
+    dispatch({ type: END_COMMENT_LOADING });
+  } catch (error) {
+    console.log(error?.response?.data?.message);
+  }
+};
 export const getPost = (id) => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
@@ -115,17 +131,25 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
-export const commentPost = (value, id) => async (dispatch) => {
+export const commentPost = (value) => async (dispatch) => {
   try {
     const {
       data: { data },
-    } = await api.commentpost(value, id);
+    } = await api.commentpost(value);
     dispatch({ type: COMMENT_POST, payload: data });
-    return data.comment;
   } catch (error) {
+    console.log(error);
     dispatch({
       type: COMMENT_POST_FAILURE,
       payload: `${error?.response?.data?.message}`,
     });
+  }
+};
+export const deleteComment = (commentId) => async (dispatch) => {
+  try {
+    const { data } = await api.deletecomment(commentId);
+    dispatch({ type: DELETE_COMMENT, payload: commentId });
+  } catch (error) {
+    console.log(error?.response?.data?.message);
   }
 };

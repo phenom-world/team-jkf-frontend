@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://team-jkf.herokuapp.com/tjkf",
+  baseURL: "http://localhost:3005/tjkf",
 });
 
 API.interceptors.request.use((req) => {
@@ -76,4 +76,7 @@ export const getposts = () => API.get("/posts");
 export const getpost = (id) => API.get(`/posts/${id}`);
 export const deletepost = (id) => API.delete(`/posts/${id}`);
 export const updatepost = (value, id) => API.put(`/posts/${id}`, value);
-export const commentpost = (value, id) => API.post(`/posts/${id}/commentpost`, value);
+
+export const getcomments = (id) => API.get(`/posts/${id}/comments`);
+export const commentpost = (value) => API.post("/comments", value);
+export const deletecomment = (commentId) => API.delete(`/comments/${commentId}`);

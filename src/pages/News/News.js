@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Image } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import LoadState from "../../components/Spinner/LoadState";
-import { getPost } from "../../Redux/actions/posts";
+import { fetchComments, getPost } from "../../Redux/actions/posts";
 import NewsHeader from "../NewsHeader/NewsHeader";
 import NewsBody from "../../components/NewsBody/NewsBody";
 import NewsCommentBox from "../../components/NewsCommentBox/NewsCommentBox";
@@ -12,15 +12,13 @@ import Comment from "../../components/Comment/Comment";
 
 const News = () => {
   const { id } = useParams();
-  const title = "asas";
   const dispatch = useDispatch();
 
-  const { post, isloading } = useSelector((state) => state.postsReducer);
-  const { comment } = post;
+  const { comment, isloading } = useSelector((state) => state.commentReducer);
   const [comments, setComments] = useState(comment);
-
   useEffect(() => {
     dispatch(getPost(id));
+    dispatch(fetchComments(id));
   }, [id]);
 
   useEffect(() => {

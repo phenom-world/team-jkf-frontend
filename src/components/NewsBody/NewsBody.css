@@ -3,10 +3,11 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+  text-align: justify;
 }
 @media (min-width: 1320px) {
   .news_container {
-    margin-left: 13.5rem !important;
-    max-width: 997px !important;
+    margin-left: 8rem !important;
+    max-width: 1197px !important;
   }
 }

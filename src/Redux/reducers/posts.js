@@ -18,6 +18,10 @@ import {
   UPDATE_POST,
   COMMENT_POST,
   UPDATE_POST_FAILURE,
+  GET_COMMENT,
+  START_COMMENT_LOADING,
+  END_COMMENT_LOADING,
+  DELETE_COMMENT,
 } from "../constants/postTypes";
 
 export const sendPostReducer = (state = {}, action) => {
@@ -67,15 +71,6 @@ export const postsReducer = (state = { posts: [], post: {} }, action) => {
     case CREATE_POST:
       return { ...state, posts: [...state.posts, action.payload] };
 
-    case COMMENT_POST:
-      return {
-        ...state,
-        posts: state.posts.map((post) => {
-          if (post._id === action.payload.id) return action.payload;
-          return post;
-        }),
-      };
-
     case CREATE_POST_FAILURE:
       return { ...state, isloading: false, error: action.payload };
 
@@ -95,6 +90,33 @@ export const postsReducer = (state = { posts: [], post: {} }, action) => {
       };
     case DELETE_POST_FAILURE:
       return { ...state, isloading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const commentReducer = (state = { comment: [] }, action) => {
+  switch (action.type) {
+    case START_COMMENT_LOADING:
+      return { ...state, isloading: true };
+    case END_COMMENT_LOADING:
+      return { ...state, isloading: false };
+
+    case GET_COMMENT:
+      return {
+        ...state,
+        comment: action.payload,
+      };
+    case COMMENT_POST:
+      return {
+        ...state,
+        comment: [...state.comment, action.payload],
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        comment: state.comment.filter((comment) => comment._id !== action.payload),
+      };
     default:
       return state;
   }
