@@ -40,6 +40,7 @@ import TeamLists from "./pages/TeamLists/TeamLists";
 import UserProfileCard from "./components/UserProfileCard/UserProfileCard";
 import MessageCard from "./components/MessageCard/MessageCard";
 import MessagePage from "./pages/MessagePage/MessagePage";
+import News from "./pages/News/News";
 function Navbar() {
   let location = useLocation();
   if (location.pathname === "/404") {
@@ -64,6 +65,7 @@ function App() {
             <Route path="/" element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route exact path="/update-profile" element={<UpdateProfile />} />
+            <Route exact path="/news/:id" element={<News />} />
             <Route path="community" element={<CommunityContainer />}>
               <Route path="" element={<Community />} />
               <Route path="search" element={<Community />} />

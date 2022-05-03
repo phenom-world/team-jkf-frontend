@@ -45,7 +45,7 @@ export const getPostsReducer = (state = { posts: [] }, action) => {
   }
 };
 
-export const postsReducer = (state = { posts: [] }, action) => {
+export const postsReducer = (state = { posts: [], post: {} }, action) => {
   switch (action.type) {
     case START_LOADING:
       return { ...state, isloading: true };
@@ -56,10 +56,11 @@ export const postsReducer = (state = { posts: [] }, action) => {
         ...state,
         posts: action.payload,
       };
+
     case GET_POST:
       return {
         ...state,
-        posts: action.payload.data,
+        post: action.payload,
       };
 
     case CREATE_POST:
