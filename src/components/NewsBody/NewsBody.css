@@ -1,0 +1,12 @@
+.news_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+@media (min-width: 1320px) {
+  .news_container {
+    margin-left: 13.5rem !important;
+    max-width: 997px !important;
+  }
+}

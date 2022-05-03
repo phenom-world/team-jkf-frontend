@@ -17,10 +17,10 @@ const NewsHeader = () => {
       </div>
       <Container>
         <div>
-          <Image src={coverphoto} className="mt-5" />
-          <div>
-            <h5>{post.title}</h5>
-            <div className="d-flex align-items-center justify-content-flex-start gap-4">
+          <Image src={coverphoto} className="mt-5" style={{ width: "100%" }} />
+          <div className="mt-3">
+            <h3>{post.title}</h3>
+            <div className="d-flex align-items-center justify-content-flex-start gap-2 mt-2">
               <div>
                 <i className="fa-solid fa-calendar-days text-danger"></i> {moment(createdAt).format("DD/MM/YYYY")}
               </div>

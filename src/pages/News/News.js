@@ -6,6 +6,9 @@ import { useParams } from "react-router-dom";
 import LoadState from "../../components/Spinner/LoadState";
 import { getPost } from "../../Redux/actions/posts";
 import NewsHeader from "../NewsHeader/NewsHeader";
+import NewsBody from "../../components/NewsBody/NewsBody";
+import NewsCommentBox from "../../components/NewsCommentBox/NewsCommentBox";
+import { userDetails } from "../../Redux/actions/users";
 
 const News = () => {
   const { id } = useParams();
@@ -25,6 +28,8 @@ const News = () => {
   ) : (
     <div>
       <NewsHeader />
+      <NewsBody />
+      <NewsCommentBox />
     </div>
   );
 };
