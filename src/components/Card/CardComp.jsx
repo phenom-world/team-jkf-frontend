@@ -1,8 +1,5 @@
 import React from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import Downloads from "../Downloads/Downloads";
-import newsUpdate from "../../Images/updates.jpg";
+import { Card, Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import "./CardComp.css";
 
@@ -21,7 +18,7 @@ function CardComp({}) {
                 <Card.Body className="read_more shadow-lg">
                   {" "}
                   <a href={`https://teamjkf.org/unfolding-the-agenda/`} className="text-decoration-none readmore_text ">
-                    Readmore...
+                    Read more...
                   </a>
                 </Card.Body>
               </Card>
