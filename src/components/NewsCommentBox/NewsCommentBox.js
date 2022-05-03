@@ -5,7 +5,6 @@ import { commentPost } from "../../Redux/actions/posts";
 import { useParams } from "react-router-dom";
 
 const NewsCommentBox = ({ setComments }) => {
-  const { post } = useSelector((state) => state.postsReducer);
   const [editorValue, setEditorValue] = useState("");
   const dispatch = useDispatch();
 
@@ -13,8 +12,6 @@ const NewsCommentBox = ({ setComments }) => {
   const { username } = userDetail;
   const { id } = useParams();
 
-  const { content } = post;
-  let result = content?.replaceAll("&lt;", "<");
   const handleEditorValueChange = (e) => {
     setEditorValue(e.target.value);
   };
@@ -35,7 +32,7 @@ const NewsCommentBox = ({ setComments }) => {
   };
   return (
     <Container className="mt-5 news_container bg-light p-4 w-100">
-      <p>Logged in as {usernma}. Leave a comment</p>
+      <p>Logged in as {username}. Leave a comment</p>
       <p>Comment *</p>
       <form className="w-100" onSubmit={handleSubmit}>
         <div className={"compose-form w-100"}>
