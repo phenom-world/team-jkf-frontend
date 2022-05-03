@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://team-jkf.herokuapp.com/tjkf",
+  baseURL: "http://localhost:3005/tjkf",
 });
 
 API.interceptors.request.use((req) => {
@@ -69,3 +69,11 @@ export const removeuser = (request) => API.put("/teams/removeUser", request);
 export const declineuser = (request) => API.put("/teams/removeUser", request);
 export const getallrequests = () => API.get("/teams/getAllRequests");
 export const getmemberrequests = () => API.get("/teams/getMemberRequests");
+
+// News
+export const createpost = (value) => API.post(`/posts`, value);
+export const getposts = () => API.get("/posts");
+export const getpost = (id) => API.get(`/posts/${id}`);
+export const deletepost = (id) => API.delete(`/posts/${id}`);
+export const updatepost = (value, id) => API.put(`/posts/${id}`, value);
+export const commentpost = (value, id) => API.post(`/posts/${id}/commentpost`, value);

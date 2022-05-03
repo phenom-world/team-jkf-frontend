@@ -3,58 +3,33 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Downloads from "../Downloads/Downloads";
 import newsUpdate from "../../Images/updates.jpg";
+import { useSelector } from "react-redux";
+import "./CardComp.css";
 
-function CardComp({ onClick, showResults }) {
-  return showResults ? (
-    <div>
-      <Container className="mt-5 mx-auto ">
-        <Row>
-          <Col className="my-4" sm={12} md={6} lg={4} xl={4}>
-            <a
-              href="https://teamjkf.org/news-update"
-              className="text-decoration-none text-dark"
-            >
-              <Card style={{ maxWidth: "18rem" }}>
-                <Card.Img
-                  variant="top"
-                  src={newsUpdate}
-                  style={{ maxHeight: "150px" }}
-                />
-                <Card.Body>
-                  <Card.Title>News Update</Card.Title>
+function CardComp({}) {
+  const { posts } = useSelector((state) => state.postsReducer);
+  console.log(posts);
+  return (
+    <div className="mt-3 w-100">
+      <Row>
+        {posts?.map((post) => (
+          <Col className="my-4" sm={12} md={6} lg={4} xl={4} key={post._id}>
+            <a href={`https://teamjkf.org/unfolding-the-agenda/`} className="text-decoration-none text-dark ">
+              <Card style={{ maxWidth: "23rem" }} className="shadow-lg cardstyle mb-5">
+                <Card.Img variant="top" src={post.coverphoto} style={{ maxHeight: "16rem" }} className="card_image" />
+                <Card.Body className="post_title">{post.title}</Card.Body>
+                <Card.Body className="read_more shadow-lg">
+                  {" "}
+                  <a href={`https://teamjkf.org/unfolding-the-agenda/`} className="text-decoration-none readmore_text ">
+                    Readmore...
+                  </a>
                 </Card.Body>
               </Card>
             </a>
           </Col>
-          <Col className="my-4" sm={12} md={6} lg={4} xl={4}>
-            <Link to="/community" className="text-decoration-none text-dark">
-              <Card style={{ maxWidth: "18rem" }}>
-                <Card.Img
-                  variant="top"
-                  src="https://www.mclellanmarketing.com/wp-content/uploads/2019/07/bigstock-Community-People-Concept-With-278968120_opt.jpg"
-                />
-                <Card.Body>
-                  <Card.Title>Community</Card.Title>
-                </Card.Body>
-              </Card>
-            </Link>
-          </Col>
-          <Col className="my-4" sm={12} md={6} lg={4} xl={4} onClick={onClick}>
-            <Card style={{ maxWidth: "18rem" }}>
-              <Card.Img
-                variant="top"
-                src="https://www.nicepng.com/png/detail/242-2424454_post-navigation-downloads-download-folder-icon-blue.png"
-              />
-              <Card.Body>
-                <Card.Title>Downloads</Card.Title>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+        ))}
+      </Row>
     </div>
-  ) : (
-    <Downloads onClick={onClick} />
   );
 }
 

@@ -16,7 +16,7 @@ import {
   socialRegisterReducer,
 } from "./auth";
 import { userTeamsReducer, getTeamReducer, getTeamsReducer, getTeamMembersReducer } from "./teams";
-import { getPostsReducer, sendPostReducer } from "./posts";
+import { getPostsReducer, postsReducer, sendPostReducer } from "./posts";
 import { friendsReducer, teamRequestReducer } from "./request";
 import { messageReducer, getReceivedMessageReducer, getSentMessageReducer, getStarredMessageReducer, starReducer } from "./chat";
 
@@ -39,6 +39,7 @@ export const reducers = combineReducers({
   getTeamsReducer,
   getPostsReducer,
   sendPostReducer,
+  postsReducer,
   friendsReducer,
   teamRequestReducer,
   messageReducer,

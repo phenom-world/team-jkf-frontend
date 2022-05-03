@@ -9,11 +9,12 @@ import { Link } from "react-router-dom";
 import LoadState from "../../components/Spinner/LoadState";
 import { Footer } from "../index.js";
 import moment from "moment";
+import { fetchPosts } from "../../Redux/actions/posts";
 
 function Dashboard() {
   const dispatch = useDispatch();
   const { isloading, userDetail } = useSelector((state) => state.userDetailsReducer);
-
+  const { isloading: postloading } = useSelector((state) => state.postsReducer);
   //prettier-ignore
   const { firstname, lastname, tjkfid, createdAt, username } = userDetail;
   const [showResults, setShowResults] = React.useState(true);
@@ -27,11 +28,11 @@ function Dashboard() {
 
   useEffect(() => {
     dispatch(userDetails());
+    dispatch(fetchPosts());
   }, [dispatch]);
-
   return (
     <div>
-      {isloading ? (
+      {isloading || postloading ? (
         <LoadState />
       ) : (
         <>
@@ -92,16 +93,6 @@ function Dashboard() {
                     Support
                   </Nav.Link>
                 </Nav.Item>
-                {/* 
-                <Nav.Item>
-                  <Nav.Link eventKey="link-4" as={Link} to="/community">
-                    {" "}
-                    <span style={{ fontSize: "1em", color: "#fff" }}>
-                      <i className="fa-solid fa-people-group"></i>
-                    </span>{" "}
-                    Community{" "}
-                  </Nav.Link>
-                </Nav.Item> */}
 
                 <Nav.Item>
                   <Nav.Link eventKey="link-4" href="https://teamjkf.org/news-update">
@@ -124,7 +115,7 @@ function Dashboard() {
               </Nav>
             </div>
           </div>
-          <DashboardStory showResults={showResults} onClick={onClick} />
+          <DashboardStory />
           <Footer />
         </>
       )}
