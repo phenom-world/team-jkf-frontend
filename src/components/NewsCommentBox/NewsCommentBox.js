@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import parse from "html-react-parser";
 import { Container } from "react-bootstrap";
 import { commentPost } from "../../Redux/actions/posts";
 import { useParams } from "react-router-dom";
@@ -11,7 +10,7 @@ const NewsCommentBox = ({ setComments }) => {
   const dispatch = useDispatch();
 
   const { userDetail } = useSelector((state) => state.userDetailsReducer);
-  const { firstname, lastname, username } = userDetail;
+  const { username } = userDetail;
   const { id } = useParams();
 
   const { content } = post;
@@ -28,7 +27,7 @@ const NewsCommentBox = ({ setComments }) => {
     }
     setEditorValue("");
   };
-  
+
   const handleKeyPress = async (e) => {
     if (e.charCode === 13) {
       await handleSubmit(e);
@@ -36,10 +35,7 @@ const NewsCommentBox = ({ setComments }) => {
   };
   return (
     <Container className="mt-5 news_container bg-light p-4 w-100">
-      <p>Leave A Comment</p>
-      <p>
-        Logged in as {firstname} {lastname}. Required fields are marked <sup>*</sup>
-      </p>
+      <p>Logged in as {usernma}. Leave a comment</p>
       <p>Comment *</p>
       <form className="w-100" onSubmit={handleSubmit}>
         <div className={"compose-form w-100"}>
