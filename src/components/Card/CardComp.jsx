@@ -11,13 +11,13 @@ function CardComp({}) {
       <Row>
         {recentposts?.map((post) => (
           <Col className="my-4" sm={12} md={6} lg={4} xl={4} key={post._id}>
-            <a href={`/news/${post._id}`} className="text-decoration-none text-dark ">
+            <a href={`https://teamjkf.org/unfolding-the-agenda/`} className="text-decoration-none text-dark ">
               <Card style={{ maxWidth: "23rem" }} className="shadow-lg cardstyle mb-5">
                 <Card.Img variant="top" src={post.coverphoto} style={{ maxHeight: "16rem" }} className="card_image" />
                 <Card.Body className="post_title">{post.title}</Card.Body>
                 <Card.Body className="read_more shadow-lg">
                   {" "}
-                  <a href={`/news/${post._id}`} className="text-decoration-none readmore_text ">
+                  <a href={`https://teamjkf.org/unfolding-the-agenda/`} className="text-decoration-none readmore_text ">
                     Read more...
                   </a>
                 </Card.Body>
