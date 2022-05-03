@@ -9,7 +9,9 @@ const Comment = ({ comments }) => {
         <h4>Comments</h4>
         {comments?.map((item) => (
           <>
-            <div className="comment_list p-3">{item}</div>
+            <div className="comment_list p-3">
+              <strong>{item.split(": ")[0]}</strong>:{item.split(":")[1]}
+            </div>
             <hr />
           </>
         ))}

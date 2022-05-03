@@ -33,7 +33,6 @@ const News = () => {
     </>
   ) : (
     <div>
-      {console.log(comments)}
       <NewsHeader />
       <NewsBody />
       <NewsCommentBox setComments={setComments} />

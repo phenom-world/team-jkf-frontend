@@ -11,7 +11,7 @@ const NewsCommentBox = ({ setComments }) => {
   const dispatch = useDispatch();
 
   const { userDetail } = useSelector((state) => state.userDetailsReducer);
-  const { firstname, lastname } = userDetail;
+  const { firstname, lastname, username } = userDetail;
   const { id } = useParams();
 
   const { content } = post;
@@ -22,7 +22,7 @@ const NewsCommentBox = ({ setComments }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (editorValue !== "" || (e.charCode === 13 && editorValue !== "")) {
-      const post = { value: editorValue };
+      const post = { value: `${username}: ${editorValue}` };
       const newComment = await dispatch(commentPost(post, id));
       setComments(newComment);
     }
