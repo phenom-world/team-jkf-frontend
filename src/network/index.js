@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://team-jkf.netlify.app/tjkf",
+  baseURL: "https://team-jkf.herokuapp.com/tjkf",
 });
 
 API.interceptors.request.use((req) => {
